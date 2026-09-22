@@ -8,18 +8,18 @@ import { Logo } from "@/components/vcl/Logo";
 import { MapaDiagram } from "@/components/vcl/MapaDiagram";
 import { GuaranteeSeal } from "@/components/vcl/GuaranteeSeal";
 import SalesVideo from "@/components/vcl/SalesVideo";
-import autoridade640 from "@/assets/imagens/autoridade-2-640.webp.asset.json";
-import autoridade960 from "@/assets/imagens/autoridade-2-960.webp.asset.json";
-import autoridade1440 from "@/assets/imagens/autoridade-2-1440.webp.asset.json";
-import mentora640 from "@/assets/imagens/mentora-juliene-640.webp.asset.json";
-import mentora960 from "@/assets/imagens/mentora-juliene-960.webp.asset.json";
-import mentora1440 from "@/assets/imagens/mentora-juliene-1440.webp.asset.json";
-import mrg640 from "@/assets/imagens/mentor-radar-grupo-2-640.webp.asset.json";
-import mrg960 from "@/assets/imagens/mentor-radar-grupo-2-960.webp.asset.json";
-import mrg1440 from "@/assets/imagens/mentor-radar-grupo-2-1440.webp.asset.json";
-import produtos640 from "@/assets/imagens/produtos-2-640.webp.asset.json";
-import produtos960 from "@/assets/imagens/produtos-2-960.webp.asset.json";
-import produtos1440 from "@/assets/imagens/produtos-2-1440.webp.asset.json";
+import autoridade640 from "@/assets/imagens/autoridade-2-640.webp";
+import autoridade960 from "@/assets/imagens/autoridade-2-960.webp";
+import autoridade1440 from "@/assets/imagens/autoridade-2-1440.webp";
+import mentora640 from "@/assets/imagens/mentora-juliene-640.webp";
+import mentora960 from "@/assets/imagens/mentora-juliene-960.webp";
+import mentora1440 from "@/assets/imagens/mentora-juliene-1440.webp";
+import mrg640 from "@/assets/imagens/mentor-radar-grupo-2-640.webp";
+import mrg960 from "@/assets/imagens/mentor-radar-grupo-2-960.webp";
+import mrg1440 from "@/assets/imagens/mentor-radar-grupo-2-1440.webp";
+import produtos640 from "@/assets/imagens/produtos-2-640.webp";
+import produtos960 from "@/assets/imagens/produtos-2-960.webp";
+import produtos1440 from "@/assets/imagens/produtos-2-1440.webp";
 
 
 // Trocar para false para ocultar as duas seções de depoimentos (Seções 4 e 11)
@@ -687,8 +687,8 @@ function Entregaveis() {
         <Reveal>
           <div className="relative mx-auto mt-10 w-full max-w-[960px]">
             <img
-              src={produtos960.url}
-              srcSet={`${produtos640.url} 640w, ${produtos960.url} 960w, ${produtos1440.url} 1440w`}
+              src={produtos960}
+              srcSet={`${produtos640} 640w, ${produtos960} 960w, ${produtos1440} 1440w`}
               sizes="(max-width: 768px) 100vw, 960px"
               alt="Materiais da Mentoria VC_Líder"
               loading="lazy"
@@ -761,8 +761,8 @@ function Bonus() {
             UM ECOSSISTEMA DE DESENVOLVIMENTO QUE VAI ALÉM DAS VÍDEO-AULAS
           </h2>
           <img
-            src={mrg960.url}
-            srcSet={`${mrg640.url} 640w, ${mrg960.url} 960w, ${mrg1440.url} 1440w`}
+            src={mrg960}
+            srcSet={`${mrg640} 640w, ${mrg960} 960w, ${mrg1440} 1440w`}
             sizes="(max-width: 768px) 100vw, 1100px"
             alt="Ecossistema VC_Líder: Mentor Digital, Radar do Líder e Grupo de WhatsApp"
             loading="lazy"
@@ -1129,8 +1129,8 @@ function Autoridade() {
           <Reveal>
             <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-[color:var(--laranja)]">
               <img
-                src={mentora960.url}
-                srcSet={`${mentora640.url} 640w, ${mentora960.url} 960w, ${mentora1440.url} 1440w`}
+                src={mentora960}
+                srcSet={`${mentora640} 640w, ${mentora960} 960w, ${mentora1440} 1440w`}
                 sizes="(max-width: 768px) 100vw, 520px"
                 alt="Juliene Salvan, diretora de RH e mentora de líderes, em retrato de corpo inteiro com blazer bege e fundo laranja"
                 loading="lazy"
@@ -1145,8 +1145,8 @@ function Autoridade() {
           <Reveal>
             <div className="w-full overflow-hidden rounded-lg">
               <img
-                src={autoridade960.url}
-                srcSet={`${autoridade640.url} 640w, ${autoridade960.url} 960w, ${autoridade1440.url} 1440w`}
+                src={autoridade960}
+                srcSet={`${autoridade640} 640w, ${autoridade960} 960w, ${autoridade1440} 1440w`}
                 sizes="(max-width: 768px) 100vw, 520px"
                 alt="Juliene Salvan em destaque nos principais veículos de comunicação"
                 loading="lazy"

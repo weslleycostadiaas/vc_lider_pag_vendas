@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import thumb640 from "@/assets/imagens/thumb-vvv-v2-640.webp.asset.json";
-import thumb960 from "@/assets/imagens/thumb-vvv-v2-960.webp.asset.json";
-import thumb1440 from "@/assets/imagens/thumb-vvv-v2-1440.webp.asset.json";
+import thumb640 from "@/assets/imagens/thumb-vvv-v2-640.webp";
+import thumb960 from "@/assets/imagens/thumb-vvv-v2-960.webp";
+import thumb1440 from "@/assets/imagens/thumb-vvv-v2-1440.webp";
 
 const EMBED_BASE =
   "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268";
@@ -122,8 +122,8 @@ export default function SalesVideo() {
           className="absolute inset-0 z-10 block w-full cursor-pointer disabled:cursor-wait"
         >
           <img
-            src={thumb960.url}
-            srcSet={`${thumb640.url} 640w, ${thumb960.url} 960w, ${thumb1440.url} 1440w`}
+            src={thumb960}
+            srcSet={`${thumb640} 640w, ${thumb960} 960w, ${thumb1440} 1440w`}
             sizes="(max-width: 768px) 100vw, 800px"
             alt=""
             width={1672}
