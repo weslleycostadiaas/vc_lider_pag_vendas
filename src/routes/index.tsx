@@ -48,6 +48,12 @@ export const Route = createFileRoute("/")({
           "O método que transforma cargo em liderança real, do recém-promovido ao veterano. Curso completo com Mentor Digital, Radar do Líder e mais.",
       },
       {
+        property: "og:url",
+        content: "https://vclider1.julienesalvan.com.br/",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
         name: "twitter:title",
         content: "VC_Líder — Liderança é técnica",
       },
@@ -56,6 +62,9 @@ export const Route = createFileRoute("/")({
         content:
           "Método M.A.P.A. por Juliene Salvan. Liderança como técnica, testada com mais de 200 gestores.",
       },
+    ],
+    links: [
+      { rel: "canonical", href: "https://vclider1.julienesalvan.com.br/" },
     ],
   }),
   component: Index,
