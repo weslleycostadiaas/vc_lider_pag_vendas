@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mapa-do-lider.lovable.app/sitemap.xml

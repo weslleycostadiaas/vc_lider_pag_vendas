@@ -24,9 +24,10 @@ import produtos1440 from "@/assets/imagens/produtos-2-1440.webp";
 
 // Trocar para false para ocultar as duas seções de depoimentos (Seções 4 e 11)
 const MOSTRAR_DEPOIMENTOS = false;
-const LINK_CHECKOUT = "https://pay.hotmart.com/T105324426S";
+const LINK_CHECKOUT = "https://pay.hotmart.com/T105324426S?checkoutMode=10";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       {
