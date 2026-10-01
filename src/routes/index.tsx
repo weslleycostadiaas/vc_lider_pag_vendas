@@ -8,9 +8,21 @@ import { Logo } from "@/components/vcl/Logo";
 import { MapaDiagram } from "@/components/vcl/MapaDiagram";
 import { GuaranteeSeal } from "@/components/vcl/GuaranteeSeal";
 import SalesVideo from "@/components/vcl/SalesVideo";
-import autoridade640 from "@/assets/imagens/autoridade-2-640.webp";
-import autoridade960 from "@/assets/imagens/autoridade-2-960.webp";
-import autoridade1440 from "@/assets/imagens/autoridade-2-1440.webp";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { X } from "lucide-react";
+import deepDive320 from "@/assets/imagens/autoridade-card-deep-dive-320.webp";
+import deepDive610 from "@/assets/imagens/autoridade-card-deep-dive-610.webp";
+import radio320 from "@/assets/imagens/autoridade-card-radio-bandeirantes-320.webp";
+import radio610 from "@/assets/imagens/autoridade-card-radio-bandeirantes-610.webp";
+import passa320 from "@/assets/imagens/autoridade-card-passa-la-no-rh-320.webp";
+import passa610 from "@/assets/imagens/autoridade-card-passa-la-no-rh-610.webp";
+import talentos320 from "@/assets/imagens/autoridade-card-talentos-da-band-320.webp";
+import talentos610 from "@/assets/imagens/autoridade-card-talentos-da-band-610.webp";
+import rhs320 from "@/assets/imagens/autoridade-card-rhs-mais-admirados-320.webp";
+import rhs610 from "@/assets/imagens/autoridade-card-rhs-mais-admirados-610.webp";
+import bett320 from "@/assets/imagens/autoridade-card-bett-320.webp";
+import bett610 from "@/assets/imagens/autoridade-card-bett-610.webp";
 import mentora640 from "@/assets/imagens/mentora-juliene-640.webp";
 import mentora960 from "@/assets/imagens/mentora-juliene-960.webp";
 import mentora1440 from "@/assets/imagens/mentora-juliene-1440.webp";
@@ -20,6 +32,18 @@ import mrg1440 from "@/assets/imagens/mentor-radar-grupo-2-1440.webp";
 import produtos640 from "@/assets/imagens/produtos-2-640.webp";
 import produtos960 from "@/assets/imagens/produtos-2-960.webp";
 import produtos1440 from "@/assets/imagens/produtos-2-1440.webp";
+import cargoCenas640 from "@/assets/imagens/cargo-cenas-640.webp";
+import cargoCenas826 from "@/assets/imagens/cargo-cenas-826.webp";
+import conhecer640 from "@/assets/imagens/paliativo-conhecer-aplicar-640.webp";
+import conhecer790 from "@/assets/imagens/paliativo-conhecer-aplicar-790.webp";
+import radar220 from "@/assets/imagens/paliativo-radar-220.webp";
+import radar291 from "@/assets/imagens/paliativo-radar-291.webp";
+import aulas220 from "@/assets/imagens/paliativo-aulas-220.webp";
+import aulas291 from "@/assets/imagens/paliativo-aulas-291.webp";
+import mentor220 from "@/assets/imagens/paliativo-mentor-220.webp";
+import mentor291 from "@/assets/imagens/paliativo-mentor-291.webp";
+import conversa640 from "@/assets/imagens/metodo-conversa-640.webp";
+import conversa826 from "@/assets/imagens/metodo-conversa-826.webp";
 
 
 // Trocar para false para ocultar as duas seções de depoimentos (Seções 4 e 11)
@@ -100,9 +124,9 @@ function Index() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[color:var(--vermelho)] text-[color:var(--creme)]">
-      <div className="relative mx-auto max-w-[1100px] px-5 pt-6 pb-20 md:pt-8 md:pb-28">
+      <div className="relative mx-auto max-w-[1100px] px-5 pt-6 pb-8 md:pt-8 md:pb-12">
         <div className="mb-4 md:mb-6 flex justify-center">
-          <Logo onDark height={120} />
+          <Logo onDark height={84} />
         </div>
 
         <Reveal instant>
@@ -113,20 +137,30 @@ function Hero() {
         </Reveal>
 
         <Reveal instant className="relative z-30">
-          <p className="relative z-30 mt-2 mb-0 max-w-4xl mx-auto text-center text-[18px] md:text-[21px] leading-[1.35] text-[color:var(--laranja)] whitespace-pre-line">
+          <p className="relative z-30 mt-2 mb-0 max-w-4xl mx-auto text-center text-[18px] md:text-[21px] leading-[1.35] text-creme whitespace-pre-line">
             O método que transforma o cargo em LIDERANÇA DE VERDADE:{"\u00a0"}{"\n"}
             Uma metodologia construída na prática, acompanhando mais de 200 líderes.{"\u00a0"}{"\n"}
           </p>
         </Reveal>
 
-        {/* O bloco do vídeo volta ao comportamento validado no iPhone:
-            montagem via Reveal padrão, como antes da otimização de abertura. */}
-        <Reveal>
-          <div className="relative z-10 mt-8 mx-auto max-w-4xl px-4 w-full">
-            <SalesVideo />
+        <Reveal instant>
+          <div className="mt-6 text-center">
+            <div className="font-display text-[20px] text-[color:var(--laranja)] tracking-wider">
+              NESTA AULA VOCÊ VAI ENTENDER COMO:
+            </div>
+            <ol className="mt-3 mx-auto max-w-3xl list-decimal space-y-1.5 pl-6 text-left text-[16px] leading-[1.4] marker:text-laranja md:text-[18px]">
+              <li>Delegar sem assumir o trabalho da equipe.</li>
+              <li>Dar feedbacks difíceis com clareza e firmeza.</li>
+              <li>Estabelecer limites sem perder respeito e confiança.</li>
+            </ol>
           </div>
         </Reveal>
 
+        <Reveal>
+          <div className="relative z-10 mt-5 mx-auto max-w-4xl px-4 w-full">
+            <SalesVideo />
+          </div>
+        </Reveal>
 
         <Reveal>
           <p className="relative z-30 mt-6 max-w-4xl mx-auto text-center text-[16px] md:text-[18px] leading-[1.5] text-[color:var(--creme)] italic">
@@ -135,43 +169,7 @@ function Hero() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-14 text-center">
-            <div className="font-display text-[20px] text-[color:var(--laranja)] tracking-wider">
-              NESTA AULA VOCÊ VAI ENTENDER:
-            </div>
-            <ul className="mt-6 space-y-5 max-w-3xl mx-auto">
-              {[
-                {
-                  t: "O erro que faz você absorver o operacional",
-                  d: "por que você continua fazendo o trabalho da sua equipe mesmo sabendo que não deveria e como delegar de verdade, sem perder o controle da entrega;",
-                },
-                {
-                  t: "Como ter conversas difíceis sem travar",
-                  d: "como parar de contornar problemas, adiar feedbacks importantes e aprender a se posicionar com clareza, sem transformar a conversa em um conflito;\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0\u00a0",
-                },
-                {
-                  t: "Por que tentar agradar a todos enfraquece sua liderança",
-                  d: "como se posicionar, estabelecer limites e tomar decisões difíceis sem perder o respeito e a confiança do seu time.",
-                },
-              ].map((b, i) => (
-                <li key={i} className="flex flex-row items-baseline justify-center gap-3 text-[17px] md:text-[18px] leading-[1.7]">
-                  <span
-                    aria-hidden
-                    className="font-display text-[28px] leading-[1] text-[color:var(--laranja)] shrink-0"
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="max-w-2xl text-left">
-                    <span className="font-semibold">{b.t}:</span> {b.d}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <CTAButton href={LINK_CHECKOUT} size="lg">
               Quero liderar de verdade
             </CTAButton>
@@ -185,14 +183,32 @@ function Hero() {
 /* ---------------- SECTION 2: DOR ---------------- */
 function Dor() {
   return (
-    <section className="bg-[color:var(--creme)] px-5 py-16 md:py-28">
+    <section className="bg-[color:var(--creme)] px-5 pt-16 pb-8 md:pt-28 md:pb-12">
       <div className="mx-auto max-w-[780px]">
         <Reveal>
-          <h2 className="font-display text-[28px] leading-[1.12] text-[color:var(--vermelho)] min-[360px]:text-[32px] md:text-[44px] md:leading-[1.1] uppercase">
+          <h2 className="font-display font-normal text-[36px] leading-[1.05] text-[color:var(--vermelho)] text-balance uppercase min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
             O cargo mudou no crachá. Mas ninguém mudou o mapa que você usa para
             trabalhar.
           </h2>
         </Reveal>
+
+        <div className="mt-6 sm:mt-8">
+          <img
+            src={cargoCenas826}
+            srcSet={`${cargoCenas640} 640w, ${cargoCenas826} 826w`}
+            sizes="(min-width: 820px) 780px, calc(100vw - 40px)"
+            alt="À esquerda, uma profissional sobrecarregada executa tarefas; à direita, uma líder orienta sua equipe"
+            loading="lazy"
+            decoding="async"
+            width={826}
+            height={450}
+            className="block h-auto w-full"
+          />
+          <div className="grid grid-cols-2 gap-2 text-center font-display text-[18px] leading-[1.1] text-[color:var(--vermelho)] min-[390px]:text-[21px] md:text-[26px]">
+            <span>EXECUTAR O TRABALHO</span>
+            <span>CONDUZIR QUEM FAZ</span>
+          </div>
+        </div>
 
         <div className="mt-8 space-y-5 text-[16px] leading-[1.7] sm:mt-10 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
           <Reveal as="p">
@@ -206,18 +222,18 @@ function Dor() {
             exercê-lo. E isso aparece na rotina:
           </Reveal>
 
-          <ul className="space-y-5 sm:space-y-6">
-            <Reveal as="li">
+          <ul className="border-b border-[color:var(--laranja)]">
+            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
               Você <span className="font-semibold">assume tarefas da equipe</span>{" "}
               porque parece mais rápido fazer do que ensinar. No fim do dia,
               resolveu o trabalho de todo mundo e deixou o seu para depois.
             </Reveal>
-            <Reveal as="li">
+            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
               <span className="font-semibold">Adia aquele feedback</span> porque
               não sabe como ser firme sem desgastar a relação. Enquanto espera o
               momento certo, o problema continua.
             </Reveal>
-            <Reveal as="li">
+            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
               <span className="font-semibold">Busca o aval do gestor acima</span>{" "}
               para decisões que já são suas. Ou passa a semana apagando
               incêndios, sem espaço para desenvolver o time e antecipar o que
@@ -258,21 +274,41 @@ function Paliativo() {
     "Um treinamento ajuda a repensar sua atuação.",
   ];
   return (
-    <section className="bg-[color:var(--branco)] pt-20 md:pt-28 pb-8 md:pb-14 px-5">
+    <section className="bg-[color:var(--creme)] pt-8 md:pt-10 pb-8 md:pb-14 px-5">
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
-          <h2 className="font-display text-[28px] md:text-[42px] leading-[1.15] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto uppercase">
+          <h2 className="font-display font-normal text-[36px] leading-[1.05] text-[color:var(--vermelho)] text-balance uppercase max-w-[780px] mx-auto text-left min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
             VOCÊ JÁ BUSCOU CONHECIMENTO. O DESAFIO É USÁ-LO QUANDO A SITUAÇÃO
             APERTA.
           </h2>
         </Reveal>
 
         <Reveal>
-          <div className="mx-auto mt-10 max-w-3xl space-y-4 text-center">
+          <figure className="mx-auto mt-8 max-w-[790px] md:mt-10">
+            <img
+              src={conhecer640}
+              srcSet={`${conhecer640} 640w, ${conhecer790} 790w`}
+              sizes="(min-width: 830px) 790px, calc(100vw - 40px)"
+              width={790}
+              height={326}
+              loading="lazy"
+              decoding="async"
+              alt="À esquerda, uma mulher estuda com livro e laptop; à direita, conduz uma conversa com outra pessoa"
+              className="block h-auto w-full mix-blend-multiply"
+            />
+            <figcaption className="mt-2 grid grid-cols-2 gap-3 text-center font-display text-[16px] leading-[1.1] text-[color:var(--vermelho)] sm:text-[20px] md:text-[25px]">
+              <span>CONHECER A TÉCNICA</span>
+              <span>APLICAR NA ROTINA</span>
+            </figcaption>
+          </figure>
+        </Reveal>
+
+        <Reveal>
+          <div className="mx-auto mt-10 max-w-3xl space-y-3 text-left">
             {linhasIniciais.map((linha) => (
               <p
                 key={linha}
-                className="text-[16px] leading-[1.6] sm:text-[18px] md:text-[20px]"
+                className="border-l-[3px] border-[color:var(--laranja)] pl-4 text-[16px] leading-[1.6] sm:text-[18px] md:text-[20px]"
               >
                 {linha}
               </p>
@@ -281,7 +317,7 @@ function Paliativo() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-10 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
+          <p className="mx-auto mt-10 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
             Mas, na segunda-feira, você está novamente diante da equipe e
             precisa decidir: como aplicar tudo isso nesta situação, com esta
             pessoa?
@@ -289,7 +325,7 @@ function Paliativo() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
+          <p className="mx-auto mt-6 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
             Conhecer uma técnica de feedback não significa se sentir preparado
             para aquela conversa. Entender a importância de delegar não resolve,
             sozinho, a dificuldade de confiar uma entrega importante a alguém.
@@ -297,24 +333,36 @@ function Paliativo() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
+          <p className="mx-auto mt-8 max-w-3xl text-left text-[16px] font-bold leading-[1.7] sm:text-[18px]">
             É nessa passagem entre saber e fazer que a Mentoria VC_Líder atua.
           </p>
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
-            O <strong>Radar do Líder</strong> ajuda você a identificar quais
-            competências precisam de atenção. Nas aulas com Juliene Salvan,
-            você aprende o <strong>Método M.A.P.A.</strong> e suas ferramentas.
-            E, com o <strong>Mentor Digital</strong>, pode conversar sobre seus
-            desafios, organizar o raciocínio e preparar suas ações com base no
-            método.
-          </p>
+          <div className="mx-auto mt-8 max-w-3xl border-t border-[color:var(--laranja)]">
+            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
+              <img src={radar220} srcSet={`${radar220} 220w, ${radar291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={150} loading="lazy" decoding="async" alt="Radar circular de competências" className="block h-auto w-full mix-blend-multiply" />
+              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
+                O <strong className="font-display text-[21px] font-normal leading-[1.1] text-[color:var(--vermelho)] sm:text-[25px]">Radar do Líder</strong> ajuda você a identificar quais competências precisam de atenção.
+              </p>
+            </div>
+            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
+              <img src={aulas220} srcSet={`${aulas220} 220w, ${aulas291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={139} loading="lazy" decoding="async" alt="Videoaula com Juliene em um laptop" className="block h-auto w-full mix-blend-multiply" />
+              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
+                Nas aulas com Juliene Salvan, você aprende o <strong className="font-semibold">Método M.A.P.A.</strong> e suas ferramentas.
+              </p>
+            </div>
+            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
+              <img src={mentor220} srcSet={`${mentor220} 220w, ${mentor291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={127} loading="lazy" decoding="async" alt="Conversa com um mentor digital ilustrada em balões de mensagem" className="block h-auto w-full mix-blend-multiply" />
+              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
+                E, com o <strong className="font-display text-[21px] font-normal leading-[1.1] text-[color:var(--vermelho)] sm:text-[25px]">Mentor Digital</strong>, pode conversar sobre seus desafios, organizar o raciocínio e preparar suas ações com base no método.
+              </p>
+            </div>
+          </div>
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
+          <p className="mx-auto mt-8 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
             Um ecossistema de desenvolvimento para entender onde você precisa
             evoluir, aprender o que faz sentido para seu momento e colocar em
             prática na sua rotina.
@@ -322,7 +370,7 @@ function Paliativo() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
+          <p className="mx-auto mt-6 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
             Todas as ferramentas de aprendizado se conectam no ecossistema
             VC_Líder. E o fio condutor é o Método M.A.P.A.
           </p>
@@ -463,41 +511,36 @@ function Metodo() {
   return (
     <section className="relative overflow-hidden bg-[color:var(--vermelho)] px-5 py-16 text-[color:var(--creme)] md:py-28">
       <div className="relative z-10 mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[28px] md:text-[44px] leading-[1.15] max-w-4xl text-center mx-auto">
+        <Reveal instant>
+          <h2 className="mx-auto max-w-[780px] text-balance text-left font-display font-normal text-[36px] leading-[1.05] text-[color:var(--creme)] min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
             MÉTODO M.A.P.A.: UMA ESTRUTURA PARA CONDUZIR PESSOAS, DECIDIR E
             AGIR COMO LÍDER
           </h2>
         </Reveal>
 
-        <div className="mx-auto mt-8 max-w-3xl space-y-5 text-center text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:mt-10 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
-          <Reveal as="p">
-            Se liderar fosse só distribuir tarefas numa planilha, qualquer
-            pessoa que sabe usar Notion ou Trello já seria um líder de
-            verdade. Mas o desafio vai além de organizar o trabalho: está em
-            conduzir as pessoas que fazem esse trabalho acontecer.
+        <Reveal instant>
+          <img
+            src={conversa640}
+            srcSet={`${conversa640} 640w, ${conversa826} 826w`}
+            sizes="(min-width: 820px) 780px, calc(100vw - 40px)"
+            width={826}
+            height={575}
+            loading="lazy"
+            decoding="async"
+            alt="Uma profissional conduz uma conversa com dois colegas diante de um painel de colagem com bordas rasgadas"
+            className="mx-auto mt-6 block h-auto w-full max-w-[780px] [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)] md:mt-8"
+          />
+        </Reveal>
+
+        <div className="mx-auto mt-6 max-w-[780px] space-y-5 text-left text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
+          <Reveal as="p" instant>
+            Liderar vai além de organizar tarefas em uma planilha ou saber usar o Notion ou o Trello. É alinhar expectativas, delegar, conduzir conversas difíceis e desenvolver pessoas que pensam e trabalham de maneiras diferentes.
           </Reveal>
-          <Reveal as="p">
-            Em pequenas empresas ou grandes companhias, isso exige alinhar
-            expectativas, delegar, lidar com conflitos e desenvolver pessoas
-            que pensam e trabalham de maneiras diferentes. É nesse desafio que
-            o Método M.A.P.A. atua.
+          <Reveal as="p" instant>
+            O Método M.A.P.A. organiza seu raciocínio para enfrentar essas situações. São quatro caminhos conectados: <strong className="font-semibold">Mentalidade, Ação, Pessoas e Aprendizado Contínuo</strong>, que ajudam você a compreender o cenário, escolher como agir, conduzir as pessoas e aprender com cada decisão.
           </Reveal>
-          <Reveal as="p">
-            O método é um fio condutor de pensamento para orientar suas
-            decisões, conversas e ações. Onde hoje existe improviso, você
-            aprende a percorrer quatro caminhos de raciocínio: Mentalidade,
-            Ação, Pessoas e Aprendizado Contínuo. Caminhos que você treina em
-            situações reais, até se tornarem parte da sua maneira de liderar.
-          </Reveal>
-          <Reveal as="p">
-            A tese é simples: liderança não depende apenas de talento nato ou
-            carisma. É método, disciplina e um fluxo de pensamento que orienta
-            a ação. É técnica. E técnica se aprende, se treina e se aplica.
-          </Reveal>
-          <Reveal as="p">
-            São quatro letras, quatro caminhos em uma sequência que ajuda você
-            a pensar antes de agir e a aprender depois de cada decisão.
+          <Reveal as="p" instant>
+            Liderança não depende apenas de talento ou carisma. É técnica, sustentada por método, disciplina e prática. A seguir, veja como cada letra orienta suas decisões no dia a dia.
           </Reveal>
         </div>
 
@@ -669,7 +712,7 @@ function Entregaveis() {
     {
       t: "Acesso à plataforma por 12 meses",
       d: "Acesse as aulas e os materiais do curso no seu ritmo, durante 12 meses, com todas as atualizações de conteúdo incluídas no período, sem custo adicional.",
-      v: "R$ 300,00",
+      v: "",
     },
     {
       t: "CERTIFICADO E MATERIAIS DE APOIO",
@@ -721,7 +764,7 @@ function Entregaveis() {
                     {it.v}
                   </div>
                 )}
-                <div className="pr-20 sm:pr-24">
+                 <div className={it.v ? "pr-20 sm:pr-24" : ""}>
                   <h3 className="font-display text-[22px] text-[color:var(--vermelho)]">
                     {it.t}
                   </h3>
@@ -751,7 +794,7 @@ function Bonus() {
     {
       t: "GRUPO DE WHATSAPP DO CURSO",
       d: "O canal onde você recebe em primeira mão as atualizações, os novos conteúdos e os avisos importantes do Método M.A.P.A. ao longo da sua jornada, para não perder nada do que é liberado.",
-      v: "R$ 297,00",
+      v: "",
     },
   ];
   return (
@@ -790,9 +833,11 @@ function Bonus() {
                   {b.t}
                 </h3>
                 <p className="mt-4 text-[15px] leading-[1.7]">{b.d}</p>
-                <div className="mt-6 pt-4 border-t border-[color:var(--terracota)]/25 font-display text-2xl text-[color:var(--laranja)] line-through decoration-[color:var(--preto)] decoration-2">
-                  Valor: {b.v}
-                </div>
+                 {b.v && (
+                   <div className="mt-6 pt-4 border-t border-[color:var(--terracota)]/25 font-display text-2xl text-[color:var(--laranja)] line-through decoration-[color:var(--preto)] decoration-2">
+                     Valor: {b.v}
+                   </div>
+                 )}
               </div>
             </Reveal>
           ))}
@@ -807,10 +852,10 @@ function StackValor() {
   const rows = [
     ["Curso completo do Método M.A.P.A. (23 vídeo-aulas, aulas bônus, 6 módulos)", "R$ 1.697"],
     ["As ferramentas proprietárias do Método M.A.P.A.\u00a0 (A.C.T., 3Cs Integrado e Loop AAA)", "R$ 397"],
-    ["Acesso à plataforma por 12 meses com atualizações incluídas", "R$ 300"],
+    ["Acesso à plataforma por 12 meses com atualizações incluídas", "Incluído"],
     ["Mentor Digital (IA treinada no Método M.A.P.A., 24 horas por dia, 6 meses, com os prompts das ferramentas)", "R$ 299,40"],
     ["Radar do Líder (diagnóstico contínuo, 6 meses)", "R$ 197,00"],
-    ["Bônus: Grupo de WhatsApp do curso (atualizações e novos conteúdos)", "R$ 297,00"],
+    ["Bônus: Grupo de WhatsApp do curso (atualizações e novos conteúdos)", "Incluído"],
   ];
   return (
     <section className="relative overflow-hidden bg-[color:var(--vermelho)] text-[color:var(--creme)] py-20 md:py-28 px-5">
@@ -837,7 +882,7 @@ function StackValor() {
                     aria-hidden
                     className="hidden min-w-16 translate-y-[-4px] border-b border-dotted border-[color:var(--preto)]/40 md:block"
                   />
-                  <span className="font-semibold whitespace-nowrap line-through decoration-[color:var(--preto)] decoration-2">
+                   <span className={`font-semibold whitespace-nowrap ${price === "Incluído" ? "" : "line-through decoration-[color:var(--preto)] decoration-2"}`}>
                     {price}
                   </span>
                 </li>
@@ -847,7 +892,7 @@ function StackValor() {
             <div className="mt-8 pt-6 border-t border-[color:var(--terracota)]/40 text-center">
               <div className="text-[16px]">
                 Valor total somado:{" "}
-                <span className="line-through opacity-70">R$ 3.187,40</span>
+                 <span className="line-through opacity-70">R$ 2.590,40</span>
               </div>
               <div className="mt-4 font-display text-[56px] md:text-[72px] leading-none text-[color:var(--laranja)]">
                 R$ 997
@@ -860,16 +905,6 @@ function StackValor() {
                   Quero liderar de verdade
                 </CTAButton>
               </div>
-              <p className="mt-6 text-[14px] leading-[1.6] font-light text-left text-[color:var(--preto)]/75">
-                A diferença entre os R$ 3.187,40 e o preço que você paga não é
-                desconto artificial inflado para parecer oferta. É porque o
-                Mentor Digital e o Radar do Líder funcionam em escala digital,
-                sem o custo de uma consultoria presencial equivalente. Isso
-                permite entregar o mesmo tipo de suporte individualizado por uma
-                fração do valor que um coaching avulso cobraria em poucas horas.
-                Com a diferença de que aqui "ele" fica disponível por 6 meses
-                inteiros, não por sessão.
-              </p>
             </div>
           </div>
         </Reveal>
@@ -1078,7 +1113,7 @@ function SupportBlock({ icon, text }: { icon: React.ReactNode; text: string }) {
 /* ---------------- SECTION 13: GARANTIA ---------------- */
 function Garantia() {
   return (
-    <section className="bg-[color:var(--creme)] px-5 py-16 md:py-28">
+    <section className="bg-[color:var(--creme)] px-5 pt-16 pb-6 md:pt-28 md:pb-9">
       <div className="mx-auto max-w-[1100px] grid gap-12 md:grid-cols-[240px_1fr] items-center">
         <Reveal>
           <GuaranteeSeal />
@@ -1116,7 +1151,7 @@ function Garantia() {
 /* ---------------- SECTION 14: AUTORIDADE ---------------- */
 function Autoridade() {
   return (
-    <section className="bg-[color:var(--vermelho)] px-5 py-16 text-[color:var(--creme)] md:py-28">
+    <section className="bg-[color:var(--vermelho)] px-5 pt-8 pb-16 text-[color:var(--creme)] md:pt-10 md:pb-28">
       <div className="mx-auto max-w-[1100px] flex flex-col gap-12 md:grid md:grid-cols-[minmax(0,520px)_1fr] md:items-start">
         {/* Headline — abre a seção no mobile, antes da foto da Juliene */}
         <Reveal className="order-1 md:order-none md:col-start-2 md:row-start-1">
@@ -1125,8 +1160,8 @@ function Autoridade() {
           </h2>
         </Reveal>
 
-        {/* Fotos da Juliene */}
-        <div className="flex flex-col gap-6 order-2 md:order-none md:row-span-2 md:col-start-1 md:row-start-1">
+        {/* Foto principal da Juliene e cards, juntos na coluna esquerda */}
+        <div className="order-2 flex min-w-0 flex-col gap-6 md:order-none md:row-span-2 md:col-start-1 md:row-start-1">
           <Reveal>
             <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-[color:var(--laranja)]">
               <img
@@ -1143,21 +1178,54 @@ function Autoridade() {
             </div>
           </Reveal>
 
-          <Reveal>
-            <div className="w-full overflow-hidden rounded-lg">
-              <img
-                src={autoridade960}
-                srcSet={`${autoridade640} 640w, ${autoridade960} 960w, ${autoridade1440} 1440w`}
-                sizes="(max-width: 768px) 100vw, 520px"
-                alt="Juliene Salvan em destaque nos principais veículos de comunicação"
-                loading="lazy"
-                decoding="async"
-                width={1774}
-                height={887}
-                className="mx-auto h-auto w-full object-contain"
-              />
+          <div className="flex min-w-0 flex-col gap-4 md:gap-6">
+          {([
+            [["Rádio Bandeirantes", radio320, radio610, 489], ["Deep Dive Podcast", deepDive320, deepDive610, 488]],
+            [["Passa lá no RH", passa320, passa610, 440], ["Podcast Talentos da Band", talentos320, talentos610, 440]],
+            [["RHs mais admirados", rhs320, rhs610, 302], ["Bett Brasil", bett320, bett610, 302]],
+          ] as const).map((pair, row) => (
+            <div
+              key={row}
+              className={`grid min-w-0 items-start gap-2 md:gap-3 ${row % 2 === 0 ? "grid-cols-[minmax(0,55fr)_minmax(0,45fr)]" : "grid-cols-[minmax(0,45fr)_minmax(0,55fr)]"}`}
+            >
+              {pair.map(([alt, small, large, height], column) => (
+                <Dialog key={alt}>
+                  <DialogTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      aria-label={`Ampliar ${alt}`}
+                      className={`h-auto min-w-0 w-full max-w-[610px] p-0 mx-auto rounded-none hover:bg-transparent focus-visible:ring-2 focus-visible:ring-[color:var(--creme)] ${column === (row % 2) ? "mt-3" : ""}`}
+                    >
+                      <img
+                        src={large}
+                        srcSet={`${small} 320w, ${large} 610w`}
+                        sizes={row % 2 === column ? "(min-width: 768px) 290px, 55vw" : "(min-width: 768px) 230px, 45vw"}
+                        alt={alt}
+                        loading="lazy"
+                        decoding="async"
+                        width={610}
+                        height={height}
+                        className="block h-auto w-full"
+                      />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="w-[calc(100vw-24px)] max-w-[680px] max-h-[calc(100dvh-24px)] gap-2 overflow-hidden border-0 bg-[color:var(--vermelho)] p-3 text-[color:var(--creme)] [&>button:last-child]:hidden">
+                    <DialogTitle className="sr-only">{alt}</DialogTitle>
+                    <DialogClose asChild>
+                      <Button type="button" variant="ghost" aria-label="Fechar imagem ampliada" className="ml-auto h-11 w-11 shrink-0 p-0 text-[color:var(--creme)]">
+                        <X aria-hidden="true" />
+                      </Button>
+                    </DialogClose>
+                    <div className="max-h-[calc(100dvh-100px)] overflow-auto" tabIndex={0} aria-label={`Imagem ampliada: ${alt}. Deslize para ver o restante.`}>
+                      <img src={large} alt={alt} width={610} height={height} className="block h-auto w-[610px] max-w-none" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ))}
             </div>
-          </Reveal>
+          ))}
+          </div>
         </div>
 
         {/* Bio + indicadores */}
@@ -1262,9 +1330,16 @@ function FAQSection() {
       q: "A mentoria inclui encontros com Juliene Salvan?",
       a: "Nesta formação, você aprende com Juliene nas aulas gravadas e recebe acompanhamento pelo Mentor Digital: uma inteligência artificial baseada no Método M.A.P.A., com a qual pode conversar sobre seus desafios e explorar como aplicar as ferramentas na sua rotina.\n\nO Mentor Digital fica disponível 24 horas por dia durante os primeiros 6 meses. Esta oferta não inclui encontros ao vivo nem atendimento individual com Juliene Salvan.",
     },
+    // Rascunho aprovado de marketing — as práticas técnicas descritas seguem
+    // sujeitas a confirmação com os desenvolvedores antes da publicação.
+    // Não adicionar link, checkbox de aceite ou backend sem esse alinhamento.
+    {
+      q: "Como minhas conversas com o Mentor Digital são protegidas?",
+      a: "Você pode conversar sobre seus desafios de liderança sem precisar identificar as pessoas envolvidas. As conversas ficam armazenadas para manter seu histórico, e a plataforma utiliza autenticação e controles de acesso para proteger essas informações.\n\nPara aproveitar o Mentor Digital, descreva a situação usando referências como “uma pessoa da equipe” ou “a empresa”. Evite nomes, dados pessoais de terceiros e informações confidenciais da empresa. O foco é ajudar você a organizar o raciocínio e preparar suas ações.",
+    },
   ];
   return (
-    <section className="bg-[color:var(--creme)] px-5 py-16 md:py-28">
+    <section className="bg-[color:var(--creme)] px-5 pt-6 pb-16 md:pt-9 md:pb-28">
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
           <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto">
@@ -1303,7 +1378,7 @@ function OfertaFinal() {
             documentado.
           </Reveal>
           <Reveal as="p">
-            Por R$ 997 à vista no cartão ou no Pix, ou 12 vezes de R$ 103,11 no cartão, você está entrando em um ecossistema completo de desenvolvimento de liderança: com o curso completo do Método M.A.P.A. com 23 vídeo-aulas, as ferramentas proprietárias, o Mentor Digital treinado no método por 6 meses, o Radar do Líder, o Grupo de WhatsApp sem prazo e Certificado de Conclusão do Método M.A.P.A. emitido ao final dos 6 módulos. E mais: Roteiros, Materiais de apoio, Indicações de leitura, Prompts para usar todo o potencial do Mentor Digital. Um Ecossistema de Desenvolvimento que vale mais de R$ 3.000,00, com liberação para uso imediato assim que a compra é confirmada.
+            Por R$ 997 à vista no cartão ou no Pix, ou 12 vezes de R$ 103,11 no cartão, você está entrando em um ecossistema completo de desenvolvimento de liderança: com o curso completo do Método M.A.P.A. com 23 vídeo-aulas, as ferramentas proprietárias, o Mentor Digital treinado no método por 6 meses, o Radar do Líder, o Grupo de WhatsApp sem prazo e Certificado de Conclusão do Método M.A.P.A. emitido ao final dos 6 módulos. E mais: Roteiros, Materiais de apoio, Indicações de leitura, Prompts para usar todo o potencial do Mentor Digital. Um Ecossistema de Desenvolvimento com valor total somado de R$ 2.590,40, com liberação para uso imediato assim que a compra é confirmada.
           </Reveal>
           <Reveal as="p">
             E você não decide nada agora no escuro: são 7 dias de garantia para
@@ -1328,7 +1403,7 @@ function OfertaFinal() {
         </Reveal>
 
         <p className="mt-8 text-[14px] font-light text-[color:var(--creme)]/60">
-          Seus dados estão protegidos e não serão compartilhados com terceiros.
+          Pagamento processado pela Hotmart.
         </p>
       </div>
     </section>

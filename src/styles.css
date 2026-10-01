@@ -49,6 +49,7 @@
   --vermelho:  oklch(0.315 0.107 34);   /* #651E11 */
   --creme:     oklch(0.930 0.031 82);   /* #F5E6D3 */
   --preto:     oklch(0.205 0.003 60);   /* #1D1D1B */
+  --video-play-icon: oklch(1 0 0);
 
   --background: var(--creme);
   --foreground: var(--preto);

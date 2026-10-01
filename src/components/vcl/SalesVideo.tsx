@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import thumb640 from "@/assets/imagens/thumb-vvv-v2-640.webp";
-import thumb960 from "@/assets/imagens/thumb-vvv-v2-960.webp";
-import thumb1440 from "@/assets/imagens/thumb-vvv-v2-1440.webp";
+import thumb640 from "@/assets/imagens/thumb-vvv2-640.webp";
+import thumb960 from "@/assets/imagens/thumb-vvv2-960.webp";
+import thumb1440 from "@/assets/imagens/thumb-vvv2-1440.webp";
 
 const EMBED_BASE =
   "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268";
@@ -132,6 +132,22 @@ export default function SalesVideo() {
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover"
           />
+          {ready && (
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            >
+              <span className="flex size-10 items-center justify-center rounded-full bg-preto/65 md:size-20 md:bg-preto/75">
+                <svg
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  className="size-5 fill-[color:var(--video-play-icon)] md:size-8"
+                >
+                  <path d="M10 5v22l18-11z" />
+                </svg>
+              </span>
+            </span>
+          )}
           {!ready && (
             <span className="absolute inset-x-0 bottom-4 flex justify-center">
               <span className="rounded-full bg-black/70 px-4 py-2 text-[13px] md:text-[14px] font-medium text-[color:var(--branco)]">
