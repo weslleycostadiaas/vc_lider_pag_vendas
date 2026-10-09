@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { decorateCheckoutUrl, trackCheckoutClick } from "@/lib/vcl-lead";
 
 type Props = {
   href: string;
@@ -15,6 +16,21 @@ export function CTAButton({
   size = "md",
   className = "",
 }: Props) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  // Decorate the live DOM href (keeps anything GTM already appended).
+  useEffect(() => {
+    const el = ref.current;
+    if (el) el.href = decorateCheckoutUrl(el.href);
+  }, [href]);
+
+  const onClick = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.href = decorateCheckoutUrl(el.href);
+    if (el.hostname.endsWith("pay.hotmart.com")) trackCheckoutClick();
+  };
+
   const base =
     "inline-flex min-h-11 items-center justify-center rounded-md text-center font-semibold tracking-wide transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5";
   const sizes =
@@ -27,9 +43,11 @@ export function CTAButton({
       : "bg-laranja text-creme hover:bg-[color:var(--terracota)]";
   return (
     <a
+      ref={ref}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={onClick}
       className={`${base} ${sizes} ${variants} ${className}`}
     >
       {children}

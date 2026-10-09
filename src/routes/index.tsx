@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { initLead, decorateCheckoutUrl } from "@/lib/vcl-lead";
 import { Brackets } from "@/components/vcl/Brackets";
 import { CTAButton } from "@/components/vcl/CTAButton";
 import { FloatingCTA } from "@/components/vcl/FloatingCTA";
@@ -96,6 +98,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    initLead();
+    // CTA effects run before this one; re-decorate now that the lead cookie may exist.
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[href*="pay.hotmart.com"]')
+      .forEach((a) => {
+        a.href = decorateCheckoutUrl(a.href);
+      });
+  }, []);
   return (
     <main className="min-h-screen bg-[color:var(--creme)] pb-24 text-[color:var(--preto)] md:pb-0">
       <Hero />
