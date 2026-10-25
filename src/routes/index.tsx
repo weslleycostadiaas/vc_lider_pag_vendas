@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { initLead, decorateCheckoutUrl } from "@/lib/vcl-lead";
 import { Brackets } from "@/components/vcl/Brackets";
 import { CTAButton } from "@/components/vcl/CTAButton";
 import { FloatingCTA } from "@/components/vcl/FloatingCTA";
+import { PreCheckoutModal } from "@/components/vcl/PreCheckoutModal";
 import { Reveal } from "@/components/vcl/Reveal";
 import { FAQ } from "@/components/vcl/FAQ";
 import { Logo } from "@/components/vcl/Logo";
@@ -98,15 +97,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  useEffect(() => {
-    initLead();
-    // CTA effects run before this one; re-decorate now that the lead cookie may exist.
-    document
-      .querySelectorAll<HTMLAnchorElement>('a[href*="pay.hotmart.com"]')
-      .forEach((a) => {
-        a.href = decorateCheckoutUrl(a.href);
-      });
-  }, []);
   return (
     <main className="min-h-screen bg-[color:var(--creme)] pb-24 text-[color:var(--preto)] md:pb-0">
       <Hero />
@@ -127,6 +117,7 @@ function Index() {
       <OfertaFinal />
       <Footer />
       <FloatingCTA href={LINK_CHECKOUT} />
+      <PreCheckoutModal />
     </main>
   );
 }
@@ -713,22 +704,18 @@ function Entregaveis() {
     {
       t: "Curso completo do Método M.A.P.A.",
       d: "Com 23 vídeo-aulas em 6 módulos + aulas bônus, cobrindo os quatro pilares (Mentalidade, Ação, Pessoas e Aprendizado Contínuo) e as ferramentas de cada um, com um protocolo aplicável ao fim de cada aula.",
-      v: "R$ 1.697,00",
     },
     {
       t: "AS FERRAMENTAS PROPRIETÁRIAS DO MÉTODO MAPA",
       d: "Prontas para usar:\u00a0 o Método A.C.T. para estruturar conversas difíceis, o 3Cs Integrado para desenvolver o time e o Loop AAA para revisar e ajustar a rota.",
-      v: "R$ 397,00",
     },
     {
       t: "Acesso à plataforma por 12 meses",
       d: "Acesse as aulas e os materiais do curso no seu ritmo, durante 12 meses, com todas as atualizações de conteúdo incluídas no período, sem custo adicional.",
-      v: "",
     },
     {
       t: "CERTIFICADO E MATERIAIS DE APOIO",
       d: "Receba o certificado de conclusão do Método M.A.P.A. ao concluir os 6 módulos. Você também conta com roteiros, materiais de apoio, indicações de leitura e prompts para aplicar as ferramentas do método com o Mentor Digital.",
-      v: "",
     },
   ];
   return (
@@ -770,12 +757,7 @@ function Entregaveis() {
           {items.map((it, i) => (
             <Reveal key={i}>
               <div className="relative h-full rounded-lg bg-[color:var(--creme)] p-6 text-[color:var(--preto)] sm:p-8">
-                {it.v && (
-                  <div className="absolute right-4 top-4 font-display text-[17px] text-[color:var(--laranja)] line-through decoration-[color:var(--preto)] decoration-2 sm:right-6 sm:top-6 sm:text-[22px]">
-                    {it.v}
-                  </div>
-                )}
-                 <div className={it.v ? "pr-20 sm:pr-24" : ""}>
+                 <div>
                   <h3 className="font-display text-[22px] text-[color:var(--vermelho)]">
                     {it.t}
                   </h3>
@@ -795,17 +777,14 @@ function Bonus() {
     {
       t: "MENTOR DIGITAL",
       d: "A IA conversacional treinada exclusivamente no Método M.A.P.A., disponível 24 horas por dia, durante 6 meses. É o sparring de pensamento que fica com você quando a Mentora não está: ajuda a preparar a conversa difícil na véspera, a validar uma decisão antes da reunião com o board e a recalcular a rota quando a situação muda no meio do caminho. Você recebe também os prompts prontos recomendados para operar todas as ferramentas proprietárias do método M.A.P.A.\u00a0dentro dele: o A.C.T., o 3Cs Integrado e o Loop AAA, para aplicar cada uma com precisão sem depender de saber formular a pergunta certa. Depois fica mais fácil, pois é como conversar com a Mentora.",
-      v: "R$ 299,40",
     },
     {
       t: "Radar do Líder",
       d: "O Radar do Líder\u00a0é um diagnóstico contínuo que, reaplicado ao longo da sua jornada, aponta, a cada momento, em qual dos 4 pilares (M.A.P.A.)\u00a0você ainda está travado e qual módulo do curso deve revisar. Em vez de recomeçar o curso do zero, você volta direto ao ponto que resolve a sua situação atual.\n6 meses de acesso.",
-      v: "R$ 197,00",
     },
     {
       t: "GRUPO DE WHATSAPP DO CURSO",
       d: "O canal onde você recebe em primeira mão as atualizações, os novos conteúdos e os avisos importantes do Método M.A.P.A. ao longo da sua jornada, para não perder nada do que é liberado.",
-      v: "",
     },
   ];
   return (
@@ -844,11 +823,6 @@ function Bonus() {
                   {b.t}
                 </h3>
                 <p className="mt-4 text-[15px] leading-[1.7]">{b.d}</p>
-                 {b.v && (
-                   <div className="mt-6 pt-4 border-t border-[color:var(--terracota)]/25 font-display text-2xl text-[color:var(--laranja)] line-through decoration-[color:var(--preto)] decoration-2">
-                     Valor: {b.v}
-                   </div>
-                 )}
               </div>
             </Reveal>
           ))}
@@ -861,11 +835,11 @@ function Bonus() {
 /* ---------------- SECTION 10: STACK DE VALOR ---------------- */
 function StackValor() {
   const rows = [
-    ["Curso completo do Método M.A.P.A. (23 vídeo-aulas, aulas bônus, 6 módulos)", "R$ 1.697"],
-    ["As ferramentas proprietárias do Método M.A.P.A.\u00a0 (A.C.T., 3Cs Integrado e Loop AAA)", "R$ 397"],
+    ["Curso completo do Método M.A.P.A. (23 vídeo-aulas, aulas bônus, 6 módulos)", ""],
+    ["As ferramentas proprietárias do Método M.A.P.A.\u00a0 (A.C.T., 3Cs Integrado e Loop AAA)", ""],
     ["Acesso à plataforma por 12 meses com atualizações incluídas", "Incluído"],
-    ["Mentor Digital (IA treinada no Método M.A.P.A., 24 horas por dia, 6 meses, com os prompts das ferramentas)", "R$ 299,40"],
-    ["Radar do Líder (diagnóstico contínuo, 6 meses)", "R$ 197,00"],
+    ["Mentor Digital (IA treinada no Método M.A.P.A., 24 horas por dia, 6 meses, com os prompts das ferramentas)", ""],
+    ["Radar do Líder (diagnóstico contínuo, 6 meses)", ""],
     ["Bônus: Grupo de WhatsApp do curso (atualizações e novos conteúdos)", "Incluído"],
   ];
   return (
@@ -883,35 +857,19 @@ function StackValor() {
         <Reveal>
           <div className="mx-auto mt-10 max-w-[720px] rounded-xl bg-[color:var(--creme)] p-6 text-[color:var(--preto)] shadow-2xl sm:mt-14 sm:p-8 md:p-12">
             <ul className="space-y-4">
-              {rows.map(([label, price], i) => (
+              {rows.map(([label, included], i) => (
                 <li
                   key={i}
-                  className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-3 text-[15px] md:grid-cols-[minmax(0,1fr)_auto_minmax(4rem,0.6fr)] md:text-[16px]"
+                  className="text-[15px] leading-[1.5] md:text-[16px]"
                 >
-                  <span className="flex-1 leading-[1.5]">{label}</span>
-                  <span
-                    aria-hidden
-                    className="hidden min-w-16 translate-y-[-4px] border-b border-dotted border-[color:var(--preto)]/40 md:block"
-                  />
-                   <span className={`font-semibold whitespace-nowrap ${price === "Incluído" ? "" : "line-through decoration-[color:var(--preto)] decoration-2"}`}>
-                    {price}
-                  </span>
+                  <span>{label}</span>
+                  {included && <span className="ml-2 font-semibold">{included}</span>}
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 pt-6 border-t border-[color:var(--terracota)]/40 text-center">
-              <div className="text-[16px]">
-                Valor total somado:{" "}
-                 <span className="line-through opacity-70">R$ 2.590,40</span>
-              </div>
-              <div className="mt-4 font-display text-[56px] md:text-[72px] leading-none text-[color:var(--laranja)]">
-                R$ 997
-              </div>
-              <div className="mt-2 text-[16px]">
-                à vista no cartão ou no Pix, ou 12 vezes de R$ 103,11 no cartão.
-              </div>
-              <div className="mt-8">
+              <div>
                 <CTAButton href={LINK_CHECKOUT} size="lg" className="w-full">
                   Quero liderar de verdade
                 </CTAButton>
@@ -1327,7 +1285,7 @@ function FAQSection() {
     },
     {
       q: "É possível parcelar? Quais as formas de pagamento?",
-      a: "Sim. Você pode pagar R$ 997 à vista no cartão ou no Pix, ou parcelar no cartão de crédito em até 12 vezes de R$ 103,11.",
+      a: "As condições de pagamento e as opções de parcelamento estão disponíveis no checkout da Hotmart.",
     },
     {
       q: "A liberação das aulas é imediata?",
@@ -1389,7 +1347,7 @@ function OfertaFinal() {
             documentado.
           </Reveal>
           <Reveal as="p">
-            Por R$ 997 à vista no cartão ou no Pix, ou 12 vezes de R$ 103,11 no cartão, você está entrando em um ecossistema completo de desenvolvimento de liderança: com o curso completo do Método M.A.P.A. com 23 vídeo-aulas, as ferramentas proprietárias, o Mentor Digital treinado no método por 6 meses, o Radar do Líder, o Grupo de WhatsApp sem prazo e Certificado de Conclusão do Método M.A.P.A. emitido ao final dos 6 módulos. E mais: Roteiros, Materiais de apoio, Indicações de leitura, Prompts para usar todo o potencial do Mentor Digital. Um Ecossistema de Desenvolvimento com valor total somado de R$ 2.590,40, com liberação para uso imediato assim que a compra é confirmada.
+            Você está entrando em um ecossistema completo de desenvolvimento de liderança: com o curso completo do Método M.A.P.A. com 23 vídeo-aulas, as ferramentas proprietárias, o Mentor Digital treinado no método por 6 meses, o Radar do Líder, o Grupo de WhatsApp sem prazo e Certificado de Conclusão do Método M.A.P.A. emitido ao final dos 6 módulos. E mais: Roteiros, Materiais de apoio, Indicações de leitura, Prompts para usar todo o potencial do Mentor Digital. Um Ecossistema de Desenvolvimento com liberação para uso imediato assim que a compra é confirmada.
           </Reveal>
           <Reveal as="p">
             E você não decide nada agora no escuro: são 7 dias de garantia para

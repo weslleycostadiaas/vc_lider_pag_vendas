@@ -1,116 +1,107 @@
-// Lead identification + Hotmart checkout decoration. Browser-only: call from effects/handlers.
-const LEAD_COOKIE = "vc_lead_id";
-const CHECKOUT_COOKIE = "vc_checkout";
-const SESSION_KEY = "vc_clique_vendas_sent";
-const WEBHOOK_VENDAS = "https://n8n.julienesalvan.com.br/webhook/clique-vendas";
-const WEBHOOK_CHECKOUT = "https://n8n.julienesalvan.com.br/webhook/clique-checkout";
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
-function cookieDomain(): string {
-  const h = window.location.hostname;
-  return h === "julienesalvan.com.br" || h.endsWith(".julienesalvan.com.br")
-    ? "; domain=.julienesalvan.com.br"
-    : "";
-}
+const ROOT_DOMAIN = "julienesalvan.com.br";
+export const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+export const isUuid = (v: unknown): v is string => typeof v === "string" && UUID_RE.test(v);
 
 export function setCookie(name: string, value: string, days: number) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/${cookieDomain()}; SameSite=Lax; Secure`;
+  const exp = new Date(Date.now() + days * 864e5).toUTCString();
+  const host = location.hostname;
+  const domain =
+    host === ROOT_DOMAIN || host.endsWith("." + ROOT_DOMAIN) ? `; domain=.${ROOT_DOMAIN}` : "";
+  document.cookie = `${name}=${value}; expires=${exp}; path=/${domain}; SameSite=Lax; Secure`;
 }
 
 export function getCookie(name: string): string | null {
-  const m = document.cookie.split("; ").find((c) => c.startsWith(name + "="));
-  if (!m) return null;
-  try {
-    return decodeURIComponent(m.slice(name.length + 1));
-  } catch {
-    return null;
+  const m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/[.$?*|{}()[\]\\/+^]/g, "\\$&") + "=([^;]*)"));
+  return m ? m[1] : null;
+}
+
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
+export type Utms = Record<(typeof UTM_KEYS)[number], string>;
+
+export function getUtms(): Utms {
+  const out = Object.fromEntries(UTM_KEYS.map((k) => [k, ""])) as Utms;
+  const qs = new URLSearchParams(location.search);
+  if (UTM_KEYS.some((k) => qs.get(k))) {
+    for (const k of UTM_KEYS) out[k] = qs.get(k) ?? "";
+    return out;
   }
-}
-
-export function getLeadId(): string | null {
-  const v = getCookie(LEAD_COOKIE);
-  return v && UUID_RE.test(v) ? v : null;
-}
-
-function post(url: string, leadId: string) {
-  try {
-    const body = JSON.stringify({ lead_id: leadId });
-    if (navigator.sendBeacon) {
-      if (navigator.sendBeacon(url, new Blob([body], { type: "text/plain" }))) return;
-    }
-    void fetch(url, {
-      method: "POST",
-      body,
-      headers: { "Content-Type": "text/plain" },
-      keepalive: true,
-      mode: "no-cors",
-    }).catch(() => {});
-  } catch {
-    /* silent */
-  }
-}
-
-export function initLead() {
-  try {
-    const lid = new URLSearchParams(window.location.search).get("lid");
-    if (lid && UUID_RE.test(lid)) setCookie(LEAD_COOKIE, lid, 180);
-    const leadId = getLeadId();
-    if (!leadId) return;
+  const raw = getCookie("LeadUTM");
+  if (raw) {
     try {
-      if (sessionStorage.getItem(SESSION_KEY)) return;
-      sessionStorage.setItem(SESSION_KEY, "1");
+      const obj = JSON.parse(decodeURIComponent(raw));
+      for (const k of UTM_KEYS) if (typeof obj?.[k] === "string") out[k] = obj[k];
     } catch {
-      /* storage unavailable: still send once per load */
+      /* ignore */
     }
-    post(WEBHOOK_VENDAS, leadId);
-  } catch {
-    /* silent */
   }
+  return out;
 }
 
-type CheckoutData = { name?: string; email?: string; phone?: string };
+export function hasUtms(u: Utms) {
+  return UTM_KEYS.some((k) => u[k]);
+}
 
-function getCheckoutData(): CheckoutData | null {
-  const raw = getCookie(CHECKOUT_COOKIE);
+export function pushDL(data: Record<string, unknown>) {
+  const w = window as unknown as { dataLayer?: unknown[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push(data);
+}
+
+export function readCheckoutCookie(): { name?: string; email?: string; phone?: string } | null {
+  const raw = getCookie("vc_checkout");
   if (!raw) return null;
   try {
-    const d = JSON.parse(raw);
-    return d && typeof d === "object" ? d : null;
+    return JSON.parse(decodeURIComponent(raw));
   } catch {
     return null;
   }
 }
 
-function addIfMissing(p: URLSearchParams, key: string, value: string | undefined) {
-  if (value && !p.has(key)) p.set(key, value);
-}
-
-/** Appends xcod/name/email/phone without removing or overwriting existing params. */
-export function decorateCheckoutUrl(href: string): string {
+export function buildCheckoutUrl(
+  href: string | null | undefined,
+  d: { nome: string; email: string; phone: string; leadId: string | null; utms: Utms },
+) {
+  let url: URL;
   try {
-    const url = new URL(href);
-    if (!url.hostname.endsWith("pay.hotmart.com")) return href;
-    const p = url.searchParams;
-    const leadId = getLeadId();
-    if (leadId) addIfMissing(p, "xcod", leadId);
-    const d = getCheckoutData();
-    if (d) {
-      addIfMissing(p, "name", typeof d.name === "string" ? d.name : undefined);
-      addIfMissing(p, "email", typeof d.email === "string" ? d.email : undefined);
-      const digits = typeof d.phone === "string" ? d.phone.replace(/\D/g, "") : "";
-      if (digits.length === 10 || digits.length === 11) {
-        addIfMissing(p, "phoneac", digits.slice(0, 2));
-        addIfMissing(p, "phonenumber", digits.slice(2));
-      }
-    }
-    return url.toString();
+    url = new URL(href && href.includes("pay.hotmart.com") ? href : "https://pay.hotmart.com/T105324426S");
   } catch {
-    return href;
+    url = new URL("https://pay.hotmart.com/T105324426S");
   }
+  const p = url.searchParams;
+  const add = (k: string, v: string) => {
+    if (v && !p.has(k)) p.set(k, v);
+  };
+  add("name", d.nome);
+  add("email", d.email);
+  add("phoneac", d.phone.slice(0, 2));
+  add("phonenumber", d.phone.slice(2));
+  if (d.leadId) add("xcod", d.leadId);
+  if (hasUtms(d.utms)) {
+    for (const [k, v] of Object.entries(d.utms)) add(k, v);
+    add("src", d.utms.utm_source);
+    const u = d.utms;
+    add("sck", [u.utm_source, u.utm_medium, u.utm_campaign, u.utm_content, u.utm_term].join("|").slice(0, 250));
+  }
+  return url.toString();
 }
 
-export function trackCheckoutClick() {
-  const leadId = getLeadId();
-  if (leadId) post(WEBHOOK_CHECKOUT, leadId);
+export function trackLeadClick() {
+  const lid = new URLSearchParams(location.search).get("lid");
+  if (isUuid(lid)) setCookie("vc_lead_id", lid, 180);
+  const id = getCookie("vc_lead_id");
+  if (!isUuid(id)) return;
+  try {
+    if (sessionStorage.getItem("vc_click_sent")) return;
+    sessionStorage.setItem("vc_click_sent", "1");
+  } catch {
+    /* ignore */
+  }
+  const endpoint = "https://n8n.julienesalvan.com.br/webhook/clique-vendas";
+  const body = JSON.stringify({ lead_id: id });
+  try {
+    if (navigator.sendBeacon && navigator.sendBeacon(endpoint, new Blob([body], { type: "text/plain" }))) return;
+  } catch {
+    /* fallback */
+  }
+  fetch(endpoint, { method: "POST", body, keepalive: true, headers: { "Content-Type": "text/plain" } }).catch(() => {});
 }

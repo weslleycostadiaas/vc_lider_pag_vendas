@@ -14,3 +14,4 @@
 - Keep the Dor section's editorial scenes as a text-free local responsive WebP crop; external hosting must work without CDN dependencies while captions remain selectable text.
 - Keep Paliativo's editorial scene and tool illustrations as locally bundled, text-free responsive WebP crops; external hosting must not depend on a CDN, and the Mentor illustration must not display third-party branding.
 - Keep Metodo's editorial scene and tightly cropped diagram as locally bundled responsive WebP files, preserving original detail and letting the diagram enlarge on demand; external hosting must not depend on a CDN.
+- Checkout CTAs open a shared pre-checkout modal via a window event; it posts the lead to the n8n webhook (4s timeout) and always redirects to Hotmart, with lead/cookie/UTM helpers in src/lib/vcl-lead.ts — pixels stay in external GTM, the code only pushes dataLayer events.
