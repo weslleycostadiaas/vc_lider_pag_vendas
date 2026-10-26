@@ -1,7 +1,7 @@
-import rhs from "@/assets/autoridade-v2-1.webp.asset.json";
-import podcast from "@/assets/autoridade-v2-2.webp.asset.json";
-import bett from "@/assets/autoridade-v2-3.webp.asset.json";
-import bora from "@/assets/autoridade-v2-4.webp.asset.json";
+const rhs = { url: "/imagens/autoridade-v2-1.webp" };
+const podcast = { url: "/imagens/autoridade-v2-2.webp" };
+const bett = { url: "/imagens/autoridade-v2-3.webp" };
+const bora = { url: "/imagens/autoridade-v2-4.webp" };
 import { authorityTotals, useAuthority } from "@/hooks/use-authority";
 
 const cards = [

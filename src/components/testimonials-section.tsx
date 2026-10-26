@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import depo1 from "@/assets/depoimento-1.webp.asset.json";
-import depo2 from "@/assets/depoimento-2.webp.asset.json";
-import depo3 from "@/assets/depoimento-3.webp.asset.json";
-import depo4 from "@/assets/depoimento-4.webp.asset.json";
+const depo1 = { url: "/imagens/depoimento-1.webp" };
+const depo2 = { url: "/imagens/depoimento-2.webp" };
+const depo3 = { url: "/imagens/depoimento-3.webp" };
+const depo4 = { url: "/imagens/depoimento-4.webp" };
 import { useTestimonials } from "@/hooks/use-testimonials";
 
 const prints = [

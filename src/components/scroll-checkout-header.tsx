@@ -1,6 +1,6 @@
 import { useEffect, useState, type RefObject } from "react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logotipo-vc-lider-sem-circulo.png.asset.json";
+const logo = { url: "/imagens/logotipo-vc-lider-sem-circulo.png" };
 
 type ScrollCheckoutHeaderProps = {
   compositionRef: RefObject<HTMLDivElement | null>;

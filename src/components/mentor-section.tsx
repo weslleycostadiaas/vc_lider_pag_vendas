@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import video from "@/assets/mentor-loop-v2.mp4.asset.json";
+const video = { url: "/imagens/mentor-loop-v2.mp4" };
 import { X } from "lucide-react";
-import poster from "@/assets/mentor-poster-v2.jpg.asset.json";
+const poster = { url: "/imagens/mentor-poster-v2.jpg" };
 import type HlsType from "hls.js";
 
 /**

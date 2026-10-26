@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 - The sales opening lives at `/` and uses the shared Button variants and global semantic design tokens, keeping presentation consistent as later sections are added.
-- Uploaded brand and approved cover media are referenced through Lovable Assets pointers; only the derived favicon lives in public, preserving original media.
+- Approved page media is served as byte-identical copies from public/imagens/ (same-origin URLs for any host/custom domain); original Lovable Assets pointers stay in src/assets as the source of truth.
 - Approved cover derivatives must decode to identical RGBA pixels and retain the original asset pointer; this allows lossless transfer optimization without altering approved artwork.
 - The opening keeps six independent no-wrap headline blocks and an anchored portrait in a same-row responsive grid at every width, with support outside the composition; height-led, width-bounded contain framing and vertically centered mobile text permit clothing overlap without covering the face, while finite line entries stay independent of the mobile authority stack.
 - Headline color emphasis is nested within the six entry blocks, and the sentence gap applies only to the fourth block; narrow-phone portrait clearance preserves the exact type scale without obscuring the face.

@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logotipo-vc-lider-sem-circulo.png.asset.json";
-import portrait from "@/assets/juliene-abertura-luz-v2.webp.asset.json";
-import thumbnail from "@/assets/thumb-aprovada-lossless.webp.asset.json";
+const logo = { url: "/imagens/logotipo-vc-lider-sem-circulo.png" };
+const portrait = { url: "/imagens/juliene-abertura-luz-v2.webp" };
+const thumbnail = { url: "/imagens/thumb-aprovada-lossless.webp" };
 import { useOpeningReveal } from "@/hooks/use-opening-reveal";
 import { AuthoritySection } from "@/components/authority-section";
 import { ScrollCheckoutHeader } from "@/components/scroll-checkout-header";

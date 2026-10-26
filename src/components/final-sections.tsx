@@ -1,7 +1,7 @@
 import type React from "react";
 import { Button } from "@/components/ui/button";
-import ecosystem from "@/assets/ecossistema-vc-lider.webp.asset.json";
-import logo from "@/assets/logotipo-vc-lider-sem-circulo.png.asset.json";
+const ecosystem = { url: "/imagens/ecossistema-vc-lider.webp" };
+const logo = { url: "/imagens/logotipo-vc-lider-sem-circulo.png" };
 import { useFinalReveal } from "@/hooks/use-final-reveal";
 import { finalOffer } from "@/lib/final-offer";
 import { FinalFaq } from "@/components/final-faq";
