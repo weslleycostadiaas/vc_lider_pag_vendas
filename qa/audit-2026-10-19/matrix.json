@@ -1,0 +1,600 @@
+{
+ "430x932": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:457",
+   "opening-figure:443",
+   ":443"
+  ],
+  "heroLines": 6,
+  "heroClipped": true,
+  "mapaLines": 3,
+  "caption": [
+   319,
+   400,
+   -19956,
+   -19939,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pp&latency=204",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ua&latency=50",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ae&latency=143",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=rj&latency=220",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=am&latency=69",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 21320,
+  "backTopY": 0
+ },
+ "768x1024": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:780"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   612,
+   704,
+   -15506,
+   -15481,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lj&latency=30",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=se&latency=28",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pp&latency=204",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=fu&latency=129",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=iq&latency=126",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lt&latency=36",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 17154,
+  "backTopY": 0
+ },
+ "820x1180": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:833"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   650,
+   742,
+   -15397,
+   -15372,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=mi&latency=117",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=is&latency=46",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=uk&latency=14",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ec&latency=173",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=asb&latency=95",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=il&latency=116",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 17201,
+  "backTopY": 0
+ },
+ "1024x768": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:1041"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   822,
+   914,
+   -13598,
+   -13569,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pl&latency=28",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=no&latency=38",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=phx&latency=159",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=hr&latency=32",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lt&latency=35",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=sk&latency=34",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=cy&latency=73",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pp&latency=204",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 15076,
+  "backTopY": 0
+ },
+ "1280x800": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:1301"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   1037,
+   1129,
+   -13890,
+   -13856,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [
+   "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+  ],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=id&latency=183",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=per&latency=374",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ams&latency=13",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=it&latency=20",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://edgezone-co.bunnyinfra.net/500b.jpg?s=1792442713569",
+    "net::ERR_NAME_NOT_RESOLVED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lt&latency=35",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 15505,
+  "backTopY": 0
+ },
+ "1366x768": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:1388"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   1100,
+   1192,
+   -13965,
+   -13931,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lap&latency=234",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=den&latency=119",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pl&latency=26",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pp&latency=201",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ke&latency=140",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ch&latency=16",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pt&latency=42",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 15548,
+  "backTopY": 0
+ },
+ "1440x900": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:1463"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   1169,
+   1261,
+   -13889,
+   -13852,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=in&latency=181",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=va&latency=154",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pp&latency=206",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ae&latency=114",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=lj&latency=28",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=iq&latency=124",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 15661,
+  "backTopY": 0
+ },
+ "1920x1080": {
+  "docOverflow": 0,
+  "wide": [],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   1396,
+   1487,
+   -13781,
+   -13744,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ng&latency=105",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pt&latency=40",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=tx&latency=126",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pe&latency=210",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=rs&latency=33",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=va&latency=149",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 15733,
+  "backTopY": 0
+ },
+ "844x390": {
+  "docOverflow": 0,
+  "wide": [
+   "opening-portrait:858"
+  ],
+  "heroLines": 6,
+  "heroClipped": false,
+  "mapaLines": 2,
+  "caption": [
+   668,
+   759,
+   -15397,
+   -15372,
+   "oklch(0.961 0.015 85)",
+   true
+  ],
+  "brokenImgs": [],
+  "h1": 1,
+  "errs": [],
+  "bad": [
+   [
+    "FAIL",
+    "http://localhost:8080/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "http://localhost:8080/__lovable/error-collector",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=jp&latency=251",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=am&latency=66",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=isr&latency=69",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=kr&latency=278",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=pt&latency=45",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=hi&latency=197",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=ams&latency=14",
+    "net::ERR_ABORTED"
+   ],
+   [
+    "FAIL",
+    "https://rum-metrics.bunny.net/trackperformance?zone=mel&latency=337",
+    "net::ERR_ABORTED"
+   ]
+  ],
+  "height": 16411,
+  "backTopY": 0
+ }
+}

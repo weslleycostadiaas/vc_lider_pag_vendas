@@ -1,0 +1,479 @@
+[
+ {
+  "browser": "chromium",
+  "vp": {
+   "width": 390,
+   "height": 844
+  },
+  "links": [
+   [
+    "Conheça o VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "Quero fazer parte do VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "suporte@julienesalvan.com.br",
+    "mailto:suporte@julienesalvan.com.br",
+    "",
+    ""
+   ],
+   [
+    "Quero fazer parte do VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "suporte@julienesalvan.com.br",
+    "mailto:suporte@julienesalvan.com.br",
+    "",
+    ""
+   ]
+  ],
+  "allCheckoutOk": true,
+  "mixed": [],
+  "stickyHeaderVisible": [
+   "fixed",
+   0,
+   "visible",
+   "scroll-checkout-header"
+  ],
+  "vslIframe": "a4f39268?autoplay=true&loop=false&muted=true&preload=true&responsive=true&playsinline=true",
+  "vslSoundBtn": 1,
+  "mentor": [
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "t_after4s": 0,
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   },
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   },
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   }
+  ],
+  "lightbox": [
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 1",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 2",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 3",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 4",
+    "scrollKept": true
+   }
+  ],
+  "faq": {
+   "count": 13,
+   "toggles": [
+    "true>false>true",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false"
+   ]
+  },
+  "focusVisible": [
+   "none",
+   "0px",
+   "none"
+  ],
+  "prices": "Comece por R$ 949,00 à vista\nou 12x de R$ 98,15 no cartão.\n\nQuero fazer parte do VC_Líder",
+  "footerLegal": [
+   [
+    "12px",
+    "0.8"
+   ]
+  ],
+  "reachBottom": true,
+  "wheelUpWorks": true,
+  "smallTargets": [
+   "Conheça o VC_Líder:143x42",
+   "Pausar animação:125x36"
+  ],
+  "axe": [
+   [
+    "color-contrast",
+    "serious",
+    5,
+    [
+     ".scroll-checkout-inner > .checkout-cta",
+     "a[data-tsd-source=\"/src/routes/index.tsx:136:11\"]",
+     "article:nth-child(1) > .method-body > p"
+    ]
+   ]
+  ],
+  "errs": []
+ },
+ {
+  "browser": "chromium",
+  "vp": {
+   "width": 1440,
+   "height": 900
+  },
+  "links": [
+   [
+    "Conheça o VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "Quero fazer parte do VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "suporte@julienesalvan.com.br",
+    "mailto:suporte@julienesalvan.com.br",
+    "",
+    ""
+   ],
+   [
+    "Quero fazer parte do VC_Líder",
+    "https://pay.hotmart.com/T105324426S?checkoutMode=10",
+    "",
+    ""
+   ],
+   [
+    "suporte@julienesalvan.com.br",
+    "mailto:suporte@julienesalvan.com.br",
+    "",
+    ""
+   ]
+  ],
+  "allCheckoutOk": true,
+  "mixed": [],
+  "stickyHeaderVisible": [
+   "fixed",
+   0,
+   "visible",
+   "scroll-checkout-header"
+  ],
+  "vslIframe": "a4f39268?autoplay=true&loop=false&muted=true&preload=true&responsive=true&playsinline=true",
+  "vslSoundBtn": 0,
+  "mentor": [
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "t_after4s": 0,
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   },
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   },
+   {
+    "muted": false,
+    "vol": 1,
+    "t": 0,
+    "paused": false,
+    "err": null,
+    "state": "open",
+    "focus": "Fechar vídeo",
+    "lockOpen": [
+     "hidden",
+     "hidden"
+    ],
+    "closed": "closed",
+    "lockClosed": [
+     "",
+     ""
+    ],
+    "focusBack": "Assistir à demonstração do Mentor Digital",
+    "scrollKept": true
+   }
+  ],
+  "lightbox": [
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 1",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 2",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 3",
+    "scrollKept": true
+   },
+   {
+    "open": 1,
+    "lock": [
+     "hidden",
+     ""
+    ],
+    "img": [
+     1696,
+     true
+    ],
+    "trap": true,
+    "closed": true,
+    "unlock": [
+     "",
+     ""
+    ],
+    "focusBack": "Ampliar depoimento 4",
+    "scrollKept": true
+   }
+  ],
+  "faq": {
+   "count": 13,
+   "toggles": [
+    "true>false>true",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false",
+    "false>true>false"
+   ]
+  },
+  "focusVisible": [
+   "none",
+   "0px",
+   "none"
+  ],
+  "prices": "Comece por R$ 949,00 à vista\nou 12x de R$ 98,15 no cartão.\n\nQuero fazer parte do VC_Líder",
+  "footerLegal": [
+   [
+    "12px",
+    "0.8"
+   ]
+  ],
+  "reachBottom": true,
+  "wheelUpWorks": true,
+  "smallTargets": [
+   "Pausar animação:125x36"
+  ],
+  "axe": [
+   [
+    "color-contrast",
+    "serious",
+    5,
+    [
+     ".scroll-checkout-inner > .checkout-cta",
+     "a[data-tsd-source=\"/src/routes/index.tsx:136:11\"]",
+     "article:nth-child(1) > .method-body > p"
+    ]
+   ]
+  ],
+  "errs": []
+ }
+]

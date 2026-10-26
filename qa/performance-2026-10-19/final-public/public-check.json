@@ -1,0 +1,176 @@
+{
+  "title": "VC_Líder — Nova Página de Vendas",
+  "google": [],
+  "fonts": [
+    "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-700-normal-Yt3aPRUw.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-500-normal-Cerq10X2.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/bodoni-moda-latin-700-italic-5ZJN59qX.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+    "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-600-normal-LgqL8muc.woff2"
+  ],
+  "h1": "VOCÊ TEM O\nCARGO DE\nLÍDER.\nO MANUAL DA\nLIDERANÇA\nAINDA NÃO.",
+  "font": "Inter, sans-serif",
+  "overflow": false,
+  "portrait": 900,
+  "errors": [],
+  "fontResponses": [
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-700-normal-Yt3aPRUw.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-500-normal-Cerq10X2.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/inter-latin-600-normal-LgqL8muc.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/bodoni-moda-latin-700-italic-5ZJN59qX.woff2",
+      "status": 200
+    },
+    {
+      "url": "https://fonts.bunny.net/rubik/files/rubik-latin-400-normal.woff2",
+      "status": 200
+    }
+  ],
+  "mainScriptResponses": [
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/index--pNbRzT4.js",
+      "status": 200
+    }
+  ],
+  "failures": [
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=hr&latency=28",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=bs&latency=203",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ch&latency=17",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=de&latency=17",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=mi&latency=108",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ie&latency=22",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=lv&latency=50",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=cr&latency=149",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=lap&latency=227",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=clt&latency=108",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=den&latency=118",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=iq2&latency=123",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ke&latency=128",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ua&latency=55",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=my&latency=176",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=in&latency=161",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=bu&latency=40",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=dk&latency=40",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=cwb&latency=200",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ams&latency=15",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=adl&latency=344",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=hi&latency=198",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=ga&latency=98",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=pl&latency=35",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=cy&latency=64",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=nd&latency=158",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=is&latency=47",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://rum-metrics.bunny.net/trackperformance?zone=syd&latency=332",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://edgezone-co.bunnyinfra.net/500b.jpg?s=1792451938927",
+      "failure": "net::ERR_NAME_NOT_RESOLVED"
+    }
+  ]
+}

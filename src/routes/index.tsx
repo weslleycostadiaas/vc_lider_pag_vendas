@@ -1,1395 +1,166 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Brackets } from "@/components/vcl/Brackets";
-import { CTAButton } from "@/components/vcl/CTAButton";
-import { FloatingCTA } from "@/components/vcl/FloatingCTA";
-import { PreCheckoutModal } from "@/components/vcl/PreCheckoutModal";
-import { Reveal } from "@/components/vcl/Reveal";
-import { FAQ } from "@/components/vcl/FAQ";
-import { Logo } from "@/components/vcl/Logo";
-import { MapaDiagram } from "@/components/vcl/MapaDiagram";
-import { GuaranteeSeal } from "@/components/vcl/GuaranteeSeal";
-import SalesVideo from "@/components/vcl/SalesVideo";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { X } from "lucide-react";
-import deepDive320 from "@/assets/imagens/autoridade-card-deep-dive-320.webp";
-import deepDive610 from "@/assets/imagens/autoridade-card-deep-dive-610.webp";
-import radio320 from "@/assets/imagens/autoridade-card-radio-bandeirantes-320.webp";
-import radio610 from "@/assets/imagens/autoridade-card-radio-bandeirantes-610.webp";
-import passa320 from "@/assets/imagens/autoridade-card-passa-la-no-rh-320.webp";
-import passa610 from "@/assets/imagens/autoridade-card-passa-la-no-rh-610.webp";
-import talentos320 from "@/assets/imagens/autoridade-card-talentos-da-band-320.webp";
-import talentos610 from "@/assets/imagens/autoridade-card-talentos-da-band-610.webp";
-import rhs320 from "@/assets/imagens/autoridade-card-rhs-mais-admirados-320.webp";
-import rhs610 from "@/assets/imagens/autoridade-card-rhs-mais-admirados-610.webp";
-import bett320 from "@/assets/imagens/autoridade-card-bett-320.webp";
-import bett610 from "@/assets/imagens/autoridade-card-bett-610.webp";
-import mentora640 from "@/assets/imagens/mentora-juliene-640.webp";
-import mentora960 from "@/assets/imagens/mentora-juliene-960.webp";
-import mentora1440 from "@/assets/imagens/mentora-juliene-1440.webp";
-import mrg640 from "@/assets/imagens/mentor-radar-grupo-2-640.webp";
-import mrg960 from "@/assets/imagens/mentor-radar-grupo-2-960.webp";
-import mrg1440 from "@/assets/imagens/mentor-radar-grupo-2-1440.webp";
-import produtos640 from "@/assets/imagens/produtos-2-640.webp";
-import produtos960 from "@/assets/imagens/produtos-2-960.webp";
-import produtos1440 from "@/assets/imagens/produtos-2-1440.webp";
-import cargoCenas640 from "@/assets/imagens/cargo-cenas-640.webp";
-import cargoCenas826 from "@/assets/imagens/cargo-cenas-826.webp";
-import conhecer640 from "@/assets/imagens/paliativo-conhecer-aplicar-640.webp";
-import conhecer790 from "@/assets/imagens/paliativo-conhecer-aplicar-790.webp";
-import radar220 from "@/assets/imagens/paliativo-radar-220.webp";
-import radar291 from "@/assets/imagens/paliativo-radar-291.webp";
-import aulas220 from "@/assets/imagens/paliativo-aulas-220.webp";
-import aulas291 from "@/assets/imagens/paliativo-aulas-291.webp";
-import mentor220 from "@/assets/imagens/paliativo-mentor-220.webp";
-import mentor291 from "@/assets/imagens/paliativo-mentor-291.webp";
-import conversa640 from "@/assets/imagens/metodo-conversa-640.webp";
-import conversa826 from "@/assets/imagens/metodo-conversa-826.webp";
+import logo from "@/assets/logotipo-vc-lider-sem-circulo.png.asset.json";
+import portrait from "@/assets/juliene-abertura-luz-v2.webp.asset.json";
+import thumbnail from "@/assets/thumb-aprovada-lossless.webp.asset.json";
+import { useOpeningReveal } from "@/hooks/use-opening-reveal";
+import { AuthoritySection } from "@/components/authority-section";
+import { ScrollCheckoutHeader } from "@/components/scroll-checkout-header";
+import { BunnyPlayer, preloadBunnyApi, type BunnyController } from "@/components/bunny-player";
+import { MentorSection } from "@/components/mentor-section";
+import { MethodSection } from "@/components/method-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { AudienceSection } from "@/components/audience-section";
+import { FinalSections } from "@/components/final-sections";
+import { initLead, decorateCheckoutUrl, trackCheckoutClick } from "@/lib/vcl-lead";
 
-
-// Trocar para false para ocultar as duas seções de depoimentos (Seções 4 e 11)
-const MOSTRAR_DEPOIMENTOS = false;
-const LINK_CHECKOUT = "https://pay.hotmart.com/T105324426S?checkoutMode=10";
+const checkoutUrl = "https://pay.hotmart.com/T105324426S?checkoutMode=10";
+const mutedVideoUrl = "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268?autoplay=true&loop=false&muted=true&preload=true&responsive=true&playsinline=true";
+const videoUrl = "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268?autoplay=true&loop=false&muted=false&volume=100&preload=true&responsive=true&playsinline=true";
 
 export const Route = createFileRoute("/")({
-  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      {
-        title:
-          "VC_Líder — Liderança como técnica. Método M.A.P.A. de Juliene Salvan",
-      },
-      {
-        name: "description",
-        content:
-          "Curso online para gestores: transforme cadeira em liderança de verdade com o Método M.A.P.A., testado com mais de 200 líderes por Juliene Salvan.",
-      },
-      {
-        property: "og:title",
-        content: "VC_Líder — Liderança é técnica, e técnica se aprende",
-      },
-      {
-        property: "og:description",
-        content:
-          "O método que transforma cargo em liderança real, do recém-promovido ao veterano. Curso completo com Mentor Digital, Radar do Líder e mais.",
-      },
-      {
-        property: "og:url",
-        content: "https://vclider1.julienesalvan.com.br/",
-      },
+      { title: "VC_Líder — Nova Página de Vendas" },
+      { name: "description", content: "Você tem o cargo de líder. O manual da liderança ainda não. Conheça o método de Juliene Salvan e assista à aula." },
+      { property: "og:title", content: "VC_Líder — Liderança de verdade" },
+      { property: "og:description", content: "Uma metodologia construída na prática, acompanhando mais de 200 líderes. Assista à aula com Juliene Salvan." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "VC_Líder — Liderança é técnica",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Método M.A.P.A. por Juliene Salvan. Liderança como técnica, testada com mais de 200 gestores.",
-      },
-    ],
-    links: [
-      { rel: "canonical", href: "https://vclider1.julienesalvan.com.br/" },
     ],
   }),
   component: Index,
 });
 
-function Index() {
+/** Muted viewport autoplay; the controller owns manual-pause intent separately. */
+function VslStage() {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const controllerRef = useRef<BunnyController | null>(null);
+  const visibleRef = useRef(false);
+  const [mounted, setMounted] = useState(false);
+  const [active, setActive] = useState(false);
+  const [clickOnly, setClickOnly] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+    const manual = reduce || saveData;
+    setClickOnly(manual);
+    if (!("IntersectionObserver" in window)) { setClickOnly(true); return; }
+    const sync = () => setActive(visibleRef.current && !document.hidden);
+    const near = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { void preloadBunnyApi(); near.disconnect(); } }, { rootMargin: "600px 0px" });
+    const view = new IntersectionObserver(es => { visibleRef.current = (es[0]?.intersectionRatio ?? 0) >= 0.45; if (visibleRef.current && !manual) setMounted(true); sync(); }, { threshold: 0.45 });
+    near.observe(el); view.observe(el);
+    document.addEventListener("visibilitychange", sync);
+    return () => { near.disconnect(); view.disconnect(); document.removeEventListener("visibilitychange", sync); };
+  }, []);
+
+  const start = () => {
+    setPlaying(true);
+    setMounted(true);
+    controllerRef.current?.unmute();
+    controllerRef.current?.play();
+  };
+
   return (
-    <main className="min-h-screen bg-[color:var(--creme)] pb-24 text-[color:var(--preto)] md:pb-0">
-      <Hero />
-      <Autoridade />
-      <Dor />
-      <Paliativo />
-      {MOSTRAR_DEPOIMENTOS && <ProvaSocial1 />}
-      <CTAIntermediario />
-      <Metodo />
-      <ParaQuem />
-      <Entregaveis />
-      <Bonus />
-      <StackValor />
-      {MOSTRAR_DEPOIMENTOS && <ProvaSocial2 />}
-      <Suporte />
-      <Garantia />
-      <FAQSection />
-      <OfertaFinal />
-      <Footer />
-      <FloatingCTA href={LINK_CHECKOUT} />
-      <PreCheckoutModal />
-    </main>
-  );
-}
-
-/* ---------------- SECTION 1: HERO ---------------- */
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-[color:var(--vermelho)] text-[color:var(--creme)]">
-      <div className="relative mx-auto max-w-[1100px] px-5 pt-6 pb-8 md:pt-8 md:pb-12">
-        <div className="mb-4 md:mb-6 flex justify-center">
-          <Logo onDark height={84} />
-        </div>
-
-        <Reveal instant>
-          <h1 className="font-display text-center text-[38px] leading-[1.08] min-[360px]:text-[44px] md:text-[68px] md:leading-[1.05] lg:text-[76px]">
-            Você tem o cargo de líder.<br />
-            O manual da Liderança ainda não.
-          </h1>
-        </Reveal>
-
-        <Reveal instant className="relative z-30">
-          <p className="relative z-30 mt-2 mb-0 max-w-4xl mx-auto text-center text-[18px] md:text-[21px] leading-[1.35] text-creme whitespace-pre-line">
-            O método que transforma o cargo em LIDERANÇA DE VERDADE:{"\u00a0"}{"\n"}
-            Uma metodologia construída na prática, acompanhando mais de 200 líderes.{"\u00a0"}{"\n"}
-          </p>
-        </Reveal>
-
-        <Reveal instant>
-          <div className="mt-6 text-center">
-            <div className="font-display text-[20px] text-[color:var(--laranja)] tracking-wider">
-              NESTA AULA VOCÊ VAI ENTENDER COMO:
-            </div>
-            <ol className="mt-3 mx-auto max-w-3xl list-decimal space-y-1.5 pl-6 text-left text-[16px] leading-[1.4] marker:text-laranja md:text-[18px]">
-              <li>Delegar sem assumir o trabalho da equipe.</li>
-              <li>Dar feedbacks difíceis com clareza e firmeza.</li>
-              <li>Estabelecer limites sem perder respeito e confiança.</li>
-            </ol>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="relative z-10 mt-5 mx-auto max-w-4xl px-4 w-full">
-            <SalesVideo />
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <p className="relative z-30 mt-6 max-w-4xl mx-auto text-center text-[16px] md:text-[18px] leading-[1.5] text-[color:var(--creme)] italic">
-            Quem te mostra o caminho é quem decide sobre isso no dia a dia: Juliene Salvan é diretora de RH de um dos maiores grupos de comunicação do Brasil e mentora mais de 200 líderes.
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <div className="mt-8 flex justify-center">
-            <CTAButton href={LINK_CHECKOUT} size="lg">
-              Quero liderar de verdade
-            </CTAButton>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 2: DOR ---------------- */
-function Dor() {
-  return (
-    <section className="bg-[color:var(--creme)] px-5 pt-16 pb-8 md:pt-28 md:pb-12">
-      <div className="mx-auto max-w-[780px]">
-        <Reveal>
-          <h2 className="font-display font-normal text-[36px] leading-[1.05] text-[color:var(--vermelho)] text-balance uppercase min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
-            O cargo mudou no crachá. Mas ninguém mudou o mapa que você usa para
-            trabalhar.
-          </h2>
-        </Reveal>
-
-        <div className="mt-6 sm:mt-8">
-          <img
-            src={cargoCenas826}
-            srcSet={`${cargoCenas640} 640w, ${cargoCenas826} 826w`}
-            sizes="(min-width: 820px) 780px, calc(100vw - 40px)"
-            alt="À esquerda, uma profissional sobrecarregada executa tarefas; à direita, uma líder orienta sua equipe"
-            loading="lazy"
-            decoding="async"
-            width={826}
-            height={450}
-            className="block h-auto w-full"
+    <div className="video-stage" data-reveal ref={stageRef}>
+      {mounted && (playing || !clickOnly) ? (
+          <BunnyPlayer
+            src={clickOnly ? videoUrl : mutedVideoUrl}
+            mutedAutoplay={!clickOnly}
+            title="Liderança é técnica — Aula com Juliene Salvan"
+            cover={thumbnail.url}
+            retryCover
+             active={active}
+            onController={c => { controllerRef.current = c; }}
           />
-          <div className="grid grid-cols-2 gap-2 text-center font-display text-[18px] leading-[1.1] text-[color:var(--vermelho)] min-[390px]:text-[21px] md:text-[26px]">
-            <span>EXECUTAR O TRABALHO</span>
-            <span>CONDUZIR QUEM FAZ</span>
-          </div>
-        </div>
-
-        <div className="mt-8 space-y-5 text-[16px] leading-[1.7] sm:mt-10 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
-          <Reveal as="p">
-            Você foi reconhecido por entregar, resolver problemas e fazer
-            acontecer. Até que veio a promoção e o trabalho mudou: agora, além
-            de saber fazer, você precisa conduzir as pessoas que fazem.
-          </Reveal>
-
-          <Reveal as="p">
-            Só que o cargo novo nem sempre vem acompanhado da preparação para
-            exercê-lo. E isso aparece na rotina:
-          </Reveal>
-
-          <ul className="border-b border-[color:var(--laranja)]">
-            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
-              Você <span className="font-semibold">assume tarefas da equipe</span>{" "}
-              porque parece mais rápido fazer do que ensinar. No fim do dia,
-              resolveu o trabalho de todo mundo e deixou o seu para depois.
-            </Reveal>
-            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
-              <span className="font-semibold">Adia aquele feedback</span> porque
-              não sabe como ser firme sem desgastar a relação. Enquanto espera o
-              momento certo, o problema continua.
-            </Reveal>
-            <Reveal as="li" className="border-t border-[color:var(--laranja)] py-4 sm:py-5">
-              <span className="font-semibold">Busca o aval do gestor acima</span>{" "}
-              para decisões que já são suas. Ou passa a semana apagando
-              incêndios, sem espaço para desenvolver o time e antecipar o que
-              vem pela frente.
-            </Reveal>
-          </ul>
-
-          <Reveal as="p">
-            Isso pode acontecer na primeira liderança ou depois de anos no
-            cargo. Por trás da sobrecarga, fica uma dúvida difícil de admitir:
-            “Será que estou realmente preparado para liderar?”
-          </Reveal>
-
-          <Reveal as="p">
-            Essa insegurança não apaga sua competência. Ela mostra onde sua
-            experiência técnica precisa ser complementada por ferramentas de
-            liderança.
-          </Reveal>
-
-          <Reveal as="p">
-            <span className="font-semibold">
-              Esforço não substitui método.
-            </span>{" "}
-            Com o mapa errado, você pode trabalhar o dobro, terminar exausto e
-            ainda não chegar aonde precisa.
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 3: PALIATIVO ---------------- */
-function Paliativo() {
-  const linhasIniciais = [
-    "Um curso traz novas ferramentas.",
-    "Um livro amplia sua visão.",
-    "Um treinamento ajuda a repensar sua atuação.",
-  ];
-  return (
-    <section className="bg-[color:var(--creme)] pt-8 md:pt-10 pb-8 md:pb-14 px-5">
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display font-normal text-[36px] leading-[1.05] text-[color:var(--vermelho)] text-balance uppercase max-w-[780px] mx-auto text-left min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
-            VOCÊ JÁ BUSCOU CONHECIMENTO. O DESAFIO É USÁ-LO QUANDO A SITUAÇÃO
-            APERTA.
-          </h2>
-        </Reveal>
-
-        <Reveal>
-          <figure className="mx-auto mt-8 max-w-[790px] md:mt-10">
-            <img
-              src={conhecer640}
-              srcSet={`${conhecer640} 640w, ${conhecer790} 790w`}
-              sizes="(min-width: 830px) 790px, calc(100vw - 40px)"
-              width={790}
-              height={326}
-              loading="lazy"
-              decoding="async"
-              alt="À esquerda, uma mulher estuda com livro e laptop; à direita, conduz uma conversa com outra pessoa"
-              className="block h-auto w-full mix-blend-multiply"
-            />
-            <figcaption className="mt-2 grid grid-cols-2 gap-3 text-center font-display text-[16px] leading-[1.1] text-[color:var(--vermelho)] sm:text-[20px] md:text-[25px]">
-              <span>CONHECER A TÉCNICA</span>
-              <span>APLICAR NA ROTINA</span>
-            </figcaption>
-          </figure>
-        </Reveal>
-
-        <Reveal>
-          <div className="mx-auto mt-10 max-w-3xl space-y-3 text-left">
-            {linhasIniciais.map((linha) => (
-              <p
-                key={linha}
-                className="border-l-[3px] border-[color:var(--laranja)] pl-4 text-[16px] leading-[1.6] sm:text-[18px] md:text-[20px]"
-              >
-                {linha}
-              </p>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <p className="mx-auto mt-10 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
-            Mas, na segunda-feira, você está novamente diante da equipe e
-            precisa decidir: como aplicar tudo isso nesta situação, com esta
-            pessoa?
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
-            Conhecer uma técnica de feedback não significa se sentir preparado
-            para aquela conversa. Entender a importância de delegar não resolve,
-            sozinho, a dificuldade de confiar uma entrega importante a alguém.
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <p className="mx-auto mt-8 max-w-3xl text-left text-[16px] font-bold leading-[1.7] sm:text-[18px]">
-            É nessa passagem entre saber e fazer que a Mentoria VC_Líder atua.
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <div className="mx-auto mt-8 max-w-3xl border-t border-[color:var(--laranja)]">
-            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
-              <img src={radar220} srcSet={`${radar220} 220w, ${radar291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={150} loading="lazy" decoding="async" alt="Radar circular de competências" className="block h-auto w-full mix-blend-multiply" />
-              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
-                O <strong className="font-display text-[21px] font-normal leading-[1.1] text-[color:var(--vermelho)] sm:text-[25px]">Radar do Líder</strong> ajuda você a identificar quais competências precisam de atenção.
-              </p>
-            </div>
-            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
-              <img src={aulas220} srcSet={`${aulas220} 220w, ${aulas291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={139} loading="lazy" decoding="async" alt="Videoaula com Juliene em um laptop" className="block h-auto w-full mix-blend-multiply" />
-              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
-                Nas aulas com Juliene Salvan, você aprende o <strong className="font-semibold">Método M.A.P.A.</strong> e suas ferramentas.
-              </p>
-            </div>
-            <div className="grid grid-cols-[minmax(0,38%)_minmax(0,1fr)] items-center gap-3 border-b border-[color:var(--laranja)] py-4 sm:gap-6">
-              <img src={mentor220} srcSet={`${mentor220} 220w, ${mentor291} 291w`} sizes="(min-width: 768px) 285px, 38vw" width={291} height={127} loading="lazy" decoding="async" alt="Conversa com um mentor digital ilustrada em balões de mensagem" className="block h-auto w-full mix-blend-multiply" />
-              <p className="text-[16px] leading-[1.55] sm:text-[18px]">
-                E, com o <strong className="font-display text-[21px] font-normal leading-[1.1] text-[color:var(--vermelho)] sm:text-[25px]">Mentor Digital</strong>, pode conversar sobre seus desafios, organizar o raciocínio e preparar suas ações com base no método.
-              </p>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <p className="mx-auto mt-8 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
-            Um ecossistema de desenvolvimento para entender onde você precisa
-            evoluir, aprender o que faz sentido para seu momento e colocar em
-            prática na sua rotina.
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-left text-[16px] leading-[1.7] sm:text-[18px]">
-            Todas as ferramentas de aprendizado se conectam no ecossistema
-            VC_Líder. E o fio condutor é o Método M.A.P.A.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 4: PROVA SOCIAL 1 ---------------- */
-// ATENÇÃO: depoimentos abaixo são FICTÍCIOS. Substituir por depoimentos reais
-// antes de publicar, ou trocar MOSTRAR_DEPOIMENTOS para false no topo deste arquivo.
-function ProvaSocial1() {
-  const depos = [
-    {
-      nome: "Fernanda Rocha",
-      cargo: "coordenadora de operações",
-      texto: (
-        <>
-          "Eu vinha adiando um conflito entre duas pessoas do time havia dois
-          meses, com medo de tomar partido. Apliquei o protocolo de
-          alinhamento do módulo de Pessoas e resolvi a tensão inteira{" "}
-          <b className="font-semibold">em uma conversa de 20 minutos</b>. Foi
-          a primeira vez que saí de uma situação dessas sem carregar o
-          problema para casa."
-        </>
-      ),
-    },
-    {
-      nome: "Bruno Castilho",
-      cargo: "gerente de projetos",
-      texto: (
-        <>
-          "Eu fazia o trabalho da equipe porque achava que era mais rápido. Em{" "}
-          <b className="font-semibold">três semanas</b> usando a técnica de
-          delegação, as mensagens diretas que eu recebia por dia{" "}
-          <b className="font-semibold">caíram de onze para quatro</b>, e a
-          equipe passou a resolver sozinha o que antes parava na minha mesa."
-        </>
-      ),
-    },
-    {
-      nome: "Patrícia Andrade",
-      cargo: "supervisora de vendas",
-      texto: (
-        <>
-          "Fui promovida há um ano e vivia com a sensação de que ia ser
-          desmascarada. Depois de aplicar o método, apresentei um plano para a
-          diretoria e fui{" "}
-          <b className="font-semibold">aprovada na primeira reunião</b>. Pela
-          primeira vez me senti a líder do cargo que ocupo, não uma impostora
-          esperando ser descoberta."
-        </>
-      ),
-    },
-  ];
-  return (
-    <section
-      data-placeholder="depoimentos-ficticios"
-      className="bg-[color:var(--terracota)] text-[color:var(--creme)] py-20 md:py-28 px-5"
-    >
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[44px] leading-[1.1] max-w-4xl uppercase text-center mx-auto">
-            O QUE MUDA QUANDO A LIDERANÇA DEIXA DE SER INTUIÇÃO E PASSA A TER
-            TÉCNICA?
-          </h2>
-        </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {depos.map((d, i) => (
-            <Reveal key={i}>
-              <div className="h-full rounded-lg bg-[color:var(--creme)] text-[color:var(--preto)] p-8">
-                <p className="text-[16px] leading-[1.7]">{d.texto}</p>
-                <div className="mt-6 pt-4 border-t border-[color:var(--terracota)]/30">
-                  <div className="font-display text-xl text-[color:var(--vermelho)]">
-                    {d.nome}
-                  </div>
-                  <div className="text-sm text-[color:var(--preto)]/70">
-                    {d.cargo}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 5: CTA INTERMEDIARIO ---------------- */
-function CTAIntermediario() {
-  return (
-    <section className="bg-[color:var(--branco)] text-[color:var(--preto)] pt-4 md:pt-6 pb-10 md:pb-14 px-5">
-      <div className="mx-auto max-w-[900px] text-center">
-        <Reveal>
-          <CTAButton href={LINK_CHECKOUT} variant="primary" size="lg">
-            Quero aprender a técnica de liderar
-          </CTAButton>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 6: MÉTODO ---------------- */
-function Metodo() {
-  const pillars = [
-    {
-      letra: "M",
-      nome: "Mentalidade",
-      q: "Como devo pensar e me posicionar diante desta situação?",
-      texto:
-        "Antes de qualquer ferramenta, existe a lente com que você lê o cenário, e uma lente torta faz até a melhor técnica amplificar o erro. Aqui você aprende a reconhecer a emoção antes de ela virar decisão, a identificar os vieses que distorcem sua avaliação, a desativar a síndrome da impostora e a construir autoridade legítima, a que se ocupa pela consistência, não se impõe pelo crachá.",
-    },
-    {
-      letra: "A",
-      nome: "Ação",
-      q: "Qual técnica eu preciso usar para resolver isto?",
-      texto:
-        "É a ação para fora, a caixa de ferramentas do dia a dia: liderança situacional, feedback estruturado, reuniões 1:1 com propósito, delegação consciente, gestão de tempo e decisão sob pressão. É aqui que você aprende a delegar como quem entrega um desafio que faz a pessoa crescer, e para de fazer o trabalho da equipe no lugar dela.",
-    },
-    {
-      letra: "P",
-      nome: "Pessoas",
-      q: "Quem está envolvido e como eu construo e desenvolvo esse time?",
-      texto:
-        "É o coração do método, onde a liderança deixa de ser sobre você e passa a ser sobre as pessoas reais que você conduz. Entram os protocolos de conversa difícil, gestão de conflito, segurança psicológica e a liderança situacional na prática, a técnica para parar de exigir que a equipe se adapte ao seu jeito e passar a trazer à tona o melhor de cada pessoa, inclusive de quem funciona de um jeito completamente diferente do seu.",
-    },
-    {
-      letra: "A",
-      nome: "Aprendizado Contínuo",
-      q: "O que eu aprendo com o que fiz e como evoluo a partir disso?",
-      texto:
-        "É a ação para dentro, o caminho que impede a liderança de virar piloto automático. Aqui entram os ciclos de revisão que ajustam a rota enquanto o jogo ainda está rolando, e o uso da inteligência artificial como sparring de pensamento, não como muleta que decide por você.",
-    },
-  ];
-  return (
-    <section className="relative overflow-hidden bg-[color:var(--vermelho)] px-5 py-16 text-[color:var(--creme)] md:py-28">
-      <div className="relative z-10 mx-auto max-w-[1100px]">
-        <Reveal instant>
-          <h2 className="mx-auto max-w-[780px] text-balance text-left font-display font-normal text-[36px] leading-[1.05] text-[color:var(--creme)] min-[375px]:text-[38px] min-[430px]:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[60px]">
-            MÉTODO M.A.P.A.: UMA ESTRUTURA PARA CONDUZIR PESSOAS, DECIDIR E
-            AGIR COMO LÍDER
-          </h2>
-        </Reveal>
-
-        <Reveal instant>
-          <img
-            src={conversa640}
-            srcSet={`${conversa640} 640w, ${conversa826} 826w`}
-            sizes="(min-width: 820px) 780px, calc(100vw - 40px)"
-            width={826}
-            height={575}
-            loading="lazy"
-            decoding="async"
-            alt="Uma profissional conduz uma conversa com dois colegas diante de um painel de colagem com bordas rasgadas"
-            className="mx-auto mt-6 block h-auto w-full max-w-[780px] [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)] md:mt-8"
-          />
-        </Reveal>
-
-        <div className="mx-auto mt-6 max-w-[780px] space-y-5 text-left text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
-          <Reveal as="p" instant>
-            Liderar vai além de organizar tarefas em uma planilha ou saber usar o Notion ou o Trello. É alinhar expectativas, delegar, conduzir conversas difíceis e desenvolver pessoas que pensam e trabalham de maneiras diferentes.
-          </Reveal>
-          <Reveal as="p" instant>
-            O Método M.A.P.A. organiza seu raciocínio para enfrentar essas situações. São quatro caminhos conectados: <strong className="font-semibold">Mentalidade, Ação, Pessoas e Aprendizado Contínuo</strong>, que ajudam você a compreender o cenário, escolher como agir, conduzir as pessoas e aprender com cada decisão.
-          </Reveal>
-          <Reveal as="p" instant>
-            Liderança não depende apenas de talento ou carisma. É técnica, sustentada por método, disciplina e prática. A seguir, veja como cada letra orienta suas decisões no dia a dia.
-          </Reveal>
-        </div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {pillars.map((p, i) => (
-            <Reveal key={i}>
-              <div className="relative h-full overflow-hidden rounded-xl border border-[color:var(--laranja)]/30 bg-[color:var(--creme)]/5 p-6 sm:p-8">
-                <div
-                  aria-hidden
-                  className="absolute -right-4 -bottom-16 font-display text-[220px] leading-none text-[color:var(--laranja)]/25 select-none"
-                >
-                  {p.letra}
-                </div>
-                <div className="relative">
-                  <div className="font-display text-[28px] text-[color:var(--laranja)]">
-                    {p.letra}. {p.nome}
-                  </div>
-                  <p className="mt-2 italic text-[color:var(--creme)]/80 text-[15px]">
-                    Pergunta-âncora: {p.q}
-                  </p>
-                  <p className="mt-5 text-[16px] leading-[1.7]">{p.texto}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <MapaDiagram />
-
-        <Reveal>
-          <div className="mx-auto mt-10 max-w-3xl border-l-4 border-[color:var(--laranja)] pl-5 text-[16px] italic leading-[1.7] text-[color:var(--creme)]/90 sm:mt-14 sm:pl-6 sm:text-[17px]">
-            Isso funciona porque comportamento não muda por acúmulo de
-            conteúdo. Muda por repetição do mesmo caminho de raciocínio em
-            situação real, até ele virar automático. É a mesma lógica de
-            qualquer técnica que se aprende: no começo consciente e
-            desconfortável, depois natural. E o método é um ciclo, não uma
-            escada: cada situação que você resolve com ele te devolve mais
-            consciência para a próxima decisão.
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 7: PARA QUEM É / NÃO É ---------------- */
-function ParaQuem() {
-  const sim = [
-    "Você foi promovido nos últimos meses e ainda opera com o mapa mental de especialista técnico, resolvendo no lugar da equipe porque é mais rápido do que conduzir.",
-    "Você lidera há anos, já leu os livros e fez os treinamentos, mas continua travando na hora da conversa difícil, da decisão impopular ou da apresentação para a diretoria.",
-    "Você carrega a sensação de ocupar um lugar grande demais e trabalha o dobro para compensar uma insegurança que nenhum resultado apaga.",
-    "Você está numa situação que não pode esperar: uma demissão sem protocolo, um conflito aberto na equipe, uma reunião de resultados com o board na semana que vem.",
-    "Você tem um destino claro, diretoria, gestão de gestores ou uma carreira executiva maior, e sabe que precisa de um sistema de decisão documentado para chegar lá.",
-    "Você está se preparando para assumir sua primeira equipe e quer chegar a esse momento com método, segurança e ferramentas práticas.",
-  ];
-  const nao = [
-    "Você não tem equipe direta e busca conteúdo genérico de autoconhecimento ou desenvolvimento pessoal.",
-    "Você quer apenas um certificado para o currículo, sem intenção de mudar o que faz na frente da equipe.",
-    "Você tem mais de dez anos de liderança consolidada e procura consultoria individual de alto investimento, feita sob medida para o seu caso.",
-    "Você ainda não contratou ninguém e está numa fase de negócio em que não há time para liderar.",
-    "Você procura suporte terapêutico para questões emocionais profundas fora do contexto do trabalho.",
-  ];
-  return (
-    <section className="bg-[color:var(--creme)] px-5 py-16 md:py-28">
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[32px] md:text-[46px] leading-[1.1] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto">
-            Antes de continuar, veja se este é o seu momento
-          </h2>
-        </Reveal>
-        <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-[16px] leading-[1.7] sm:text-[18px]">
-            O Método M.A.P.A. foi desenhado para quem lidera pessoas e sente
-            que o cargo cobra uma técnica que ninguém entregou. Ele funciona
-            para você se:
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-lg border-2 border-[color:var(--laranja)] bg-white/50 p-6 sm:p-8">
-              <h3 className="font-display text-[24px] text-[color:var(--vermelho)]">
-                É para você se:
-              </h3>
-              <ul className="mt-6 space-y-4">
-                {sim.map((s, i) => (
-                  <li key={i} className="flex gap-3 text-[16px] leading-[1.7]">
-                    <CheckIcon />
-                    <span>{s}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className="h-full rounded-lg border-2 border-[color:var(--preto)]/20 bg-white/30 p-6 sm:p-8">
-              <h3 className="font-display text-[24px] text-[color:var(--preto)]/70">
-                Não é para você se:
-              </h3>
-              <ul className="mt-6 space-y-4">
-                {nao.map((s, i) => (
-                  <li key={i} className="flex gap-3 text-[16px] leading-[1.7]">
-                    <XIcon />
-                    <span>{s}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      className="mt-1 shrink-0 text-[color:var(--laranja)]"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 10.5l4 4 8-9"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-function XIcon() {
-  return (
-    <svg
-      className="mt-1 shrink-0 text-[color:var(--preto)]/50"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 5l10 10M15 5L5 15"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* ---------------- SECTION 8: ENTREGÁVEIS ---------------- */
-function Entregaveis() {
-  const items = [
-    {
-      t: "Curso completo do Método M.A.P.A.",
-      d: "Com 23 vídeo-aulas em 6 módulos + aulas bônus, cobrindo os quatro pilares (Mentalidade, Ação, Pessoas e Aprendizado Contínuo) e as ferramentas de cada um, com um protocolo aplicável ao fim de cada aula.",
-    },
-    {
-      t: "AS FERRAMENTAS PROPRIETÁRIAS DO MÉTODO MAPA",
-      d: "Prontas para usar:\u00a0 o Método A.C.T. para estruturar conversas difíceis, o 3Cs Integrado para desenvolver o time e o Loop AAA para revisar e ajustar a rota.",
-    },
-    {
-      t: "Acesso à plataforma por 12 meses",
-      d: "Acesse as aulas e os materiais do curso no seu ritmo, durante 12 meses, com todas as atualizações de conteúdo incluídas no período, sem custo adicional.",
-    },
-    {
-      t: "CERTIFICADO E MATERIAIS DE APOIO",
-      d: "Receba o certificado de conclusão do Método M.A.P.A. ao concluir os 6 módulos. Você também conta com roteiros, materiais de apoio, indicações de leitura e prompts para aplicar as ferramentas do método com o Mentor Digital.",
-    },
-  ];
-  return (
-    <section className="bg-[color:var(--vermelho)] px-5 py-16 text-[color:var(--creme)] md:py-28">
-      <div className="mx-auto max-w-[1100px] text-center">
-        <Reveal>
-          <h2 className="font-display text-[32px] md:text-[48px] leading-[1.1]">
-            O que você recebe ao entrar
-          </h2>
-        </Reveal>
-        <Reveal>
-          <div className="relative mx-auto mt-10 w-full max-w-[960px]">
-            <img
-              src={produtos960}
-              srcSet={`${produtos640} 640w, ${produtos960} 960w, ${produtos1440} 1440w`}
-              sizes="(max-width: 768px) 100vw, 960px"
-              alt="Materiais da Mentoria VC_Líder"
-              loading="lazy"
-              decoding="async"
-              width={1536}
-              height={1024}
-              className="mx-auto w-full rounded-lg"
-            />
-            <span className="absolute bottom-2 left-2 text-[10px] italic leading-tight text-[color:var(--creme)]/70 sm:text-[11px]">
-              *Imagens meramente ilustrativas
-            </span>
-          </div>
-        </Reveal>
-        <Reveal>
-          <p className="mx-auto mt-6 max-w-3xl text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:text-[18px]">
-            Não é mais talento e nem sorte. É técnica aplicada. Tudo o que está
-            incluído na Mentoria VC_Líder para que você aplique na
-            sua rotina real de liderança, do primeiro módulo ao acompanhamento
-            contínuo.&nbsp;
-          </p>
-        </Reveal>
-      </div>
-      <div className="mx-auto max-w-[1100px] mt-12 grid gap-6 md:grid-cols-2">
-          {items.map((it, i) => (
-            <Reveal key={i}>
-              <div className="relative h-full rounded-lg bg-[color:var(--creme)] p-6 text-[color:var(--preto)] sm:p-8">
-                 <div>
-                  <h3 className="font-display text-[22px] text-[color:var(--vermelho)]">
-                    {it.t}
-                  </h3>
-                  <p className="mt-3 text-[16px] leading-[1.7]">{it.d}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 9: BÔNUS ---------------- */
-function Bonus() {
-  const bonus = [
-    {
-      t: "MENTOR DIGITAL",
-      d: "A IA conversacional treinada exclusivamente no Método M.A.P.A., disponível 24 horas por dia, durante 6 meses. É o sparring de pensamento que fica com você quando a Mentora não está: ajuda a preparar a conversa difícil na véspera, a validar uma decisão antes da reunião com o board e a recalcular a rota quando a situação muda no meio do caminho. Você recebe também os prompts prontos recomendados para operar todas as ferramentas proprietárias do método M.A.P.A.\u00a0dentro dele: o A.C.T., o 3Cs Integrado e o Loop AAA, para aplicar cada uma com precisão sem depender de saber formular a pergunta certa. Depois fica mais fácil, pois é como conversar com a Mentora.",
-    },
-    {
-      t: "Radar do Líder",
-      d: "O Radar do Líder\u00a0é um diagnóstico contínuo que, reaplicado ao longo da sua jornada, aponta, a cada momento, em qual dos 4 pilares (M.A.P.A.)\u00a0você ainda está travado e qual módulo do curso deve revisar. Em vez de recomeçar o curso do zero, você volta direto ao ponto que resolve a sua situação atual.\n6 meses de acesso.",
-    },
-    {
-      t: "GRUPO DE WHATSAPP DO CURSO",
-      d: "O canal onde você recebe em primeira mão as atualizações, os novos conteúdos e os avisos importantes do Método M.A.P.A. ao longo da sua jornada, para não perder nada do que é liberado.",
-    },
-  ];
-  return (
-    <section className="bg-[color:var(--creme)] px-5 py-16 md:py-28">
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[32px] md:text-[46px] leading-[1.1] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto">
-            UM ECOSSISTEMA DE DESENVOLVIMENTO QUE VAI ALÉM DAS VÍDEO-AULAS
-          </h2>
-          <img
-            src={mrg960}
-            srcSet={`${mrg640} 640w, ${mrg960} 960w, ${mrg1440} 1440w`}
-            sizes="(max-width: 768px) 100vw, 1100px"
-            alt="Ecossistema VC_Líder: Mentor Digital, Radar do Líder e Grupo de WhatsApp"
-            loading="lazy"
-            decoding="async"
-            width={1774}
-            height={887}
-            className="mx-auto mt-8 w-full max-w-[1100px]"
-          />
-          <p className="mt-6 text-[17px] md:text-[18px] leading-[1.8] text-center max-w-5xl mx-auto whitespace-pre-line">
-            Você está entrando em um ecossistema completo de desenvolvimento de liderança. 
-            O Radar do Líder mostra onde você está. O Método M.A.P.A. te dá a estrutura para desenvolver suas competências. O Mentor Digital te acompanha nas decisões reais. E o Radar volta a mostrar o quanto você evoluiu. 
-            Diagnóstico. Desenvolvimento. Aplicação. Evolução. É um ciclo. 
-            Porque o objetivo nunca foi colocar mais informação na sua cabeça. É transformar informação em comportamento.
-          </p>
-        </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {bonus.map((b, i) => (
-            <Reveal key={i}>
-              <div className="relative h-full rounded-lg border border-[color:var(--terracota)]/30 bg-white/70 p-6 pt-12 sm:p-8 sm:pt-14">
-                <div className="absolute top-0 left-8 -translate-y-1/2 rounded-md bg-[color:var(--laranja)] px-4 py-1.5 font-display text-sm text-[color:var(--creme)] tracking-widest uppercase">
-                  {i === 0 ? "ferramenta 1" : i === 1 ? "ferramenta 2" : "BÔNUS"}
-                </div>
-                <h3 className="font-display text-[22px] text-[color:var(--vermelho)]">
-                  {b.t}
-                </h3>
-                <p className="mt-4 text-[15px] leading-[1.7]">{b.d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 10: STACK DE VALOR ---------------- */
-function StackValor() {
-  const rows = [
-    ["Curso completo do Método M.A.P.A. (23 vídeo-aulas, aulas bônus, 6 módulos)", ""],
-    ["As ferramentas proprietárias do Método M.A.P.A.\u00a0 (A.C.T., 3Cs Integrado e Loop AAA)", ""],
-    ["Acesso à plataforma por 12 meses com atualizações incluídas", "Incluído"],
-    ["Mentor Digital (IA treinada no Método M.A.P.A., 24 horas por dia, 6 meses, com os prompts das ferramentas)", ""],
-    ["Radar do Líder (diagnóstico contínuo, 6 meses)", ""],
-    ["Bônus: Grupo de WhatsApp do curso (atualizações e novos conteúdos)", "Incluído"],
-  ];
-  return (
-    <section className="relative overflow-hidden bg-[color:var(--vermelho)] text-[color:var(--creme)] py-20 md:py-28 px-5">
-      <div className="relative mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1] text-center">
-            OPORTUNIDADE DE LANÇAMENTO*
-          </h2>
-          <p className="mt-2 text-center text-[14px] md:text-[16px] text-[color:var(--creme)]/80">
-            *Por tempo limitado
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <div className="mx-auto mt-10 max-w-[720px] rounded-xl bg-[color:var(--creme)] p-6 text-[color:var(--preto)] shadow-2xl sm:mt-14 sm:p-8 md:p-12">
-            <ul className="space-y-4">
-              {rows.map(([label, included], i) => (
-                <li
-                  key={i}
-                  className="text-[15px] leading-[1.5] md:text-[16px]"
-                >
-                  <span>{label}</span>
-                  {included && <span className="ml-2 font-semibold">{included}</span>}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 pt-6 border-t border-[color:var(--terracota)]/40 text-center">
-              <div>
-                <CTAButton href={LINK_CHECKOUT} size="lg" className="w-full">
-                  Quero liderar de verdade
-                </CTAButton>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 11: PROVA SOCIAL 2 ---------------- */
-// ATENÇÃO: depoimentos abaixo são FICTÍCIOS. Substituir por reais antes de publicar.
-function ProvaSocial2() {
-  const depos = [
-    {
-      nome: "Renata Souza",
-      cargo: "gerente de atendimento",
-      contexto: (
-        <>
-          Antes, adiava havia meses a decisão de desligar um colaborador que
-          não entregava, porque não tinha protocolo para conduzir a conversa
-          sem parecer injusta com o resto do time. Depois de aplicar o Método
-          A.C.T. no pilar de Ação, conduziu{" "}
-          <b className="font-semibold">
-            dois desligamentos necessários em 45 dias
-          </b>
-          , sem drama e sem ruído na equipe.
-        </>
-      ),
-      quote: (
-        <>
-          "O turnover voluntário do meu time{" "}
-          <b className="font-semibold">caiu no trimestre seguinte</b>, porque as
-          pessoas certas passaram a se sentir seguras de que eu resolvia o que
-          precisava ser resolvido."
-        </>
-      ),
-    },
-    {
-      nome: "Thiago Almeida",
-      cargo: "coordenador de logística",
-      contexto: (
-        <>
-          Fazia o trabalho da equipe porque achava que era mais rápido, e
-          respondia em média 15 mensagens fora do horário por semana. Depois do
-          Contrato de Delegação do pilar de Ação, esse número caiu para{" "}
-          <b className="font-semibold">3 mensagens por semana em 30 dias</b>,
-          sem perder qualidade de entrega.
-        </>
-      ),
-      quote: (
-        <>
-          "Descobri que eu era o gargalo. O método me tirou do meio do caminho
-          da própria equipe."
-        </>
-      ),
-    },
-    {
-      nome: "Juliana Prado",
-      cargo: "supervisora de qualidade",
-      contexto: (
-        <>
-          Travava nas apresentações para a diretoria e passava dias preparando
-          cada slide por insegurança. Depois de trabalhar o pilar de
-          Mentalidade e a presença executiva, apresentou um plano de
-          reestruturação e teve{" "}
-          <b className="font-semibold">aprovação na primeira reunião</b>.
-        </>
-      ),
-      quote: (
-        <>
-          "Rodei o mapa mental antes de entrar na sala. Foi a primeira vez que
-          apresentei sem a sensação de que iam descobrir que eu não pertencia
-          ali."
-        </>
-      ),
-    },
-    {
-      nome: "Marcos Teixeira",
-      cargo: "gerente comercial regional",
-      contexto: (
-        <>
-          Achava que delegar era perder controle sobre o resultado. Depois de
-          formar um segundo nível de liderança na equipe com o pilar de
-          Pessoas, tirou{" "}
-          <b className="font-semibold">
-            3 dias de férias sem ser acionado uma única vez em 90 dias
-          </b>
-          .
-        </>
-      ),
-      quote: (
-        <>
-          "A equipe rodou sem mim. Foi quando entendi que liderar de verdade é
-          construir gente que decide sozinha."
-        </>
-      ),
-    },
-  ];
-  return (
-    <section
-      data-placeholder="depoimentos-ficticios"
-      className="bg-[color:var(--creme)] py-20 md:py-28 px-5"
-    >
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto">
-            O que aconteceu com quem trocou a intuição pelo método
-          </h2>
-        </Reveal>
-
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
-          {depos.map((d, i) => (
-            <Reveal key={i}>
-              <div className="h-full rounded-lg border border-[color:var(--terracota)]/30 bg-white/70 p-8">
-                <div className="flex items-center gap-4">
-                  <div
-                    className="h-16 w-16 rounded-full bg-[color:var(--terracota)]/25 border border-[color:var(--terracota)]/40 grid place-items-center text-[color:var(--vermelho)] font-display text-xl"
-                    aria-label="Foto placeholder"
-                  >
-                    {d.nome
-                      .split(" ")
-                      .map((n) => n[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </div>
-                  <div>
-                    <div className="font-display text-[22px] text-[color:var(--vermelho)] leading-tight">
-                      {d.nome}
-                    </div>
-                    <div className="text-sm text-[color:var(--preto)]/70">
-                      {d.cargo}
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-6 text-[15px] leading-[1.7]">{d.contexto}</p>
-                <p className="mt-4 text-[15px] leading-[1.7] italic border-l-2 border-[color:var(--laranja)] pl-4">
-                  {d.quote}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 12: SUPORTE ---------------- */
-function Suporte() {
-  return (
-    <section className="bg-[color:var(--terracota)] px-5 py-16 text-[color:var(--creme)] md:py-28">
-      <div className="mx-auto max-w-[900px]">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1]">
-            Você não fica sozinho na hora em que a decisão aperta
-          </h2>
-        </Reveal>
-
-        <div className="mt-10 space-y-8">
-          <Reveal>
-            <SupportBlock
-              icon={
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-              }
-              text="O suporte central do método é o Mentor Digital M.A.P.A., disponível 24 horas por dia durante os 6 primeiros meses. Ele existe justamente para o momento em que a dúvida aparece longe de qualquer atendimento humano: a noite anterior à conversa difícil, os 10 minutos antes da reunião com a diretoria, o domingo em que a cabeça não desliga pensando em como conduzir um conflito na segunda-feira."
-            />
-          </Reveal>
-          <Reveal>
-            <SupportBlock
-              icon={
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H8l-5 3V7z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                </svg>
-              }
-              text="Você entra também no Grupo de WhatsApp do curso, sem prazo para sair, o canal onde chegam as atualizações, os novos conteúdos e os avisos importantes do Método M.A.P.A. em primeira mão, para você não perder nada do que é liberado ao longo da sua jornada."
-            />
-          </Reveal>
-          <Reveal>
-            <SupportBlock
-              icon={
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 6h18v12H3z" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M3 6l9 7 9-7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                </svg>
-              }
-              text="E para dúvidas sobre acesso à plataforma, pagamento ou qualquer questão do curso, o atendimento é por e-mail, com resposta em até 24 horas úteis, no: suporte@julienesalvan.com.br"
-            />
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SupportBlock({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="flex gap-4 sm:gap-5">
-      <div className="shrink-0 text-[color:var(--laranja)]">{icon}</div>
-      <p className="min-w-0 text-[16px] leading-[1.7] sm:text-[17px] sm:leading-[1.75]">{text}</p>
+      ) : (
+        <Button variant="video" size="natural" aria-label="Assista à Aula — reproduzir vídeo de Juliene Salvan" onPointerEnter={() => void preloadBunnyApi()} onFocus={() => void preloadBunnyApi()} onClick={start}>
+          <img src={thumbnail.url} alt="Juliene Salvan — Liderança é técnica. Assista à Aula." width="1365" height="768" loading="lazy" decoding="async" fetchPriority="low" />
+        </Button>
+      )}
     </div>
   );
 }
 
-/* ---------------- SECTION 13: GARANTIA ---------------- */
-function Garantia() {
+function Index() {
+  const openingRef = useOpeningReveal();
+  const compositionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    initLead();
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[href*="pay.hotmart.com"]')
+      .forEach((a) => {
+        a.href = decorateCheckoutUrl(a.href);
+      });
+    const onClick = (event: MouseEvent) => {
+      const anchor = (event.target as Element | null)?.closest?.('a[href*="pay.hotmart.com"]');
+      if (!anchor) return;
+      (anchor as HTMLAnchorElement).href = decorateCheckoutUrl((anchor as HTMLAnchorElement).href);
+      trackCheckoutClick();
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   return (
-    <section className="bg-[color:var(--creme)] px-5 pt-16 pb-6 md:pt-28 md:pb-9">
-      <div className="mx-auto max-w-[1100px] grid gap-12 md:grid-cols-[240px_1fr] items-center">
-        <Reveal>
-          <GuaranteeSeal />
-        </Reveal>
-        <div>
-          <Reveal>
-            <h2 className="font-display text-[30px] md:text-[44px] leading-[1.1] text-[color:var(--vermelho)]">
-              EXPERIMENTE POR 7 DIAS. SE NÃO FOR PARA VOCÊ, SOLICITE O REEMBOLSO INTEGRAL.
-            </h2>
-          </Reveal>
-          <Reveal>
-            <p className="mt-6 text-[16px] leading-[1.7] sm:text-[18px] sm:leading-[1.75]">
-              Você tem 7 dias corridos, a partir da data da compra, para acessar
-              os primeiros módulos, conversar com o Mentor Digital e aplicar
-              pelo menos um protocolo do método na sua equipe. Tempo suficiente
-              para sentir na prática se a técnica corresponde à realidade da
-              sua liderança.
-            </p>
-          </Reveal>
-          <Reveal>
-            <p className="mt-4 text-[16px] leading-[1.7] sm:text-[18px] sm:leading-[1.75]">
-              Se, dentro desse prazo, você concluir que o método não é para o
-              seu momento, basta pedir o reembolso. Você recebe de volta o
-              valor integral, sem formulário longo, sem justificativa detalhada
-              e sem constrangimento. O risco de experimentar fica com quem
-              criou o método, não com você.
-            </p>
-          </Reveal>
+    <>
+    <ScrollCheckoutHeader compositionRef={compositionRef} checkoutUrl={checkoutUrl} />
+    <div className="opening-preserved-surface">
+    <main className="sales-opening">
+      <section aria-labelledby="opening-title" ref={openingRef}>
+        <header className="opening-brand"><img className="brand-logo" src={logo.url} alt="VC Líder" width="1827" height="384" /></header>
+        <div className="opening-composition" ref={compositionRef}>
+        <div className="opening-copy">
+        <h1 id="opening-title" className="opening-title">
+          <span className="opening-sentence" data-entry="initial"><span className="opening-emphasis">Você</span> tem o </span>
+          <span className="opening-sentence" data-entry="initial">cargo de </span>
+          <span className="opening-sentence opening-emphasis" data-entry="initial">líder. </span>
+          <span className="opening-sentence" data-entry="initial">O manual da </span>
+          <span className="opening-sentence" data-entry="initial">liderança </span>
+          <span className="opening-sentence opening-emphasis" data-entry="initial">ainda não.</span>
+        </h1>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 14: AUTORIDADE ---------------- */
-function Autoridade() {
-  return (
-    <section className="bg-[color:var(--vermelho)] px-5 pt-8 pb-16 text-[color:var(--creme)] md:pt-10 md:pb-28">
-      <div className="mx-auto max-w-[1100px] flex flex-col gap-12 md:grid md:grid-cols-[minmax(0,520px)_1fr] md:items-start">
-        {/* Headline — abre a seção no mobile, antes da foto da Juliene */}
-        <Reveal className="order-1 md:order-none md:col-start-2 md:row-start-1">
-          <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1]">
-            QUEM CONSTRUIU ESTE MÉTODO REALIZA A GESTÃO DE LIDERANÇAS DE ALTO NÍVEL, TODO DIA
-          </h2>
-        </Reveal>
-
-        {/* Foto principal da Juliene e cards, juntos na coluna esquerda */}
-        <div className="order-2 flex min-w-0 flex-col gap-6 md:order-none md:row-span-2 md:col-start-1 md:row-start-1">
-          <Reveal>
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-[color:var(--laranja)]">
-              <img
-                src={mentora960}
-                srcSet={`${mentora640} 640w, ${mentora960} 960w, ${mentora1440} 1440w`}
-                sizes="(max-width: 768px) 100vw, 520px"
-                alt="Juliene Salvan, diretora de RH e mentora de líderes, em retrato de corpo inteiro com blazer bege e fundo laranja"
-                loading="lazy"
-                decoding="async"
-                width={1920}
-                height={1424}
-                className="h-full w-full object-contain object-center"
-              />
-            </div>
-          </Reveal>
-
-          <div className="flex min-w-0 flex-col gap-4 md:gap-6">
-          {([
-            [["Rádio Bandeirantes", radio320, radio610, 489], ["Deep Dive Podcast", deepDive320, deepDive610, 488]],
-            [["Passa lá no RH", passa320, passa610, 440], ["Podcast Talentos da Band", talentos320, talentos610, 440]],
-            [["RHs mais admirados", rhs320, rhs610, 302], ["Bett Brasil", bett320, bett610, 302]],
-          ] as const).map((pair, row) => (
-            <div
-              key={row}
-              className={`grid min-w-0 items-start gap-2 md:gap-3 ${row % 2 === 0 ? "grid-cols-[minmax(0,55fr)_minmax(0,45fr)]" : "grid-cols-[minmax(0,45fr)_minmax(0,55fr)]"}`}
-            >
-              {pair.map(([alt, small, large, height], column) => (
-                <Dialog key={alt}>
-                  <DialogTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      aria-label={`Ampliar ${alt}`}
-                      className={`h-auto min-w-0 w-full max-w-[610px] p-0 mx-auto rounded-none hover:bg-transparent focus-visible:ring-2 focus-visible:ring-[color:var(--creme)] ${column === (row % 2) ? "mt-3" : ""}`}
-                    >
-                      <img
-                        src={large}
-                        srcSet={`${small} 320w, ${large} 610w`}
-                        sizes={row % 2 === column ? "(min-width: 768px) 290px, 55vw" : "(min-width: 768px) 230px, 45vw"}
-                        alt={alt}
-                        loading="lazy"
-                        decoding="async"
-                        width={610}
-                        height={height}
-                        className="block h-auto w-full"
-                      />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="w-[calc(100vw-24px)] max-w-[680px] max-h-[calc(100dvh-24px)] gap-2 overflow-hidden border-0 bg-[color:var(--vermelho)] p-3 text-[color:var(--creme)] [&>button:last-child]:hidden">
-                    <DialogTitle className="sr-only">{alt}</DialogTitle>
-                    <DialogClose asChild>
-                      <Button type="button" variant="ghost" aria-label="Fechar imagem ampliada" className="ml-auto h-11 w-11 shrink-0 p-0 text-[color:var(--creme)]">
-                        <X aria-hidden="true" />
-                      </Button>
-                    </DialogClose>
-                    <div className="max-h-[calc(100dvh-100px)] overflow-auto" tabIndex={0} aria-label={`Imagem ampliada: ${alt}. Deslize para ver o restante.`}>
-                      <img src={large} alt={alt} width={610} height={height} className="block h-auto w-[610px] max-w-none" />
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              ))}
-            </div>
-          ))}
-          </div>
+        <div className="opening-portrait">
+          <figure className="opening-figure">
+            <img src={portrait.url} alt="Juliene Salvan, olhando em direção ao texto da abertura." width="900" height="1599" fetchPriority="high" decoding="async" />
+            <figcaption className="opening-caption">Juliene Salvan</figcaption>
+          </figure>
         </div>
-
-        {/* Bio + indicadores */}
-        <div className="order-3 md:order-none md:col-start-2 md:row-start-2">
-          <div className="space-y-5 text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:text-[17px] sm:leading-[1.75]">
-            <Reveal as="p">
-              Juliene Salvan é diretora de RH em um dos maiores grupos de
-              comunicação do Brasil e atua há mais de 20 anos na gestão de
-              pessoas. Liderar líderes e conduzir conversas difíceis fazem
-              parte da sua rotina. É dela a responsabilidade de decidir sobre
-              gente, conflito e resultado sob a pressão real de um grande
-              negócio.
-            </Reveal>
-            <Reveal as="p">
-              Ao longo dessa trajetória, mentorou e desenvolveu mais de 200
-              líderes: de gestores recém-promovidos aprendendo a conduzir sua
-              primeira equipe a executivos experientes destravando conversas
-              difíceis que vinham adiando por meses. Dessa experiência nasceu
-              o Método M.A.P.A., que transforma os aprendizados da gestão em
-              ferramentas práticas para liderar.
-            </Reveal>
-            <Reveal as="p">
-              Juliene também comanda o podcast Passa lá no RH, do Band
-              Jornalismo, onde discute os dilemas de quem lidera. Sua abordagem
-              é direta: liderança é técnica. E técnica se aprende, se treina e
-              se aplica.
-            </Reveal>
-          </div>
-
-          <div className="mt-10 grid grid-cols-3 gap-4 md:gap-8">
-            {[
-              ["20+", "anos em gestão de pessoas"],
-              ["200+", "líderes mentorados"],
-              ["100+", "episódios de podcast sobre gestão"],
-            ].map(([n, l], i) => (
-              <Reveal key={i}>
-                <div className="text-center md:text-left">
-                   <div className="font-display text-[36px] leading-none text-[color:var(--laranja)] min-[390px]:text-[40px] md:text-[64px]">
-                    {n}
-                  </div>
-                  <div className="mt-2 text-[13px] md:text-[14px] text-[color:var(--creme)]/75 uppercase tracking-wide">
-                    {l}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 15: FAQ ---------------- */
-function FAQSection() {
-  const items = [
-    {
-      q: "Não tenho tempo para mais um curso. Como isso encaixa na minha rotina?",
-      a: "As 23 aulas são curtas, pensadas para blocos de 15 a 20 minutos, e cada uma termina com um protocolo para aplicar já na próxima conversa ou reunião. O método não ocupa tempo extra na agenda, ele reorganiza o tempo que você já perde hoje com retrabalho, reunião que se repete e decisão que precisa ser refeita.",
-    },
-    {
-      q: "Já fiz outros cursos de liderança e nenhum mudou minha prática. Por que este seria diferente?",
-      a: "Porque a maioria entrega conteúdo linear e te deixa sozinho depois. Aqui o Radar do Líder identifica exatamente em qual dos quatro pilares você trava na aplicação, e o Mentor Digital fica com você no momento real da decisão. O que faltava nos cursos anteriores não era conteúdo, era o elo entre o que você aprende e o que você faz na frente da equipe.",
-    },
-    {
-      q: "Minha empresa já oferece treinamento de liderança. Ainda preciso disto?",
-      a: "O treinamento corporativo ensina o que a organização precisa que todos os gestores saibam, para uma sala inteira ao mesmo tempo. O Método M.A.P.A. resolve o que você especificamente trava na sua equipe, com diagnóstico individual e uma ferramenta disponível às 22h da véspera da sua reunião mais difícil. Um não substitui o outro, mas só o segundo é sob a sua medida.",
-    },
-    {
-      q: "Tenho medo de comprar e não terminar, como outros cursos parados no meu histórico.",
-      a: "Os módulos são independentes: quem conclui só três já aplicou protocolos de mentalidade, delegação e feedback na prática. E o Radar do Líder aponta o pilar de maior urgência para o seu momento, para você ir direto ao que resolve a sua situação, sem precisar seguir uma ordem linear que compete com a sua rotina.",
-    },
-    {
-      q: "Como sei se a Juliene tem experiência real de gestão, e não só teoria?",
-      a: "Ela é diretora de RH em um dos maiores grupos de comunicação do país e já mentorou mais de 200 líderes dentro desse contexto, ao longo de mais de 20 anos. O método nasceu dessas situações reais, não apenas de leitura e pesquisa. E os 7 dias de garantia existem para você confirmar essa profundidade prática antes de manter o investimento.",
-    },
-    {
-      q: "Preciso já ser gestor para aproveitar, ou serve para quem vai assumir uma equipe?",
-      a: "Serve para os dois. O pilar de Mentalidade prepara a virada de identidade de quem está prestes a assumir, e os pilares de Ação e Pessoas entregam os protocolos para quem já lidera e quer parar de improvisar. O ponto de partida muda, o método é o mesmo.",
-    },
-    {
-      q: "Qual o formato das aulas?",
-      a: "São 23 vídeo-aulas organizadas em 6 módulos, 100% online, dentro da plataforma. Cada aula é curta, pensada para blocos de 15 a 20 minutos, e termina com um protocolo prático para você aplicar na sua equipe. Você assiste no seu ritmo, de qualquer dispositivo, quantas vezes precisar.",
-    },
-    {
-      q: "Terei suporte ao longo da formação?",
-      a: "Sim, em três frentes. O Mentor Digital M.A.P.A. fica disponível 24 horas por dia durante os 6 primeiros meses para tirar dúvidas de aplicação no momento real da decisão. O Grupo de WhatsApp do curso, com acesso sem prazo, traz as atualizações e novos conteúdos. E o atendimento por e-mail responde questões de acesso, pagamento e plataforma em até 24 horas úteis.",
-    },
-    {
-      q: "É possível parcelar? Quais as formas de pagamento?",
-      a: "As condições de pagamento e as opções de parcelamento estão disponíveis no checkout da Hotmart.",
-    },
-    {
-      q: "A liberação das aulas é imediata?",
-      a: "Sim. Assim que a compra é confirmada, você recebe acesso imediato a todas as aulas e a todos os bônus, sem liberação gotejada. Você começa pelo pilar que a sua situação atual pede, no mesmo dia.",
-    },
-    {
-      q: "Tem certificado e por quanto tempo tenho acesso?",
-      a: "Sim, você recebe o certificado de conclusão do Método M.A.P.A. ao concluir os 6 módulos. O acesso à plataforma, às aulas e aos materiais do curso é de 12 meses, com as atualizações incluídas no período. O Mentor Digital e o Radar do Líder ficam disponíveis durante os primeiros 6 meses.",
-    },
-    {
-      q: "A mentoria inclui encontros com Juliene Salvan?",
-      a: "Nesta formação, você aprende com Juliene nas aulas gravadas e recebe acompanhamento pelo Mentor Digital: uma inteligência artificial baseada no Método M.A.P.A., com a qual pode conversar sobre seus desafios e explorar como aplicar as ferramentas na sua rotina.\n\nO Mentor Digital fica disponível 24 horas por dia durante os primeiros 6 meses. Esta oferta não inclui encontros ao vivo nem atendimento individual com Juliene Salvan.",
-    },
-    // Rascunho aprovado de marketing — as práticas técnicas descritas seguem
-    // sujeitas a confirmação com os desenvolvedores antes da publicação.
-    // Não adicionar link, checkbox de aceite ou backend sem esse alinhamento.
-    {
-      q: "Como minhas conversas com o Mentor Digital são protegidas?",
-      a: "Você pode conversar sobre seus desafios de liderança sem precisar identificar as pessoas envolvidas. As conversas ficam armazenadas para manter seu histórico, e a plataforma utiliza autenticação e controles de acesso para proteger essas informações.\n\nPara aproveitar o Mentor Digital, descreva a situação usando referências como “uma pessoa da equipe” ou “a empresa”. Evite nomes, dados pessoais de terceiros e informações confidenciais da empresa. O foco é ajudar você a organizar o raciocínio e preparar suas ações.",
-    },
-  ];
-  return (
-    <section className="bg-[color:var(--creme)] px-5 pt-6 pb-16 md:pt-9 md:pb-28">
-      <div className="mx-auto max-w-[1100px]">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[46px] leading-[1.1] text-[color:var(--vermelho)] max-w-4xl text-center mx-auto">
-            As perguntas que passam pela sua cabeça antes de decidir
-          </h2>
-        </Reveal>
-        <div className="mt-12">
-          <FAQ items={items} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SECTION 16: OFERTA FINAL ---------------- */
-function OfertaFinal() {
-  return (
-    <section className="relative overflow-hidden bg-[color:var(--vermelho)] px-5 py-16 text-[color:var(--creme)] md:py-32">
-      <Brackets size={700} opacity={0.20} />
-      <div className="relative z-10 mx-auto max-w-[900px] text-center">
-        <Reveal>
-          <h2 className="font-display text-[30px] md:text-[50px] leading-[1.1]">
-            A CONTA QUE NINGUÉM FAZ: QUANTO CUSTA CONTINUAR LIDERANDO NO
-            IMPROVISO?
-          </h2>
-        </Reveal>
-
-        <div className="mt-8 space-y-5 text-left text-[16px] leading-[1.7] text-[color:var(--creme)]/90 sm:mt-10 sm:space-y-6 sm:text-[18px] sm:leading-[1.75]">
-          <Reveal as="p">
-            O cargo você já tem. O que ainda não veio junto com ele é a técnica
-            de liderar, e é ela que separa quem carrega o crachá de quem a
-            equipe segue de verdade. Enquanto essa técnica não chega, a fatura
-            corre por fora, na reunião que termina sem decisão, no talento que
-            pede demissão, na vaga de diretoria que vai para outra pessoa com o
-            mesmo tempo de casa que você, só que com histórico de decisão
-            documentado.
-          </Reveal>
-          <Reveal as="p">
-            Você está entrando em um ecossistema completo de desenvolvimento de liderança: com o curso completo do Método M.A.P.A. com 23 vídeo-aulas, as ferramentas proprietárias, o Mentor Digital treinado no método por 6 meses, o Radar do Líder, o Grupo de WhatsApp sem prazo e Certificado de Conclusão do Método M.A.P.A. emitido ao final dos 6 módulos. E mais: Roteiros, Materiais de apoio, Indicações de leitura, Prompts para usar todo o potencial do Mentor Digital. Um Ecossistema de Desenvolvimento com liberação para uso imediato assim que a compra é confirmada.
-          </Reveal>
-          <Reveal as="p">
-            E você não decide nada agora no escuro: são 7 dias de garantia para
-            testar o método na sua própria equipe. Se não for para você, o
-            reembolso é integral.
-          </Reveal>
-        </div>
-
-        <Reveal>
-          <p className="mt-14 font-display text-[26px] md:text-[40px] leading-[1.15] text-[color:var(--laranja)]">
-            Liderança não é dom. É técnica.<br />
-            E técnica, a partir de hoje, você pode aprender.
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <div className="mt-12">
-            <CTAButton href={LINK_CHECKOUT} size="lg">
-              Quero aprender a técnica de liderar
-            </CTAButton>
-          </div>
-        </Reveal>
-
-        <p className="mt-8 text-[14px] font-light text-[color:var(--creme)]/60">
-          Pagamento processado pela Hotmart.
+        <div className="opening-ground" aria-hidden="true" />
+        <p className="opening-support" data-reveal data-entry="initial">
+          O método que transforma o cargo em <strong>Liderança de Verdade</strong>:<br />
+          Uma metodologia construída na prática, acompanhando mais de 200 líderes.
         </p>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-[color:var(--preto)] px-5 pt-10 pb-6 text-[color:var(--creme)]/70 md:py-10">
-      <div className="mx-auto max-w-[1100px] flex flex-col items-center gap-4">
-        <Logo onDark height={60} />
-        <p className="text-[11px] text-center whitespace-pre-line leading-relaxed text-[color:var(--creme)]/50">
-          © {new Date().getFullYear()} VC_Líder. Todos os direitos reservados. SDA Educação e Desenvolvimento LTDA | CNPJ: 27.008.329/0001-55 | São Paulo/SP | suporte@julienesalvan.com.br |{" "}
-          {"\n"}
-          Este produto não garante a obtenção de resultados. Qualquer estratégia mencionada neste site ou no produto não deve ser interpretada como uma promessa ou garantia de resultados. O seu nível de sucesso em atingir os resultados divulgados depende do seu tempo dedicado, dedicação, conhecimento e competência técnica. Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da FACEBOOK, Inc. A Hotmart é a plataforma que processa os pagamentos e distribui o produto digital. Ela não realiza o controle editorial prévio dos produtos comercializados, tampouco avalia a tecnicidade e experiência daqueles que os produzem.
-        </p>
-      </div>
-    </footer>
+        <div className="lesson-band">
+        <h2 className="lesson-intro" data-reveal data-entry="initial">Nesta aula, você vai entender como:</h2>
+        <ol className="lesson-benefits">
+          <li data-reveal data-entry="initial">Delegar sem assumir o trabalho da equipe.</li>
+          <li data-reveal data-entry="initial">Dar feedbacks difíceis com clareza e firmeza.</li>
+          <li data-reveal data-entry="initial">Estabelecer limites sem perder respeito e confiança.</li>
+        </ol>
+        </div>
+        <VslStage />
+        <div className="checkout-block" data-reveal>
+        <Button variant="checkout" size="natural" asChild>
+          <a href={checkoutUrl}>Conheça o VC_Líder</a>
+        </Button>
+        </div>
+      </section>
+    </main>
+    </div>
+    <MentorSection />
+    <AuthoritySection />
+    <MethodSection />
+    <TestimonialsSection />
+    <AudienceSection />
+    <FinalSections />
+    </>
   );
 }

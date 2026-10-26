@@ -1,0 +1,160 @@
+OTIMIZAÇÃO DE CARREGAMENTO MÓVEL — 2026-10-19
+Escopo: somente carregamento/performance. Nenhuma mudança de design, copy, pixels de foto,
+players, gestos ou fades dos braços. Publicação concluída por ROOT; medição pública final abaixo.
+
+=====================================================================
+FASE 1 — BASELINE PÚBLICO ATUAL (antes desta rodada)
+=====================================================================
+Configuração idêntica às rodadas anteriores: Lighthouse 12.8.2, Chromium 141, cache frio,
+mobile simulado slow 4G + CPU 4x; desktop preset padrão. URL pública vc-lider-nova-pagina.
+
+Mobile (2 execuções frias):
+  - Run 1: Performance 76 | FCP 3.281s | LCP 4.696s | TBT 20ms | CLS 0.018873 | 1.806.248 B (~1.764 KiB) | TTFB 384ms
+  - Run 2: Performance 75 | FCP 3.277s | LCP 4.961s | TBT 15ms | CLS 0.018873 | 1.806.247 B
+  (A leitura anterior de 8,36s/score 50 não se repetiu; duas execuções consistentes em 4,7–5,0s.)
+
+Desktop (1 execução fria):
+  - Performance 97 | FCP 0.863s | LCP 1.130s | TBT 0ms | CLS 0.000011 | 1.806.308 B
+
+Elemento LCP (mobile): foto da abertura (juliene-abertura-luz…webp, 288.864 B transferidos).
+A foto começa cedo e termina de baixar bem antes dos 4,7–5,0s do LCP — ou seja, o gargalo
+   há atraso de renderização relevante após o download; isso não prova uma causa única do LCP.
+
+Parte bloqueante comprovada (dados do Lighthouse; não atribuição exclusiva do LCP):
+  1. Cadeia render-blocking do Google Fonts: documento → CSS do app → CSS do
+     fonts.googleapis.com → WOFF2 em fonts.gstatic.com. O insight "render-blocking"
+     aponta o stylesheet do Google Fonts com wastedMs=774. São duas conexões extras
+     (DNS+TLS+latência) antes de qualquer pintura com as fontes finais.
+  2. Peso de rede das fontes remotas: Inter ~48 KB, DM Sans ~37 KB, Bodoni Moda ~17 KB.
+
+Causas investigadas e DESCARTADAS (não justificam patch):
+  - JavaScript/hidratação: TBT 15–20ms, avaliação de script 525ms, parse 15ms.
+    Code-splitting adicional não teria ganho mensurável → não feito (evita over-engineering).
+  - Animação de entrada da headline: é CSS finito desde o primeiro paint SSR; a foto da
+    abertura não tem animação de entrada. Nada depende de JS para o LCP. Mantida intacta.
+  - Thumb VSL (WebP lossless 1,09 MB): já era loading=lazy, mas o navegador a baixava cedo
+    pelo limiar padrão de lazy. Não provada como bloqueante do LCP, mas compete por rede.
+
+=====================================================================
+FASE 2 — O QUE FOI IMPLEMENTADO
+=====================================================================
+1. FONTES SELF-HOSTED (a correção principal)
+   - Instalados pacotes oficiais @fontsource (inter, dm-sans, bodoni-moda), subconjuntos
+     latin, exatamente os mesmos pesos já usados: Inter 500/600/700, DM Sans 400/500/600,
+     Bodoni Moda 700 itálico. Licenças OFL incluídas nos pacotes.
+   - src/styles.css: imports locais substituem a rede do Google; WOFF2 passam a ser servidos
+     da mesma origem com cache imutável. font-display: swap (padrão @fontsource) — a fonte
+     final é idêntica; não há fonte fallback permanente diferente.
+   - src/routes/__root.tsx: removidos preconnects e stylesheet do Google Fonts.
+   - Resultado medido no preview: 0 requisições a fonts.googleapis/gstatic; 7 WOFF2 locais;
+     document.fonts.check confirma as 5 combinações; computed styles idênticos
+     (h1: Inter 500; corpo: DM Sans).
+
+2. THUMB VSL com fetchPriority="low" (src/routes/index.tsx)
+   - Mantida loading=lazy + dimensões explícitas; prioridade baixa evita competir com a foto
+     LCP na rede. Nenhum placeholder ou mudança visual.
+
+3. PRELOAD DA FOTO DA ABERTURA — deixado com o framework
+   - Tentativa de preload manual em head() DUPLICOU o link no SSR (o TanStack Start já
+     gera automaticamente <link rel="preload" as="image" fetchpriority="high"> para a foto,
+     espelhando o fetchPriority do <img>). O manual foi removido; restou exatamente 1 preload
+     e 1 único download da foto (verificado por inspeção de rede; a 2ª "requisição" era só o
+     módulo .asset.json do ambiente dev, inexistente em produção).
+
+Não feito (com justificativa): code-splitting de seções abaixo da dobra (TBT já baixo),
+adiamento do HLS do Mentor (já carrega só no toque, play() síncrono no gesto — mexer nisso
+quebraria o 1-toque-com-som aprovado), Bunny API (já pré-carrega só a 600px da viewport),
+headers de cache/DNS (infra fora do escopo), telemetria (não solicitada).
+
+=====================================================================
+FASE 3 — VALIDAÇÃO (preview local; build OK; 37/37 testes)
+=====================================================================
+- Build de produção: OK. Suíte existente: 37/37 testes passam (inclui os 10 do player Bunny
+  e a regressão de pausa/retomada da VSL corrigida nesta mesma sessão).
+- Rede no preview: 0 chamadas ao Google Fonts; 7 WOFF2 same-origin; foto da abertura baixada
+  1 única vez; nenhum erro de console/página.
+- Computed styles: headline Inter 500 uppercase intacta; corpo DM Sans; Bodoni Moda itálico
+  presente. Tipografia visualmente idêntica à aprovada (screenshots 1440/390).
+- Viewports sem overflow horizontal: 1366×768, 768×1024, 390×844 (também 360/430 cobertos
+  pela mesma CSS já validada; overflow=0 em todos os testados).
+- Reduced motion: headline visível imediatamente (opacity 1, sem depender de animação).
+- Fades dos braços (desktop ≥1024px): preservados e visíveis nos screenshots 1440/1366.
+- Thumb VSL: loading=lazy + fetchPriority=low confirmados no DOM.
+- Limite conhecido mantido: Chromium do laboratório sem codec H.264 não confirma avanço de
+   currentTime/som dos vídeos; essa confirmação segue com ROOT Codex em navegador real.
+
+=====================================================================
+FASE 4 — MEDIÇÃO PÚBLICA FINAL APÓS PUBLICAÇÃO POR ROOT
+=====================================================================
+- URL: https://vc-lider-nova-pagina.lovable.app/ — 2026-10-19, aproximadamente 23:18 UTC.
+- ROOT informou commit dab154e0 / deploy 7ce401de concluído; esta rodada confirmou
+  o conteúdo servido e as fontes locais, sem inferir o hash do commit pelo HTML.
+- Lighthouse 12.8.2, Chrome for Testing 141.0.7390.122 (UA HeadlessChrome/141.0.0.0).
+  Mesmo major do baseline Chromium 141; patch/build exato anterior não registrado.
+  Browser/processo fresco por execução, cache do browser frio; CDN não purgado.
+  Mobile: simulate, RTT150ms/1638.4Kbps/CPU4x, 412×823/DPR1.75.
+  Desktop: preset desktop, simulate, RTT40ms/10240Kbps/CPU1x, 1350×940/DPR1.
+
+Resultados efetivamente coletados (não expectativa):
+                      Score  FCP(s)  LCP(s)  TBT(ms) CLS        Bytes      Requests
+  Mobile final 1       94    1.529   2.903   16      0          1.672.775  21
+  Mobile final 2       93    1.388   3.134   44      0          1.814.883  22
+  Desktop final        99    0.531   0.734   8       0.000249   1.836.673  21
+  TTFB audit server-response-time: mobile407.715/440.984ms; desktop270.492ms.
+
+Antes → depois (baseline desta otimização, não amostra histórica score50):
+  Mobile score75–76 → 93–94; FCP3.277–3.281s → 1.388–1.529s;
+  LCP4.696–4.961s → 2.903–3.134s; TBT15–20ms → 16–44ms;
+  CLS0.018873 → 0; bytes1.806.247–1.806.248 → 1.672.775–1.814.883.
+  Desktop score97 → 99; FCP0.863s → 0.531s; LCP1.130s → 0.734s;
+  TBT0ms → 8ms; CLS0.000011 → 0.000249; bytes1.806.308 → 1.836.673.
+  Contagem de requests do baseline desta otimização não preservada no relatório inicial;
+  não usar dados da publicação anterior como se fossem esse baseline.
+
+Limite importante: AMBAS as execuções mobile emitiram “The page loaded too slowly
+to finish within the time limit. Results may be incomplete.” Portanto score/TBT/bytes
+são resultados de coleta com aviso, NÃO validação móvel sem ressalvas. A primeira
+coleta deixou index JS com status -1/transferSize0 e algumas fontes incompletas;
+a segunda deixou Bodoni com status -1. Isso explica parte da variação de peso e
+impede declarar redução consistente de bytes. Nenhum runtimeError do Lighthouse.
+Desktop sem esse aviso. TBT subiu levemente; CLS desktop subiu 0.000238 absoluto,
+ainda muito baixo. Melhora FCP/LCP observada nas duas amostras, não garantia CWV.
+
+LCP continua sendo a mesma foto original da abertura, transferida uma vez por coleta.
+  Breakdown SIMULADO mobile1: TTFB689ms, loadDelay637ms, loadTime270ms, renderDelay1308ms.
+  Breakdown SIMULADO mobile2: TTFB695ms, loadDelay1225ms, loadTime447ms, renderDelay767ms.
+  Insight de trace NÃO THROTTLED, separado desses valores:
+    mobile1 TTFB439ms/loadDelay26ms/loadTime99ms/renderDelay462ms;
+    mobile2 TTFB467ms/loadDelay20ms/loadTime116ms/renderDelay195ms.
+  A remoção da cadeia Google é comprovada; não se atribui toda melhora ou todo atraso
+  residual apenas às fontes. Não houve patch adicional de preload/subset/font-swap.
+
+Confirmações públicas:
+  - Google Fonts: ZERO requests a fonts.googleapis.com/fonts.gstatic.com nas três coletas
+    e no navegador público independente.
+  - SETE WOFF2 da mesma origem nas três coletas. No navegador independente todos os sete
+    responderam HTTP200, assim como index JS; Inter computado e foto naturalWidth900.
+  - O player pode carregar fonte Rubik própria de fonts.bunny.net quando montado;
+    isso não é Google Fonts nem uma oitava fonte local da página.
+  - Headline de seis linhas intacta, sem overflow horizontal no viewport1280×1800;
+    captura da composição preserva foto, legenda e fades. Zero pageerrors nessa visita.
+  - Houve requests de diagnóstico Bunny abortados e um DNS failure de edgezone-co;
+    sem alteração do player e sem extrapolar essa visita para playback/som confirmado.
+  - Fetch auxiliar fora do navegador recebeu403; não tratado como falha do asset,
+    pois a checagem no navegador confirmou200 para fontes/script.
+
+Evidências duráveis: qa/performance-2026-10-19/final-public/ (3 JSON Lighthouse brutos,
+public-check.json e opening.png). Baseline bruto desta otimização estava em /tmp/browser/perf
+na sessão anterior e não persistiu; valores acima vêm do registro original deste relatório.
+
+Conclusão: etapa final de medição pública executada; melhora FCP/LCP observada com
+ressalva de timeout nas duas coletas mobile. Não há piora significativa comprovada que
+justifique novo patch. Nenhum código/design/player foi alterado nesta etapa e os 37 testes
+anteriores não foram repetidos. Não foi aberto checkout nem republicado.
+ROOT Codex realiza os testes em navegador real; isso NÃO equivale a teste em celulares
+físicos iPhone/Android, som físico ou dados CrUX/CWV. Os limites de codec anteriores
+permanecem; playback não foi reensaiado nesta rodada.
+
+Arquivos alterados nesta rodada: src/styles.css (imports de fontes), src/routes/__root.tsx
+(remoção dos links remotos), src/routes/index.tsx (fetchPriority da thumb; preload manual
+adicionado e depois removido por duplicar o do framework).

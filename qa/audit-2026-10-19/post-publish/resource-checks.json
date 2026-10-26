@@ -1,0 +1,96 @@
+{
+  "shareImages": [
+    {
+      "url": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/7078c20077e5b48d1b74141a68ce0b8e_1792443251925.png",
+      "status": 200,
+      "bytes": 903538,
+      "type": "image/png",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "url": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/efbea7a9671bb89e36735d09d531e194_1792440419455.png",
+      "status": 200,
+      "bytes": 902453,
+      "type": "image/png",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "first10": [
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/",
+      "status": 200,
+      "bytes": 57499,
+      "cacheControl": "no-cache, must-revalidate, max-age=0",
+      "ttfbSeconds": 0.317211
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+      "status": 200,
+      "bytes": 34111,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.089328
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+      "status": 200,
+      "bytes": 288198,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.159383
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+      "status": 200,
+      "bytes": 111488,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.159959
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+      "status": 200,
+      "bytes": 1643,
+      "cacheControl": "private, max-age=86400",
+      "ttfbSeconds": 0.025787
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+      "status": 200,
+      "bytes": 340217,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.179947
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+      "status": 200,
+      "bytes": 89578,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.274249
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+      "status": 200,
+      "bytes": 21296,
+      "cacheControl": "max-age=1500",
+      "ttfbSeconds": 0.088994
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+      "status": 200,
+      "bytes": 25429,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.062159
+    },
+    {
+      "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+      "status": 200,
+      "bytes": 26476,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "ttfbSeconds": 0.150418
+    }
+  ]
+}

@@ -7,14 +7,13 @@ import {
   HeadContent,
   Scripts,
   type ErrorComponentProps,
-  type NotFoundRouteProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
-function NotFoundComponent(_props: NotFoundRouteProps) {
+function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -75,42 +74,29 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "VC_Líder" },
+      { name: "description", content: "Liderança de verdade com Juliene Salvan." },
       { name: "author", content: "Juliene Salvan" },
+      { property: "og:title", content: "VC_Líder" },
+      { property: "og:description", content: "Liderança de verdade com Juliene Salvan." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
-      // Web fonts load without blocking first paint: media="print" keeps the
-      // request off the critical path, the inline script below promotes it to
-      // media="all" as soon as it finishes. font-display=swap keeps text visible.
-      {
-        id: "gfonts",
         rel: "stylesheet",
-        media: "print",
-        href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital@1&display=swap",
+        href: appCss,
       },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
       {
         children:
           "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K3WVTMJ7');",
-      },
-      {
-        children:
-          "(function(){var l=document.getElementById('gfonts');if(!l)return;var s=function(){l.media='all'};if(l.sheet){s()}else{l.addEventListener('load',s)}})();",
       },
     ],
   }),

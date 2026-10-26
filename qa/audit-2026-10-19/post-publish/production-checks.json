@@ -1,0 +1,1515 @@
+{
+  "browser": "141.0.7390.37",
+  "profiles": [
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "nav": {
+          "name": "https://vc-lider-nova-pagina.lovable.app/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 718,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.1999999999825377,
+          "domainLookupStart": 4.100000000005821,
+          "domainLookupEnd": 14.699999999982538,
+          "connectStart": 14.699999999982538,
+          "secureConnectionStart": 20.5,
+          "connectEnd": 55,
+          "requestStart": 56.10000000000582,
+          "responseStart": 313.6000000000058,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 313.6000000000058,
+          "responseEnd": 318.79999999998836,
+          "transferSize": 16031,
+          "encodedBodySize": 15731,
+          "decodedBodySize": 57499,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 644,
+          "domContentLoadedEventStart": 649.1999999999825,
+          "domContentLoadedEventEnd": 649.1999999999825,
+          "domComplete": 717.6999999999825,
+          "loadEventStart": 718,
+          "loadEventEnd": 718,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null
+        },
+        "resources": [
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+            "startTime": 325.69999999998254,
+            "duration": 211.40000000002328,
+            "transferSize": 34411,
+            "encodedBodySize": 34111
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+            "startTime": 326,
+            "duration": 191.29999999998836,
+            "transferSize": 288498,
+            "encodedBodySize": 288198
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+            "startTime": 326.19999999998254,
+            "duration": 139.70000000001164,
+            "transferSize": 20029,
+            "encodedBodySize": 19729
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+            "startTime": 326.29999999998836,
+            "duration": 17.89999999999418,
+            "transferSize": 2095,
+            "encodedBodySize": 1795
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+            "startTime": 326.3999999999942,
+            "duration": 178.60000000000582,
+            "transferSize": 107879,
+            "encodedBodySize": 107579
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+            "startTime": 326.5,
+            "duration": 175.60000000000582,
+            "transferSize": 27029,
+            "encodedBodySize": 26729
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+            "startTime": 326.69999999998254,
+            "duration": 58.60000000000582,
+            "transferSize": 10622,
+            "encodedBodySize": 10322
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+            "startTime": 326.69999999998254,
+            "duration": 83.20000000001164,
+            "transferSize": 8629,
+            "encodedBodySize": 8329
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+            "startTime": 326.8999999999942,
+            "duration": 184.60000000000582,
+            "transferSize": 26776,
+            "encodedBodySize": 26476
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+            "startTime": 487.3999999999942,
+            "duration": 88,
+            "transferSize": 57068,
+            "encodedBodySize": 56768
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+            "startTime": 629,
+            "duration": 107.19999999998254,
+            "transferSize": 1727670,
+            "encodedBodySize": 1727370
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/97a5bd69-6911-413d-b22e-5540a8bad1e2/autoridade-v2-1.webp",
+            "startTime": 629,
+            "duration": 220.39999999999418,
+            "transferSize": 176854,
+            "encodedBodySize": 176554
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ddf9485c-2e53-46aa-bee3-e03aa769c44f/autoridade-v2-2.webp",
+            "startTime": 629.1999999999825,
+            "duration": 109.40000000002328,
+            "transferSize": 228406,
+            "encodedBodySize": 228106
+          },
+          {
+            "name": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+            "startTime": 803.7999999999884,
+            "duration": 44.20000000001164,
+            "transferSize": 0,
+            "encodedBodySize": 0
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+            "startTime": 899.5,
+            "duration": 52.39999999999418,
+            "transferSize": 317,
+            "encodedBodySize": 17
+          }
+        ],
+        "preloads": [
+          "<link rel=\"preload\" as=\"image\" href=\"/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png\">",
+          "<link rel=\"preload\" as=\"image\" href=\"/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp\" fetchpriority=\"high\">"
+        ],
+        "h1": 1,
+        "lines": 6,
+        "codec": ""
+      },
+      "warm": {
+        "nav": {
+          "name": "https://vc-lider-nova-pagina.lovable.app/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 222.79999999998836,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.29999999998835847,
+          "domainLookupStart": 0.29999999998835847,
+          "domainLookupEnd": 0.29999999998835847,
+          "connectStart": 0.29999999998835847,
+          "secureConnectionStart": 0.29999999998835847,
+          "connectEnd": 0.29999999998835847,
+          "requestStart": 1.3999999999941792,
+          "responseStart": 149.29999999998836,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 149.29999999998836,
+          "responseEnd": 153,
+          "transferSize": 16142,
+          "encodedBodySize": 15842,
+          "decodedBodySize": 57499,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 158.19999999998254,
+          "unloadEventEnd": 158.19999999998254,
+          "domInteractive": 206.5,
+          "domContentLoadedEventStart": 210.19999999998254,
+          "domContentLoadedEventEnd": 210.29999999998836,
+          "domComplete": 222.79999999998836,
+          "loadEventStart": 222.79999999998836,
+          "loadEventEnd": 222.79999999998836,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null
+        },
+        "resources": [
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 34111
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 288198
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 19729
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 1795
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 107579
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 26729
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 8329
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 10322
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 26476
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 1727370
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/97a5bd69-6911-413d-b22e-5540a8bad1e2/autoridade-v2-1.webp",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 176554
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ddf9485c-2e53-46aa-bee3-e03aa769c44f/autoridade-v2-2.webp",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 228106
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 17028
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 36932
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 48256
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+            "duration": 1.900000000023283,
+            "transferSize": 0,
+            "encodedBodySize": 56768
+          },
+          {
+            "name": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 0
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+            "duration": 48.60000000000582,
+            "transferSize": 317,
+            "encodedBodySize": 17
+          }
+        ]
+      },
+      "headline": "UM ECOSSISTEMA DE\nDESENVOLVIMENTO QUE VAI\nALÉM DAS VIDEOAULAS",
+      "faqCount": 13,
+      "faq": [
+        {
+          "index": 0,
+          "before": "true",
+          "afterEnter": "false",
+          "afterSpace": "true"
+        },
+        {
+          "index": 1,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 2,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 3,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 4,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 5,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 6,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 7,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 8,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 9,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 10,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 11,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 12,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        }
+      ],
+      "modalOpened": "open",
+      "modalClosed": {
+        "state": "closed",
+        "htmlOverflow": "",
+        "bodyOverflow": "",
+        "focus": "Assistir à demonstração do Mentor Digital",
+        "wheelDelta": 350
+      },
+      "headerVisible": true,
+      "headerTarget": {
+        "x": 223.609375,
+        "y": 11,
+        "width": 143,
+        "height": 42
+      },
+      "geometry": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "images": [],
+        "mentorToggle": {
+          "x": 239.609375,
+          "y": -18776.90625,
+          "width": 125,
+          "height": 36
+        }
+      },
+      "returnedTop": 0,
+      "pageErrors": [],
+      "responses": [
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ddf9485c-2e53-46aa-bee3-e03aa769c44f/autoridade-v2-2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/97a5bd69-6911-413d-b22e-5540a8bad1e2/autoridade-v2-1.webp",
+          "status": 200
+        },
+        {
+          "url": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/97a5bd69-6911-413d-b22e-5540a8bad1e2/autoridade-v2-1.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ddf9485c-2e53-46aa-bee3-e03aa769c44f/autoridade-v2-2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/c1e99ce6-e00e-464f-9717-a7282633e56a/thumbnail_612c26b7.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268?autoplay=true&loop=false&muted=true&preload=true&responsive=true&playsinline=true",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.mp4",
+          "status": 206
+        },
+        {
+          "url": "https://player.mediadelivery.net/assets/1.3.35/player.es.css",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.bunny.net/css?family=Rubik",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/hls-BhcDaTqf.js",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/assets/1.3.35/player.es.js",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.bunny.net/rubik/files/rubik-latin-400-normal.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/13a84ecf-2674-49b0-b786-65b225163483/autoridade-v2-3.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/156c7e91-bde4-4ba7-b91c-3830a4f39268/thumbnail_3d46a398.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/c1e99ce6-e00e-464f-9717-a7282633e56a/playlist.m3u8",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/156c7e91-bde4-4ba7-b91c-3830a4f39268/playlist.m3u8",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/video/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268/thumbnails.vtt?referer=https%3A%2F%2Fvc-lider-nova-pagina.lovable.app%2F",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/58b03b02-04e8-4fe9-aeda-5bd5dfbbc9ef/autoridade-v2-4.webp",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-rj.bunnyinfra.net/500b.jpg?s=1792445137034",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/cb3a214c-8084-495b-ab18-456685ef3ee8/depoimento-1.webp",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-rj.bunnyinfra.net/500b.jpg?s=1792445137034",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/320555d1-7c26-402a-a84b-879b5d657a97/depoimento-2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=rj&latency=209",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ee16963b-d80f-410d-8ec3-83fb4e53a9e5/depoimento-3.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/fa829673-f686-4ce2-9485-a41baff5c825/depoimento-4.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-ri.bunnyinfra.net/500b.jpg?s=1792445138393",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-ri.bunnyinfra.net/500b.jpg?s=1792445138393",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=ri&latency=95",
+          "status": 200
+        },
+        {
+          "url": "https://metrics-bunny.net/test/register",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-sil.bunnyinfra.net/500b.jpg?s=1792445139304",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-sil.bunnyinfra.net/500b.jpg?s=1792445139304",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=sil&latency=167",
+          "status": 200
+        },
+        {
+          "url": "https://ba262872.metrics-bunny.net/test/hello",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-mel.bunnyinfra.net/500b.jpg?s=1792445140485",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-mel.bunnyinfra.net/500b.jpg?s=1792445140485",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=mel&latency=344",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-bd.bunnyinfra.net/500b.jpg?s=1792445142644",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-bd.bunnyinfra.net/500b.jpg?s=1792445142644",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=bd&latency=212",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-de.bunnyinfra.net/500b.jpg?s=1792445144012",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-de.bunnyinfra.net/500b.jpg?s=1792445144012",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=de&latency=12",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://edgezone-np.bunnyinfra.net/500b.jpg?s=1792445144581",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-np.bunnyinfra.net/500b.jpg?s=1792445144581",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=np&latency=198",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "initial": {
+        "nav": {
+          "name": "https://vc-lider-nova-pagina.lovable.app/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 820.0999999999767,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0,
+          "domainLookupStart": 1.3999999999941792,
+          "domainLookupEnd": 13.199999999982538,
+          "connectStart": 13.199999999982538,
+          "secureConnectionStart": 20.199999999982538,
+          "connectEnd": 29.699999999982538,
+          "requestStart": 29.79999999998836,
+          "responseStart": 443.5,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 443.5,
+          "responseEnd": 446.29999999998836,
+          "transferSize": 15996,
+          "encodedBodySize": 15696,
+          "decodedBodySize": 57499,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 717.2999999999884,
+          "domContentLoadedEventStart": 722.8999999999942,
+          "domContentLoadedEventEnd": 723,
+          "domComplete": 820.0999999999767,
+          "loadEventStart": 820.0999999999767,
+          "loadEventEnd": 820.0999999999767,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null
+        },
+        "resources": [
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+            "startTime": 453.19999999998254,
+            "duration": 79.70000000001164,
+            "transferSize": 34411,
+            "encodedBodySize": 34111
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+            "startTime": 453.3999999999942,
+            "duration": 92,
+            "transferSize": 288498,
+            "encodedBodySize": 288198
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+            "startTime": 453.5,
+            "duration": 99,
+            "transferSize": 20029,
+            "encodedBodySize": 19729
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+            "startTime": 453.5999999999767,
+            "duration": 31.800000000017462,
+            "transferSize": 2095,
+            "encodedBodySize": 1795
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+            "startTime": 453.69999999998254,
+            "duration": 124,
+            "transferSize": 107879,
+            "encodedBodySize": 107579
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+            "startTime": 453.79999999998836,
+            "duration": 71.89999999999418,
+            "transferSize": 8629,
+            "encodedBodySize": 8329
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+            "startTime": 453.79999999998836,
+            "duration": 603.6000000000058,
+            "transferSize": 27029,
+            "encodedBodySize": 26729
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+            "startTime": 453.8999999999942,
+            "duration": 56.60000000000582,
+            "transferSize": 10622,
+            "encodedBodySize": 10322
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+            "startTime": 454,
+            "duration": 76.19999999998254,
+            "transferSize": 26776,
+            "encodedBodySize": 26476
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+            "startTime": 579.3999999999942,
+            "duration": 67.19999999998254,
+            "transferSize": 57068,
+            "encodedBodySize": 56768
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+            "startTime": 701.7999999999884,
+            "duration": 100,
+            "transferSize": 1727670,
+            "encodedBodySize": 1727370
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+            "startTime": 977,
+            "duration": 51.39999999999418,
+            "transferSize": 317,
+            "encodedBodySize": 17
+          },
+          {
+            "name": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+            "startTime": 1148,
+            "duration": 58.5,
+            "transferSize": 0,
+            "encodedBodySize": 0
+          }
+        ],
+        "preloads": [
+          "<link rel=\"preload\" as=\"image\" href=\"/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png\">",
+          "<link rel=\"preload\" as=\"image\" href=\"/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp\" fetchpriority=\"high\">"
+        ],
+        "h1": 1,
+        "lines": 6,
+        "codec": ""
+      },
+      "warm": {
+        "nav": {
+          "name": "https://vc-lider-nova-pagina.lovable.app/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 315.1000000000058,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.39999999999417923,
+          "domainLookupStart": 0.39999999999417923,
+          "domainLookupEnd": 0.39999999999417923,
+          "connectStart": 0.39999999999417923,
+          "secureConnectionStart": 0.39999999999417923,
+          "connectEnd": 0.39999999999417923,
+          "requestStart": 1.5,
+          "responseStart": 249.5,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 249.5,
+          "responseEnd": 252,
+          "transferSize": 16140,
+          "encodedBodySize": 15840,
+          "decodedBodySize": 57499,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 255.69999999998254,
+          "unloadEventEnd": 255.69999999998254,
+          "domInteractive": 268.69999999998254,
+          "domContentLoadedEventStart": 272.1000000000058,
+          "domContentLoadedEventEnd": 272.1000000000058,
+          "domComplete": 315.1000000000058,
+          "loadEventStart": 315.1000000000058,
+          "loadEventEnd": 315.1000000000058,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null
+        },
+        "resources": [
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 34111
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 288198
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 19729
+          },
+          {
+            "name": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 1795
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 107579
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 26729
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 8329
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 10322
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 26476
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 1727370
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 17028
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 36932
+          },
+          {
+            "name": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 48256
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+            "duration": 1.7999999999883585,
+            "transferSize": 0,
+            "encodedBodySize": 56768
+          },
+          {
+            "name": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+            "duration": 0,
+            "transferSize": 0,
+            "encodedBodySize": 0
+          },
+          {
+            "name": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+            "duration": 55.09999999997672,
+            "transferSize": 317,
+            "encodedBodySize": 17
+          }
+        ]
+      },
+      "headline": "UM ECOSSISTEMA DE\nDESENVOLVIMENTO QUE VAI\nALÉM DAS VIDEOAULAS",
+      "faqCount": 13,
+      "faq": [
+        {
+          "index": 0,
+          "before": "true",
+          "afterEnter": "false",
+          "afterSpace": "true"
+        },
+        {
+          "index": 1,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 2,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 3,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 4,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 5,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 6,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 7,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 8,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 9,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 10,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 11,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        },
+        {
+          "index": 12,
+          "before": "false",
+          "afterEnter": "true",
+          "afterSpace": "false"
+        }
+      ],
+      "modalOpened": "open",
+      "modalClosed": {
+        "state": "closed",
+        "htmlOverflow": "",
+        "bodyOverflow": "",
+        "focus": "Assistir à demonstração do Mentor Digital",
+        "wheelDelta": 350
+      },
+      "headerVisible": true,
+      "headerTarget": {
+        "x": 1169.8125,
+        "y": 14,
+        "width": 191,
+        "height": 44
+      },
+      "geometry": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "images": [],
+        "mentorToggle": {
+          "x": 912.1875,
+          "y": -11715.09375,
+          "width": 125,
+          "height": 36
+        }
+      },
+      "returnedTop": 0,
+      "pageErrors": [],
+      "responses": [
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+          "status": 200
+        },
+        {
+          "url": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/033e5166-19c1-40aa-9944-c741e3cd8834/logotipo-vc-lider-sem-circulo.png",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d656eb5d-ce39-4b3e-87c3-9a57d171913a/juliene-abertura-luz-v2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/styles-DJDUV1WB.css",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@500;600;700&family=Bodoni+Moda:ital,wght@1,700&display=swap",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/index-DCm1mXiP.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/routes-8PXwiA_H.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/~flock.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/events.4d3abd1f6b7321c2.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/d3152178-6436-4ed3-a37e-e0464ce0f117/mentor-poster-v2.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/f483f47c-9a8c-4818-80d7-dfc064ff965d/thumb-aprovada.png",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bodonimoda/v28/aFT07PxzY382XsXX63LUYJSPUqb0pL6OQqxrZLnVbvZedvJtj-V7tIaZz8RItnDI.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ddf9485c-2e53-46aa-bee3-e03aa769c44f/autoridade-v2-2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/13a84ecf-2674-49b0-b786-65b225163483/autoridade-v2-3.webp",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/embed/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268?autoplay=true&loop=false&muted=true&preload=true&responsive=true&playsinline=true",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/97a5bd69-6911-413d-b22e-5540a8bad1e2/autoridade-v2-1.webp",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/assets/1.3.35/player.es.css",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/58b03b02-04e8-4fe9-aeda-5bd5dfbbc9ef/autoridade-v2-4.webp",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.bunny.net/css?family=Rubik",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/assets/1.3.35/player.es.js",
+          "status": 200
+        },
+        {
+          "url": "https://fonts.bunny.net/rubik/files/rubik-latin-400-normal.woff2",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/c1e99ce6-e00e-464f-9717-a7282633e56a/thumbnail_612c26b7.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/156c7e91-bde4-4ba7-b91c-3830a4f39268/thumbnail_3d46a398.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/assets/hls-BhcDaTqf.js",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/156c7e91-bde4-4ba7-b91c-3830a4f39268/playlist.m3u8",
+          "status": 200
+        },
+        {
+          "url": "https://player.mediadelivery.net/video/750581/156c7e91-bde4-4ba7-b91c-3830a4f39268/thumbnails.vtt?referer=https%3A%2F%2Fvc-lider-nova-pagina.lovable.app%2F",
+          "status": 200
+        },
+        {
+          "url": "https://vz-ebceff4e-b8a.b-cdn.net/c1e99ce6-e00e-464f-9717-a7282633e56a/playlist.m3u8",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/306dbf4c-a4ca-4534-bf1a-754cc6ebdca8/mentor-loop-v2.mp4",
+          "status": 206
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/fa829673-f686-4ce2-9485-a41baff5c825/depoimento-4.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/cb3a214c-8084-495b-ab18-456685ef3ee8/depoimento-1.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/ee16963b-d80f-410d-8ec3-83fb4e53a9e5/depoimento-3.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/320555d1-7c26-402a-a84b-879b5d657a97/depoimento-2.webp",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/assets-v1/8c09405c-68d5-4aff-940e-ba57923e129d/ecossistema-vc-lider.webp",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-adl.bunnyinfra.net/500b.jpg?s=1792445152246",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-adl.bunnyinfra.net/500b.jpg?s=1792445152246",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=adl&latency=345",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1792445154144",
+          "status": 200
+        },
+        {
+          "url": "https://metrics-bunny.net/test/register",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1792445154144",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=es&latency=36",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-tx.bunnyinfra.net/500b.jpg?s=1792445154814",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-tx.bunnyinfra.net/500b.jpg?s=1792445154814",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=tx&latency=124",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-mn.bunnyinfra.net/500b.jpg?s=1792445155830",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-mn.bunnyinfra.net/500b.jpg?s=1792445155830",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=mn&latency=93",
+          "status": 200
+        },
+        {
+          "url": "https://9d776874.metrics-bunny.net/test/hello",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-be.bunnyinfra.net/500b.jpg?s=1792445156726",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-be.bunnyinfra.net/500b.jpg?s=1792445156726",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=be&latency=11",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-hi.bunnyinfra.net/500b.jpg?s=1792445157292",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-hi.bunnyinfra.net/500b.jpg?s=1792445157292",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=hi&latency=198",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-ie.bunnyinfra.net/500b.jpg?s=1792445158608",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-ie.bunnyinfra.net/500b.jpg?s=1792445158608",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=ie&latency=24",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-th.bunnyinfra.net/500b.jpg?s=1792445159235",
+          "status": 200
+        },
+        {
+          "url": "https://edgezone-th.bunnyinfra.net/500b.jpg?s=1792445159235",
+          "status": 200
+        },
+        {
+          "url": "https://rum-metrics.bunny.net/trackperformance?zone=th&latency=198",
+          "status": 200
+        },
+        {
+          "url": "https://vc-lider-nova-pagina.lovable.app/__l5e/trackevents",
+          "status": 202
+        },
+        {
+          "url": "https://edgezone-syd.bunnyinfra.net/500b.jpg?s=1792445160547",
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

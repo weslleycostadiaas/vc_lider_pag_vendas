@@ -1,0 +1,218 @@
+AUDITORIA VC_LÍDER — NOVA PÁGINA DE VENDAS — 2026-10-19 (UTC)
+=================================================================
+
+0. CORREÇÃO DE COPY
+- Headline do Ecossistema: "vídeo-aulas" -> "videoaulas". Exibe em caixa alta: "UM ECOSSISTEMA DE DESENVOLVIMENTO QUE VAI ALÉM DAS VIDEOAULAS". Nenhum outro texto foi alterado.
+
+1. METODOLOGIA E FERRAMENTAS
+- Build de produção: vite build (TanStack Start/nitro) -> OK. Bundle: index 333KB, routes 88KB e hls.js 562KB sem compressão. O hls.js é carregado sob demanda, apenas perto da seção Mentor. CSS: 109KB.
+- Testes existentes (vitest): 11 arquivos, 32/32 passaram, antes e depois das correções.
+- Lighthouse 12.8.2 com Chromium 141.0.7390.37 headless (Playwright). Esse build NÃO tem codec H.264 proprietário, e não há Google Chrome com codec instalado neste ambiente.
+  - Alvo: URL PUBLICADA https://vc-lider-nova-pagina.lovable.app/. É a versão publicada anteriormente e ainda não inclui as correções de hoje.
+  - Mobile: throttling simulado (4G lento, CPU 4x). Desktop: preset desktop (CPU 1x).
+  - Execução única, cache frio. Não houve medição com cache quente. São números de laboratório, não Core Web Vitals reais.
+- Não foi possível rodar uma prévia local do build de produção: o servidor do Workers não sobe no Node daqui. Por isso não há Lighthouse local, e os testes funcionais rodaram no servidor de desenvolvimento.
+- Testes funcionais: Playwright com Chromium (touch/mobile emulado abaixo de 1024px e mouse/wheel a partir de 1024px) e WebKit (Playwright). axe-core 4.10.2 com regras WCAG 2 A/AA.
+
+2. LIGHTHOUSE (PRODUÇÃO PUBLICADA, ANTES DAS CORREÇÕES)
+                 Perf  A11y  BP   SEO  FCP    LCP    TBT    CLS    SI     TTFB    Peso
+  Mobile          60    96   100  100  3.5s   16.4s  240ms  0.019  5.3s   500ms   2852KiB
+  Desktop         82    96   100  100  0.9s   2.9s   0ms    0      1.4s   330ms   2852KiB
+- Elemento de LCP: a foto da Juliene na abertura (289KB).
+- Requisições: 19, nenhuma 4xx ou 5xx.
+- Maiores arquivos: capa da VSL (PNG, 1.73MB, prioridade alta, baixada já na primeira tela), capa da demo do Mentor (JPG da Bunny, 477KB, baixada no carregamento mesmo com o modal fechado), foto da abertura (289KB), JS (108KB) e imagem do ecossistema (57KB).
+- O stream da VSL e o HLS do Mentor NÃO carregam na primeira tela; apenas o playerjs, de 5KB. O preview mentor-loop-v2 usa preload="none" e só carrega perto da seção.
+
+3. BUGS ENCONTRADOS E CORRIGIDOS (menor patch possível)
+B1 Desempenho: a capa da VSL (1.7MB) competia com a foto (LCP) logo no início do carregamento.
+   Correção: em src/routes/index.tsx, fetchPriority="high" foi trocado por loading="lazy" decoding="async". O arquivo, as dimensões e o visual são os mesmos.
+B2 Desempenho: a capa da demonstração do Mentor (477KB) era baixada com o modal fechado.
+   Correção: em src/components/mentor-section.tsx, o poster só é aplicado quando a seção chega perto da tela (loaded). O elemento de vídeo continua estável, e o teste do toque único passou.
+B3 Funcional (desktop, reproduzido em 1440x900): o cabeçalho fixo ficava POR CIMA do depoimento ampliado. O botão X ficava inclicável, e clicar no fundo perto do topo também não fechava.
+   Correção: em src/styles.css, o z-index de .testimonial-lightbox passou de 60 para 110.
+   Revalidado: 4 depoimentos abertos e fechados por Escape, X e fundo, com foco preso, foco restaurado, rolagem liberada e posição mantida, em 390 e em 1440.
+Hipótese inicial corrigida pela remedição da seção 12: a redução de 2.2MB NÃO se confirmou. O browser ainda antecipa a capa lazy; a redução medida foi de aproximadamente 465KiB.
+
+4. MATRIZ DE RESPONSIVIDADE (Chromium, dev server)
+Tamanhos testados: 320x568, 360x800, 375x812, 390x844, 412x915, 430x932, 768x1024, 820x1180, 1024x768, 1280x800, 1366x768, 1440x900, 1920x1080 e 844x390 (celular deitado). Os 1024x768 da lista cobrem também o tablet deitado.
+- Em TODOS os tamanhos:
+  - não há rolagem lateral (scrollWidth = clientWidth);
+  - a headline da abertura fica em 6 linhas;
+  - há 1 único H1;
+  - nenhuma imagem quebrada;
+  - nenhuma resposta 4xx;
+  - nenhum erro de página (pageerror);
+  - a rolagem chega até o rodapé e volta ao topo (scrollY 0).
+- Elementos que passam da largura: apenas o retrato da abertura, que é cortado pela própria seção (comportamento aprovado: a roupa pode sobrepor). Não gera rolagem.
+- Headline M.A.P.A.: 3 linhas em todos os celulares e 2 linhas a partir de 768px, como no desenho aprovado para telas maiores.
+- Legenda "Juliene Salvan": em creme claro, cerca de 17-37px acima da base da foto, sempre dentro da tela.
+- Oferta: "R$ 949,00 à vista" (",00" menor) e "12x de R$ 98,15", com o CTA centralizado. Rodapé: texto legal em 12px com opacidade 0.8.
+- Celular deitado (844x390): a headline começa abaixo da primeira tela, por causa da proporção do retrato. É uma observação, não um bug; não foi alterado.
+- Requisições abortadas (ERR_ABORTED: loop do Mentor ao fechar a aba, telemetria RUM da Bunny e coletor de erros do preview) e um ERR_NAME_NOT_RESOLVED ocasional vêm de telemetria de terceiros e do encerramento dos testes. Não afetam o conteúdo.
+
+5. COMPORTAMENTO (390 touch e 1440 mouse)
+- Links:
+  - os 3 CTAs apontam exatamente para https://pay.hotmart.com/T105324426S?checkoutMode=10;
+  - os 2 mailto apontam para suporte@julienesalvan.com.br;
+  - nenhum link usa target=_blank, então noopener não se aplica;
+  - não há conteúdo misto (http);
+  - não foi encontrado segredo no código do cliente.
+- Cabeçalho fixo: aparece fixo no topo após a abertura.
+- VSL: monta só quando fica visível, com URL muted=true. O botão "Ativar som" apareceu em 390. Em 1440 a reprodução não começou neste Chromium sem codec, então o botão não apareceu. O som com um toque, sem reiniciar o vídeo, NÃO foi confirmado.
+- Mentor (3 ciclos: Escape, X e fundo):
+  - o toque abre o modal já com muted=false e volume=1;
+  - não houve erro de play;
+  - o vídeo NÃO avançou: currentTime ficou em 0 após 4s (falta de codec H.264 neste Chromium; não é um bug comprovado);
+  - a rolagem fica travada só com o modal aberto e é liberada ao fechar;
+  - o foco volta ao botão, e a posição da página é mantida.
+- Depoimentos: os 4 ciclos passaram após a correção B3. As imagens têm 1696px (naturalWidth).
+- FAQ: 13 perguntas, a primeira aberta. Abrem e fecham com Enter e Space, cada uma de forma independente.
+- Animação reduzida (prefers-reduced-motion): nenhum texto fica invisível após rolar até o fim.
+- Zoom de 200% (640px CSS): sem rolagem lateral.
+
+6. ACESSIBILIDADE (axe, WCAG 2 AA)
+- Única violação: color-contrast (grave) em 5 elementos. O texto branco sobre o laranja da marca #CC5C24 tem contraste de 4.09:1, abaixo do mínimo de 4.5:1 para texto normal. Aparece nos CTAs (cabeçalho e abertura) e nos textos dos painéis laranja do M.A.P.A. Por ser a cor aprovada da marca, NÃO foi alterada. Recomendação: escurecer o laranja de fundo dos botões para cerca de #B8501C, ou usar texto de 18.66px em negrito. Decisão da cliente.
+- Foco visível: os botões e links principais têm contorno de 2-3px. Ao tabular, o iframe da VSL recebe foco sem contorno próprio, porque é da Bunny.
+- Áreas de toque menores que 44px:
+  - CTA do cabeçalho no celular: 143x42;
+  - botão "Pausar animação": 125x36.
+  São diferenças pequenas. Recomendação opcional, não aplicada.
+- SEO: title, description, og:title, og:description, og:type e twitter:card presentes; robots permite indexação, Lighthouse SEO100. CORREÇÃO: a hospedagem injeta og:image/twitter:image absolutos no HTML público; a afirmação anterior de ausência estava errada. Canonical ausente. Sem dados estruturados de FAQ inventados.
+
+7. CHECKOUT (somente leitura, sem preencher nada)
+- O link abriu a Hotmart com o produto "VC_Líder | Metodologia M.A.P.A." (SDA Educação e Desenvolvimento LTDA).
+- Este ambiente é identificado como estando na Holanda, então o preço apareceu como €226,27 (com IVA), não em BRL. NÃO foi possível confirmar R$ 949 / 12x R$ 98,15. Isso precisa ser conferido a partir do Brasil.
+- O banner do checkout usa uma foto antiga da Juliene. É externo e não foi alterado.
+
+8. SAFARI / WEBKIT
+- WebKit do Playwright (390x844): a página carrega, sem rolagem lateral e com a headline em 6 blocos. Esta versão de WebKit não reproduz HLS nativo (canPlayType vazio).
+- No teste longo de comportamento, o WebKit travou ("Target crashed"), um problema conhecido do WebKit para Linux. NÃO equivale a um iPhone real.
+
+9. LIMITES
+- Os testes usam emulação, não aparelhos reais.
+- As métricas são de laboratório, não de usuários reais (CrUX/Core Web Vitals).
+- Não há codec H.264 aqui, então o áudio e o avanço dos dois vídeos não foram confirmados.
+- Medição em produção: só da versão publicada anterior.
+- Não houve Lighthouse depois das correções.
+- A página antiga não foi medida nem alterada.
+
+10. PENDÊNCIAS
+- Testar em iPhone com Safari real (VSL "Ativar som", demo do Mentor com um toque, sticky stacks, modais).
+- Testar em Android com Chrome real.
+- Republicar e rodar o Lighthouse mobile e desktop de novo.
+- Conferir o checkout em BRL a partir do Brasil, com uma compra de teste autorizada pela própria cliente.
+- Analytics: não há rastreamento de eventos configurado (cliques nos CTAs, play da VSL, abertura do Mentor). Nada foi implementado.
+- Decidir sobre o contraste do laranja e as áreas de toque de 42px e 36px.
+
+11. ARQUIVOS ALTERADOS
+- src/components/final-sections.tsx (palavra "videoaulas")
+- src/routes/index.tsx (capa da VSL com carregamento sob demanda)
+- src/components/mentor-section.tsx (poster da demo adiado)
+- src/styles.css (z-index do lightbox)
+- roadmap.md
+- Evidências em qa/audit-2026-10-19/ (42 capturas de tela, matrix.json e behavior.json)
+
+12. PÓS-PUBLICAÇÃO — 2026-10-19, 21:22–21:28 UTC
+=================================================================
+Alvo: https://vc-lider-nova-pagina.lovable.app/
+Seções 1–11 registram a primeira rodada histórica; esta seção atualiza medições e pendências. Não houve visita ao checkout, publicação automática, mudança de contraste/tracking ou alteração da página antiga.
+
+VERSÃO E MÉTODO
+- HTTP200; SSR contém "além das videoaulas"; DOM uppercase confirmado nos dois tamanhos. Bundle público index-DCm1mXiP.js, routes-8PXwiA_H.js, styles-DJDUV1WB.css identificam a versão medida, sem inferir hash anterior.
+- SSR preload logo e retrato (fetchpriority high). SEM preload da PNG. Thumb DOM loading=lazy/decoding=async. HTML cache-control no-cache/must-revalidate/max-age=0; não equivale a ausência de cache de imagens.
+- Lighthouse CLI12.8.2, Chromium141.0.7390.37 Playwright headless (host UA141.0.0.0), autoplay padrão, sem liberação artificial de áudio. Dois processos novos por perfil, browser cache frio/storage reset padrão; CDN não purgado.
+- Mobile preset padrão412×823/DPR1.75, simulate/RTT150ms/1638.4Kbps/CPU4x (mesmo perfil slow4G do baseline). Desktop1350×940, simulate/RTT40ms/10240Kbps/CPU1x. Não é conexão fisicamente limitada.
+- Laboratório sobre URL pública; não são CrUX/CWV nem métricas locais. Baseline uma amostra versus duas agora: variação impede atribuir toda melhora a uma única mudança.
+
+RESULTADOS FRIOS
+Perfil       Perf FCP     LCP     TBT      CLS       TTFB* PesoKiB Requests
+Antes mobile 60   3.5s    16.4s   240ms    .019      500ms 2852    19
+Mobile #1    74   3.377s  4.951s  100ms    .018873   476ms 2386.78 18
+Mobile #2    75   3.280s  4.969s  60.574ms .018873   369ms 2386.61 18
+Antes desk   82   .9s     2.9s    0ms      0         330ms 2852    19
+Desktop #1  97   .893s   1.113s  0ms      .000011   421ms 2386.65 18
+Desktop #2  97   .874s   1.118s  0ms      .000011   317ms 2386.72 18
+* audit server-response-time, não TTFB simulado do breakdown nem fetch isolado.
+- LCP nas quatro execuções: foto Juliene, selector .opening-figure > img (~289KB). Mediana mobile4.960s, ~70% menor; desktop1.115s, ~62% menor versus amostras anteriores. Peso −465KiB/~16.3%, não −2.2MB.
+- A11y96/BestPractices100/SEO100 nas quatro; JSON completos preservam valores/configurações exatos.
+
+DIAGNÓSTICO E OTIMIZAÇÃO SEM MUDANÇA VISUAL
+- PNG1,727,370bytes ainda baixa sem rolar: lazy nativo antecipa imagens perto da tela. Mobile#1: retrato inicia563ms, PNG1241ms (rendererStartTime); PNG transfer~1,729,635bytes. Preload foi removido, download inicial NÃO.
+- Poster remoto demo477KB ausente nas18 requisições Lighthouse; nenhum iframe/stream VSL, HLS Mentor ou loopMP4 inicial. Só playerjs~5KB; poster local loop~27KB e arte ecossistema~57KB presentes.
+- LCP mobile ainda>4s. Cadeia comprovada inclui Google Fonts stylesheet render-blocking (economia ESTIMADA754ms mobile#1), CSS/fontes/JS e renderização CPU4x. Breakdown LCP simulado #1 TTFB724/loadDelay1417/load560/render2250ms; #2 695/1900/1082/1293ms. Maiores termos variam; não há causa única exata comprovada. Capa é desperdício demonstrado, não prova de explicar todo atraso.
+- Compressão aplicada: WebP LOSSLESS1,090,128bytes, −637,242bytes/36.9%; Pillow lossless/exact/method6/quality100. Comparação numpy de TODOS pixels RGBA igual. Dimensão natural1672×941; atributos HTML1365×768 anteriores preservados.
+- SHA256 RGBA original=derivado: adefa250c104dff14d48e50a4a2e4dfaff3c870356e915e63a030fa3dd2e69cc.
+- Novo pointer src/assets/thumb-aprovada-lossless.webp.asset.json, import em index.tsx; original mantido. Retrato intacto, nenhuma qualidade geral reduzida. GET do derivado verificado200/1090128bytes; cache-control public,max-age=31536000,immutable. Sem preload duplicado.
+- Essa compressão AINDA NÃO FOI PUBLICADA. Economia de bytes comprovada; ganho de LCP dessa mudança NÃO medido. As quatro medições são da publicação que a cliente já fez, antes desta compressão. Nenhuma troca de carregamento/família de fonte aplicada que pudesse mudar visual.
+
+WARM — SOMENTE REQUEST TIMING
+- Playwright sem throttling, primeira navegação + um reload no mesmo contexto por perfil390×844/1440×900. Não Lighthouse/score/slow4G.
+- Mobile frio TTFB257.5/DCL649.2/load718ms; warm147.9/210.3/222.8ms. Desktop frio413.7/723/820.1ms; warm248/272.1/315.1ms.
+- Warm resources18 mobile/16desktop; soma transferSize317bytes em ambos. Recursos same-origin estáticos vieram do cache; zeros cross-origin sem Timing-Allow-Origin NÃO provam transferência zero. Soma não é peso total quente exato e não inclui documento.
+- TTFB1.9s da cliente é amostra separada, não substitui Lighthouse nem é contradito por outra amostra.
+
+SEO/SHARING/RECURSOS
+- og:image E twitter:image SSR atuais usam o mesmo URL absoluto:
+https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/7078c20077e5b48d1b74141a68ce0b8e_1792443251925.png
+- GET200/image/png/903538bytes/1920×1080. URL anterior da cliente (efbea7a9671bb89e36735d09d531e194_1792440419455.png) também200/image/png/902453bytes/1920×1080, mas não é a tag atual. Ausência relatada anteriormente estava errada.
+- Imagem válida, porém não1200×630 e ~903KB; não garantida prévia em todos os mensageiros. Nenhuma arte inventada ou substituída.
+- GET externo primeiros10 recursos da ordem Lighthouse: todos200. URL/bytes/cache-control em resource-checks.json. Lighthouse inicial sem4xx/5xx; trackevents202 é telemetria da hospedagem, não erro nem implementação de eventos solicitados.
+- robots.txt200 permite bots; nenhum meta robots bloqueador, canonical ausente. SEO100 não certifica indexação/canonical. FAQ JSON-LD não criado.
+
+FLUXOS FINAIS PÚBLICOS
+-390×844/1440×900: VIDEOAULAS, H1único/6spans abertura, imagens sem falhas, zero pageerror/overflow horizontal. Screenshots topo/FAQ/rodapé.
+- Rolou até footer e voltou scrollY0; header visível após abertura. Todas13 perguntas: Enter inverte aria-expanded e Space restaura.
+- Mentor abre pela UI e fecha porX; open→closed, html/body overflow vazios, foco restaurado; wheel desloca350px após fechar. Não significa áudio/progresso verificados; não repetidos todos ciclos da primeira auditoria.
+- H264 canPlayType vazio: áudio/avanço continuam pendentes; Safari/WebKit não revalidado. Emulação não certifica aparelhos reais.
+
+ALVOS44PX — AJUSTES SOMENTE PREVIEW
+- CTA mobile conserva143×42px VISÍVEIS; pseudo transparente inset−1px vertical torna44px clicáveis, dentro header64px e separado da logo. elementFromPoint confirma mesmo link0.5px acima/abaixo. Sem mudar posições/tipografia/padding.
+- Toggle conserva125×36px visíveis; pseudo inset−4px vertical torna44px. Clique real3px acima altera aria-pressed false→true em390/1440; fica no vão separado do vídeo e texto seguinte.
+- Screenshots locais confirmam capa carregada1672×941, aparência preservada/sem overflow/pageerror. Build automático21:26:35UTC OK; suite existente11arquivos/32testes passa, focados8/8. Sem testes espelho novos.
+
+ARQUIVOS E EVIDÊNCIAS
+- Este relatório; roadmap.md; AGENTS.md (derivados devem ter pixels iguais); novo pointer thumb LOSSLESS; src/routes/index.tsx(import); src/styles.css(áreas transparentes).
+- qa/audit-2026-10-19/post-publish/: quatro JSON Lighthouse, production-checks.json, resource-checks.json, local-adjustments.json e screenshots. Evidências não incluem checkout.
+
+PENDÊNCIAS ATUALIZADAS
+- Cliente publicar compressão e áreas de toque adicionais; então remedir a versão LOSSLESS. Ganho adicional LCP ainda não mensurado.
+- iPhone/Safari e Android/Chrome reais para áudio/avanço/stacks/modais.
+- BRL no checkout a partir do Brasil, sem nova abertura aqui; compra teste somente autorizada pela cliente.
+- Contraste laranja opcional preservado; tracking de eventos próprios não instalado. Telemetria hosting não substitui eventos CTA/play/Mentor.
+- Mobile LCP4.95–4.97s permanece ruim; fonts/rendering são candidatos, não declarar resolvido. Canonical/share-size imagem apenas observações, sem mudanças SEO fora do pedido.
+
+13. ENCERRAMENTO — VERSÃO FINAL PUBLICADA — 2026-10-19, 21:34 UTC
+=================================================================
+Esta seção substitui as pendências de publicar/remedir da seção12. Última rodada SOMENTE medição/documentação: nenhuma mudança em código, design, outra página ou otimização; checkout não aberto e teste de codec não repetido.
+
+CONFIRMAÇÃO PÚBLICA
+- HTML SSR da URL https://vc-lider-nova-pagina.lovable.app/ contém a headline "Um ecossistema de desenvolvimento que vai além das videoaulas" (apresentação uppercase já conferida na rodada anterior).
+- src público da capa agora /__l5e/assets-v1/702adfa2-c98b-4bcc-b51b-3c75cb5bed60/thumb-aprovada-lossless.webp. Download Lighthouse200, transferência~1091.7KB. PNG antiga não consta na rede final.
+- Bundle final /assets/index-7vtRoTx2.js confirma mudança frente a index-DCm1mXiP.js da rodada anterior. Publicação das hitareas44 informada pela cliente; teste real das áreas invisíveis consta na seção12, não repetido nesta rodada.
+- og:image e twitter:image presentes no SSR final, ambos:
+https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/c2c1a8e9098958493858f993eb3506f7_1792445391850.png
+- A presença no HTML foi confirmada nesta rodada; não foi refeito GET da nova imagem. URLs de sharing anteriores foram validadas na seção12.
+
+LIGHTHOUSE FINAL — UMA AMOSTRA FRIA POR PERFIL
+- CLI12.8.2/Chromium141, mesmos presets e flags da seção12. Processo novo em cada perfil, storage reset padrão/cache de browser frio, CDN não purgado. Mobile simulate slow4G/CPU4x/412×823; desktop simulate/CPU1x/1350×940. Não são métricas de usuários reais.
+- fetchTime mobile2026-10-19T21:34:18.921Z; desktop21:34:34.935Z.
+Perfil   Perf FCP    LCP    TBT       CLS         TTFB*   PesoKiB Requests
+Mobile   50   3.657s 8.360s 520.160ms 0           208ms   1764.30 19
+Desktop  97   .892s  1.127s 0ms       .000010976  297ms   1763.67 18
+* numericValue de server-response-time; não equivale ao TTFB simulado do breakdown.
+- A11y96/BestPractices100/SEO100 em ambos; nenhuma resposta4xx/5xx nas redes Lighthouse. Elemento LCP permanece foto Juliene (.opening-figure > img) nos dois perfis.
+- Peso final~1.81MB versus~2.44MB antes da compressão: redução medida~638KB/~26.1%. Versus baseline original2852KiB, redução~38.1%. Thumb tem pixels iguais conforme prova da seção12; redução de peso NÃO comprova solução do LCP.
+- Variação declarada: rodada anterior mobile score74–75/LCP4.951–4.969s; final score50/LCP8.360s. Faixa combinada mobile50–75/LCP4.951–8.360s; desktop97/LCP1.113–1.127s. Uma amostra final não determina tendência ou causa; TBT mobile também variou de60.6–100ms para520.2ms. NÃO afirmar desempenho mobile resolvido, nem atribuir piora isoladamente à compressão. Nenhuma medição adicional ou patch iniciado.
+
+EVIDÊNCIA INDEPENDENTE DE REPRODUÇÃO — RELATO DA CLIENTE, 21:33 UTC
+- Juliene informa teste no browser IAB em macOS, versão pública: UM clique em "Assistir à demonstração..." iniciou vídeo HLS; readyState4, paused=false, muted=false; currentTime12.058169 e depois26.859787.
+- Fechou peloX: body overflow=visible, pointer=auto, data-scroll-locked=false, conforme relato.
+- Isso confirma avanço e estado de reprodução no browser que a cliente utilizou. É evidência independente fornecida pela cliente, não uma execução deste sandbox; não comprova som físico audível, iPhone/Android, VSL ou reprodução global. Não testado novamente o codec incompatível daqui.
+
+CONSOLIDAÇÃO E STATUS
+- Auditoria ENCERRADA conforme escopo. Relatório reúne matriz14 viewports da primeira rodada (emulação/local), testes funcionais públicos390/1440 da segunda, medições frias antes/depois/finais, warm timing anterior e limites explícitos.
+- Suite existente já passou32/32 em11arquivos e build automáticoOK na rodada anterior; sem código alterado nesta rodada, não reexecutada suite nem criado teste espelho.
+- Correções registradas: prioridade/lazy da thumb, poster remoto demo adiado, lightbox acima do header, thumbWebPLOSSLESS e áreas invisíveis44px. Nenhuma nova correção nesta rodada.
+- Evidências finais: qa/audit-2026-10-19/final-published/{lh-mobile.json,lh-desktop.json,confirmation.json}; demais screenshots/matriz/fluxos preservados nas pastas anteriores.
+- Permanecem LIMITES, não tarefas de novo ciclo: aparelhos reais iPhone/Safari e Android/Chrome não certificados; som físico não confirmado; BRL checkout depende de verificação no Brasil e compra só autorizada; contraste opcional preservado; tracking não instalado; CWV reais não medidos. Canonical/share-size imagem continuam observações anteriores sem alterações.
+- Nenhuma nova publicação necessária por esta rodada: somente relatório/roadmap/evidências atualizados, página final intacta.

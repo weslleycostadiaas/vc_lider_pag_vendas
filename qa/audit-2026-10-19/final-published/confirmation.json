@@ -1,0 +1,23 @@
+{
+  "headline": [
+    "Um ecossistema de desenvolvimento que vai além das videoaulas"
+  ],
+  "cover": [
+    "/__l5e/assets-v1/702adfa2-c98b-4bcc-b51b-3c75cb5bed60/thumb-aprovada-lossless.webp"
+  ],
+  "og": [
+    {
+      "property": "og:image",
+      "content": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/c2c1a8e9098958493858f993eb3506f7_1792445391850.png"
+    },
+    {
+      "name": "twitter:image",
+      "content": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_7fgkd8a3de80hbykct0zfmh6re/c2c1a8e9098958493858f993eb3506f7_1792445391850.png"
+    }
+  ],
+  "bundles": [
+    "/~flock.js",
+    "/__l5e/events.4d3abd1f6b7321c2.js",
+    "/assets/index-7vtRoTx2.js"
+  ]
+}
